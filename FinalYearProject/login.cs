@@ -32,6 +32,12 @@ namespace theSALAH
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
+            string username;
+            string password;
+            username = usernameTxtBx.Text;
+            password = passwordTxtBx.Text;
+            user user = new user(username, password);
+            user.checkLogin(user);
 
         }
     }

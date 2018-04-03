@@ -95,6 +95,7 @@
       <DependentUpon>201804031238272_migration2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="passwordManager.cs" />
     <Compile Include="SALAHContext.cs" />
     <Compile Include="new_user_screen.cs">
       <SubType>Form</SubType>
