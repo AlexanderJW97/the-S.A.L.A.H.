@@ -26,13 +26,14 @@ namespace theSALAH
         {
             string newUsername;
             string password;
-
+            string salt = "";
 
             if (passwordValidation(password1TxtBx.Text, password2TxtBx.Text))
             {
                 password = password1TxtBx.Text;
                 newUsername = usernameTxtBx.Text;
-                user User = new user(newUsername, password);
+                password = passwordManager.GeneratePasswordHash(password, out salt);
+                user User = new user(newUsername, password, salt);
                 if (user.AddNewUser(user: User))
                 {
                     main_screen openMainScreen = new main_screen();
@@ -119,9 +120,9 @@ namespace theSALAH
         /// </summary>
         public class passwordManager
         {
-            HashComputer m_hashcomputer = new HashComputer(); //initialises new hash computer
+            static HashComputer m_hashcomputer = new HashComputer(); //initialises new hash computer
 
-            public string GeneratePasswordHash(string password, out string salt)
+            public static string GeneratePasswordHash(string password, out string salt)
             {
                 salt = SaltGenerator.GetSaltString(); //retrieves and sets the salt from saltGenerator
                 string saltedPassword = password + salt; //combines password and salt

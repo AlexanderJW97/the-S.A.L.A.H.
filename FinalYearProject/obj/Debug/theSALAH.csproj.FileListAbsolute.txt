@@ -15,5 +15,5 @@ D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProj
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.csproj.CopyComplete
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\The_S.A.L.A.H.exe
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\The_S.A.L.A.H.pdb
-D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.Migrations.Migration1.resources
-D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.csprojResolveAssemblyReference.cache
+D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.Migrations.initial.resources
+D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.Migrations.migration2.resources

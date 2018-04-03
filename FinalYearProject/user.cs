@@ -9,9 +9,11 @@ namespace theSALAH
     public class user
     {
         [Key]
-        public int userID { get; set; }
-        public string name { get; set; }
-        public string password { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public string StoredSalt { get; set; }
+
         public ICollection<group> groups { get; set; }
         
         public user()
@@ -19,11 +21,12 @@ namespace theSALAH
 
         }
 
-        public user(string username, string passwordEntered)
+        public user(string username, string passwordEntered, string salt)
         {
-            name = username;
-            password = passwordEntered;
-            userID = userID++;
+            Name = username;
+            Password = passwordEntered;
+            StoredSalt = salt;
+            ID = ID++;
             
         }
         public static bool AddNewUser(user user)

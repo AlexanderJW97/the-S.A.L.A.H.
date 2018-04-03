@@ -86,12 +86,16 @@
     <Compile Include="main_screen.Designer.cs">
       <DependentUpon>main_screen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803301101180_Migration1.cs" />
-    <Compile Include="Migrations\201803301101180_Migration1.Designer.cs">
-      <DependentUpon>201803301101180_Migration1.cs</DependentUpon>
+    <Compile Include="Migrations\201804031204155_initial.cs" />
+    <Compile Include="Migrations\201804031204155_initial.Designer.cs">
+      <DependentUpon>201804031204155_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804031238272_migration2.cs" />
+    <Compile Include="Migrations\201804031238272_migration2.Designer.cs">
+      <DependentUpon>201804031238272_migration2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="myContext.cs" />
+    <Compile Include="SALAHContext.cs" />
     <Compile Include="new_user_screen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,8 +116,11 @@
     <EmbeddedResource Include="main_screen.resx">
       <DependentUpon>main_screen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803301101180_Migration1.resx">
-      <DependentUpon>201803301101180_Migration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804031204155_initial.resx">
+      <DependentUpon>201804031204155_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804031238272_migration2.resx">
+      <DependentUpon>201804031238272_migration2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="new_user_screen.resx">
       <DependentUpon>new_user_screen.cs</DependentUpon>

@@ -15,11 +15,6 @@ namespace theSALAH
         public login()
         {
             Application.EnableVisualStyles();
-            using (var ctx = new SALAHContext())
-            {
-                user user = new user() { name = "John", password = "Password123" };
-                ctx.Users.Add(user);
-            }
             InitializeComponent();
         }
 

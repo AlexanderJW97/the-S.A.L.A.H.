@@ -3,7 +3,7 @@ namespace theSALAH.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Migration1 : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -76,11 +76,12 @@ namespace theSALAH.Migrations
                 "dbo.users",
                 c => new
                     {
-                        userID = c.Int(nullable: false, identity: true),
+                        ID = c.Int(nullable: false, identity: true),
                         name = c.String(),
                         password = c.String(),
+                        storedSalt = c.String(),
                     })
-                .PrimaryKey(t => t.userID);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.groups",
@@ -90,23 +91,23 @@ namespace theSALAH.Migrations
                         group_name = c.String(),
                         meeting_place = c.String(),
                         group_type = c.String(),
-                        user_userID = c.Int(),
+                        user_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.groupID)
-                .ForeignKey("dbo.users", t => t.user_userID)
-                .Index(t => t.user_userID);
+                .ForeignKey("dbo.users", t => t.user_ID)
+                .Index(t => t.user_ID);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.groups", "user_userID", "dbo.users");
+            DropForeignKey("dbo.groups", "user_ID", "dbo.users");
             DropForeignKey("dbo.scouts", "group_groupID", "dbo.groups");
             DropForeignKey("dbo.resources", "group_groupID", "dbo.groups");
             DropForeignKey("dbo.resources", "storageLocation_locationID", "dbo.locations");
             DropForeignKey("dbo.locations", "Address_addressIdentifier", "dbo.addresses");
             DropForeignKey("dbo.scouts", "Address_addressIdentifier", "dbo.addresses");
-            DropIndex("dbo.groups", new[] { "user_userID" });
+            DropIndex("dbo.groups", new[] { "user_ID" });
             DropIndex("dbo.resources", new[] { "group_groupID" });
             DropIndex("dbo.resources", new[] { "storageLocation_locationID" });
             DropIndex("dbo.locations", new[] { "Address_addressIdentifier" });
