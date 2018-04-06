@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addNewGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addNewGroup.Designer.cs">
+      <DependentUpon>addNewGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="addNewScout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,10 @@
     <Compile Include="Migrations\201804061347310_migration3.Designer.cs">
       <DependentUpon>201804061347310_migration3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804061918433_migration4.cs" />
+    <Compile Include="Migrations\201804061918433_migration4.Designer.cs">
+      <DependentUpon>201804061918433_migration4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="passwordManager.cs" />
     <Compile Include="SALAHContext.cs" />
@@ -116,6 +126,9 @@
     <Compile Include="resource.cs" />
     <Compile Include="scout.cs" />
     <Compile Include="user.cs" />
+    <EmbeddedResource Include="addNewGroup.resx">
+      <DependentUpon>addNewGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addNewScout.resx">
       <DependentUpon>addNewScout.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804061347310_migration3.resx">
       <DependentUpon>201804061347310_migration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061918433_migration4.resx">
+      <DependentUpon>201804061918433_migration4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="new_user_screen.resx">
       <DependentUpon>new_user_screen.cs</DependentUpon>

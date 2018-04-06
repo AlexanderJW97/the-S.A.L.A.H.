@@ -16,6 +16,7 @@ namespace theSALAH
         public DbSet<address> Addresses { get; set; }
         public DbSet<location> Locations { get; set; }
         public DbSet<resource> Resources { get; set; }
+        public DbSet<group> Groups { get; set; }
         public DbSet<user> Users { get; set; }
 
     }

@@ -14,18 +14,22 @@ namespace theSALAH
         public string Name { get; set; }
         public string Password { get; set; }
         public string StoredSalt { get; set; }
-
         public ICollection<group> groups { get; set; }
         
         public user()
         {
-
+            groups = new List<group>();
+            group group = new group();
+            groups.Add(group);
         }
 
         public user(string username, string password)
         {
             Name = username;
             Password = password;
+            groups = new List<group>();
+            group group = new group();
+            groups.Add(group);
         }
 
         public user(string username, string passwordEntered, string salt)
@@ -34,6 +38,21 @@ namespace theSALAH
             Password = passwordEntered;
             StoredSalt = salt;
             ID = ID++;
+            groups = new List<group>();
+            group group = new group();
+            groups.Add(group);
+            
+
+        }
+
+        public user(string username, string passwordEntered, string salt, group group)
+        {
+            Name = username;
+            Password = passwordEntered;
+            StoredSalt = salt;
+            ID = ID++;
+            ICollection<group> groups = new List<group>();
+            groups.Add(group);
             
         }
         /// <summary>
@@ -79,7 +98,7 @@ namespace theSALAH
             {
                 var query = from data in context.Users
                             where data.Name == username
-                            select new { data.Name, data.Password, data.StoredSalt };
+                            select new { data.Name, data.Password, data.StoredSalt};
                 foreach (var result in query)
                 {
 

@@ -15,7 +15,7 @@ namespace theSALAH
 
         public string secondName { get; set; }
 
-        public DateTime dateOfBirth { get; set; }
+        public string dateOfBirth { get; set; }
 
         public address Address { get; set; }
 
@@ -38,7 +38,7 @@ namespace theSALAH
 
         public string healthInfo { get; set; }
 
-        public scout(string firstName, string secondName, DateTime dateOfBirth, address address, string groupType, string parentEmail, string pFirstName, string pSecondName, int parentNumb, string healthInfo)
+        public scout(string firstName, string secondName, string dateOfBirth, address address, string groupType, string parentEmail, string pFirstName, string pSecondName, int parentNumb, string healthInfo)
         {
             
         }
