@@ -94,6 +94,14 @@
     <Compile Include="Migrations\201804031238272_migration2.Designer.cs">
       <DependentUpon>201804031238272_migration2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804061210310_migration21.cs" />
+    <Compile Include="Migrations\201804061210310_migration21.Designer.cs">
+      <DependentUpon>201804061210310_migration21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061347310_migration3.cs" />
+    <Compile Include="Migrations\201804061347310_migration3.Designer.cs">
+      <DependentUpon>201804061347310_migration3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="passwordManager.cs" />
     <Compile Include="SALAHContext.cs" />
@@ -122,6 +130,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804031238272_migration2.resx">
       <DependentUpon>201804031238272_migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061210310_migration21.resx">
+      <DependentUpon>201804061210310_migration21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061347310_migration3.resx">
+      <DependentUpon>201804061347310_migration3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="new_user_screen.resx">
       <DependentUpon>new_user_screen.cs</DependentUpon>

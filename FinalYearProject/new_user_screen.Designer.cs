@@ -40,6 +40,7 @@ namespace theSALAH
             this.ReturnBtn = new System.Windows.Forms.Button();
             this.passwordCritLbl = new System.Windows.Forms.Label();
             this.checkPWLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // usernameTxtBx
@@ -92,7 +93,7 @@ namespace theSALAH
             // 
             // newUserBtn
             // 
-            this.newUserBtn.Location = new System.Drawing.Point(360, 323);
+            this.newUserBtn.Location = new System.Drawing.Point(360, 327);
             this.newUserBtn.Name = "newUserBtn";
             this.newUserBtn.Size = new System.Drawing.Size(199, 42);
             this.newUserBtn.TabIndex = 6;
@@ -102,7 +103,7 @@ namespace theSALAH
             // 
             // ReturnBtn
             // 
-            this.ReturnBtn.Location = new System.Drawing.Point(565, 323);
+            this.ReturnBtn.Location = new System.Drawing.Point(565, 327);
             this.ReturnBtn.Name = "ReturnBtn";
             this.ReturnBtn.Size = new System.Drawing.Size(199, 42);
             this.ReturnBtn.TabIndex = 8;
@@ -113,24 +114,35 @@ namespace theSALAH
             // passwordCritLbl
             // 
             this.passwordCritLbl.AutoSize = true;
-            this.passwordCritLbl.Location = new System.Drawing.Point(202, 264);
+            this.passwordCritLbl.Location = new System.Drawing.Point(94, 264);
             this.passwordCritLbl.Name = "passwordCritLbl";
-            this.passwordCritLbl.Size = new System.Drawing.Size(548, 20);
+            this.passwordCritLbl.Size = new System.Drawing.Size(670, 20);
             this.passwordCritLbl.TabIndex = 9;
-            this.passwordCritLbl.Text = "Passwords must contain: 8 to 16 characters, 1 capital letter, and one number";
+            this.passwordCritLbl.Text = "Passwords must contain: 8 to 16 characters, including at least 1 capital letter, " +
+    "and one number";
             // 
             // checkPWLbl
             // 
             this.checkPWLbl.AutoSize = true;
-            this.checkPWLbl.Location = new System.Drawing.Point(202, 284);
+            this.checkPWLbl.Location = new System.Drawing.Point(94, 304);
             this.checkPWLbl.Name = "checkPWLbl";
             this.checkPWLbl.Size = new System.Drawing.Size(289, 20);
             this.checkPWLbl.TabIndex = 10;
             this.checkPWLbl.Text = "Make sure your password has all of this!";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(94, 284);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(399, 20);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Your password should contain only letters and numbers";
+            // 
             // new_user_screen
             // 
             this.ClientSize = new System.Drawing.Size(858, 498);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.checkPWLbl);
             this.Controls.Add(this.passwordCritLbl);
             this.Controls.Add(this.ReturnBtn);
@@ -162,5 +174,6 @@ namespace theSALAH
         private System.Windows.Forms.Button ReturnBtn;
         private System.Windows.Forms.Label passwordCritLbl;
         private System.Windows.Forms.Label checkPWLbl;
+        private System.Windows.Forms.Label label1;
     }
 }

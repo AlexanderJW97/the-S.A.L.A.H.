@@ -72,6 +72,7 @@ namespace theSALAH
             string password = userCheck.Password;
             string salt = "";
             bool loginCorrect = false;
+            bool userExists = false;
             string existingPassword = "";
 
             using (var context = new SALAHContext())
@@ -81,16 +82,17 @@ namespace theSALAH
                             select new { data.Name, data.Password, data.StoredSalt };
                 foreach (var result in query)
                 {
+
                     user user = new user(result.Name, result.Password, result.StoredSalt);
                     salt = user.StoredSalt;
                     existingPassword = user.Password;
-                    break;
+                    userExists = true;
                 }
 
-                if(query != null)
+                if (userExists == true)
                 {
                     int correctChars = 0;
-                    password = passwordManager.HashSaltManager.GeneratePasswordHash(password, out salt);
+                    password = passwordManager.HashSaltManager.passwordChecker(password, salt);
                     for(int i =0; i <password.Length; i++)
                     {
                         if(password[i] == existingPassword[i])

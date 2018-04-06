@@ -16,7 +16,7 @@ namespace theSALAH
         /// <param name="password1">first password entered by the user</param>
         /// <param name="password2">second password entered by the user</param>
         /// <returns></returns>
-        public static bool passwordValidation(string password1, string password2)
+        public static string passwordValidation(string password1, string password2)
         {
             int MAX_PASSWORD_LENGTH = 16;
             int MIN_PASSWORD_LENGTH = 8;
@@ -25,46 +25,99 @@ namespace theSALAH
             int numCapitals = 0;
             int numNumbers = 0;
             string numbsString = "0123456789";
-            bool passwordValid = false;
+            string charsString = "abcdefghijklmnopqrstuvwxyz";
+            string passwordValid = "";
             bool passwordMatch = true;
             bool aNumber = false;
+            bool aLetter = false;
+            bool aCapLetter = false;
+            bool nonAlphanumericChar = false;
             for (int i = 0; i < password1.Length; i++)
             {
                 if (password1[i] != password2[i]) //if at any point two characters of the passwords don't match, then the passwordMatch bool is set to false and a message box is shown to the user
                 {
                     passwordMatch = false;
-                    MessageBox.Show("Passwords do not match!");
                     break;
                 }
 
             }
             if (passwordMatch == true) //if the two passwords entered match, move onto next part of validation
             {
-                if (password1.Length < MAX_PASSWORD_LENGTH && password1.Length > MIN_PASSWORD_LENGTH)
+                int passwordLength = password1.Length; //gets length of password
+
+                if (passwordLength <= MAX_PASSWORD_LENGTH && passwordLength >= MIN_PASSWORD_LENGTH) //is the password the correct length
                 {
                     foreach (char letter in password1) //checking each character in password1
                     {
-                        for (int i = 0; i < numbsString.Length; i++)
+                        
+                        for (int i = 0; i < numbsString.Length; i++) //looping through all number chars
                         {
-                            if (letter == numbsString[i])
+                            char number = numbsString[i];
+
+                            if (letter == number) //is the character a number
                             {
                                 numNumbers++;
-                                aNumber = true;
+                                aNumber = true; //yes its a number
                             }
-                            if (aNumber == true)
+                            
+                            if (aNumber == true) //if its a number, break from loop
                                 break;
                         }
-                        if (aNumber == false)
+                        
+                        if (aNumber == false) //if its not a number
                         {
-                            if (letter.ToString() == char.ToUpper(letter).ToString())//if the letter directly from the string and the letter that has been capitalised match, then the letter from the string must be a capital
-                                numCapitals++; //add 1 to number of capitals in the string
+                            for (int i = 0; i < charsString.Length; i++) //looping through all letter chars
+                            {
+                                char letterIterator = charsString[i];
+
+                                char capLetterIterator = char.ToUpper(charsString[i]);
+
+                                if (letter == letterIterator) //is the character a letter
+                                {
+                                    aLetter = true; //yes, its a letter
+                                    break;
+                                }
+                                if (letter == capLetterIterator) //is it a capital 
+                                {
+                                    aCapLetter = true; //yes its a capital letter
+                                    numCapitals++; 
+                                    break;
+                                }
+                            }
                         }
+                        if (aCapLetter == false && aLetter == false && aNumber == false) //if the character is not a letter, capital letter, or number
+                        {
+                            nonAlphanumericChar = true; //not an alphanumeric character
+                            break;
+                        }
+                        aNumber = false; //reset bool variables
+                        aLetter = false;
+                        aCapLetter = false;
+                        
                     }
 
-                    if (numNumbers >= MIN_NUMBERS && numCapitals >= MIN_CAPITAL_LETTERS)
-                        passwordValid = true;
+
+                    if (numNumbers < MIN_NUMBERS) //not enough numbers in password
+                        passwordValid = "noNums";
+
+                    if (numCapitals < MIN_CAPITAL_LETTERS) //not enough capitals
+                        passwordValid = "noCaps";
+
+                    if (nonAlphanumericChar == true) //contains alphanumeric character
+                        passwordValid = "nonAlphaChar";
+
+                    if (numNumbers >= MIN_NUMBERS && numCapitals >= MIN_CAPITAL_LETTERS && nonAlphanumericChar == false) //password is valid!
+                        passwordValid = "valid";
                 }
+
+                if (passwordLength > MAX_PASSWORD_LENGTH || passwordLength < MIN_PASSWORD_LENGTH) //password is too short
+                    passwordValid = "tooShort"; 
+
+
             }
+            if (passwordMatch == false) //passwords entered do not match
+                    passwordValid = "nonMatch";
+
             return passwordValid;
         }
 
@@ -78,16 +131,17 @@ namespace theSALAH
             public static string GeneratePasswordHash(string password, out string salt)
             {
                 salt = SaltGenerator.GetSaltString(); //retrieves and sets the salt from saltGenerator
-                string saltedPassword = password + salt; //combines password and salt
+                string saltedPassword = salt + password; //combines password and salt
+                
                 return m_hashcomputer.GetPasswordHashAndSalt(saltedPassword); // hashes salted password
 
             }
 
-            public bool passwordChecker(string password, string salt, string hash)
+            public static string passwordChecker(string password, string salt)
 
             {
-                string finalString = password + salt;
-                return hash == m_hashcomputer.GetPasswordHashAndSalt(finalString);
+                string saltedPassword = salt + password; //combines password and salt
+                return m_hashcomputer.GetPasswordHashAndSalt(saltedPassword);
             }
 
 
@@ -98,7 +152,7 @@ namespace theSALAH
             public static class SaltGenerator
             {
                 private static RNGCryptoServiceProvider m_cryptoServiceProvider = null;
-                private const int MAX_SALT_SIZE = 24;
+                private const int MAX_SALT_SIZE = 8;
 
 
                 static SaltGenerator()
@@ -112,12 +166,27 @@ namespace theSALAH
                 /// <returns></returns>
                 public static string GetSaltString()
                 {
+                    char[] chars = new char[62];
+                    chars = "abcdefghijklmnopqrstuvwxyz1234567890".ToCharArray();
                     byte[] saltBytes = new byte[MAX_SALT_SIZE]; //byte array to store salt bytes
-                    m_cryptoServiceProvider.GetNonZeroBytes(saltBytes);//generate salt in the new byte array generated above
-                    string saltString = Encoding.ASCII.GetString(saltBytes);// convert byte array to a string
-                    return saltString;//returns the string
+                    using (m_cryptoServiceProvider)
+                    {
+                        m_cryptoServiceProvider.GetNonZeroBytes(saltBytes);
+                        saltBytes = new byte[MAX_SALT_SIZE];
+                        m_cryptoServiceProvider.GetNonZeroBytes(saltBytes);
+                    }
+                    StringBuilder result = new StringBuilder(MAX_SALT_SIZE);
+                    foreach (byte b in saltBytes)
+                    {
+                        result.Append(chars[b % (chars.Length)]);
+                    }
+
+                    
+                    return result.ToString();//returns the string
 
                 }
+
+                
 
             }
 
@@ -128,10 +197,12 @@ namespace theSALAH
             {
                 public string GetPasswordHashAndSalt(string message)
                 {
-                    SHA256 sha = new SHA256CryptoServiceProvider(); //using the SHA256 algorithm
-                    byte[] databytes = Encoding.ASCII.GetBytes(message); //turns string into bytes
-                    byte[] resultbytes = sha.ComputeHash(databytes); //hashes the byte array
-                    return Encoding.ASCII.GetString(resultbytes); //converts hashed bytes to string and returns
+                    using (var sha256 = SHA256.Create())//using the SHA256 algorithm
+                    {
+                        var hashedbytes = sha256.ComputeHash(Encoding.ASCII.GetBytes(message));//turns string into bytes, hashes the byte array
+                        var hash = BitConverter.ToString(hashedbytes).Replace("-", "").ToLower();//converts hashed bytes to string and returns
+                        return hash;
+                    }
                 }
             }
         }

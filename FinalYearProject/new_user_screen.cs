@@ -25,28 +25,46 @@ namespace theSALAH
         public void newUserBtn_Click_1(object sender, EventArgs e)
         {
             string newUsername;
-            string password;
-            string salt = "";
 
-            if (passwordManager.passwordValidation(password1TxtBx.Text, password2TxtBx.Text))
+            string password = null;
+
+            string salt = null;
+
+            string passwordValid = passwordManager.passwordValidation(password1TxtBx.Text, password2TxtBx.Text);
+
+            switch (passwordValid) //switch provides the user with detailed error messages when trying to create a new user
             {
-                password = password1TxtBx.Text;
-                newUsername = usernameTxtBx.Text;
-                password = passwordManager.HashSaltManager.GeneratePasswordHash(password, out salt);
-                user User = new user(newUsername, password, salt);
-                if (user.AddNewUser(user: User))
-                {
-                    main_screen openMainScreen = new main_screen();
-                    openMainScreen.Show();
-                    Visible = false;
-                }
-                else
-                    MessageBox.Show("New user could not be created, please try again");
-                
+                case "valid":
+                    password = password1TxtBx.Text;
+                    newUsername = usernameTxtBx.Text;
+                    password = passwordManager.HashSaltManager.GeneratePasswordHash(password, out salt);
+                    user User = new user(newUsername, password, salt);
+                    MessageBox.Show("New user was created successfully.");
+                    if (user.AddNewUser(user: User))
+                    {
+                        main_screen openMainScreen = new main_screen();
+                        openMainScreen.Show();
+                        Visible = false;
+                    }
+                    break;
+                case "nonAlphaChar":
+                    MessageBox.Show("New user could not be created: special character used in password");
+                    break;
+                case "nonMatch":
+                    MessageBox.Show("New user could not be created: passwords did not match");
+                    break;
+                case "noCaps":
+                    MessageBox.Show("New user could not be created: no capital letters included in password");
+                    break;
+                case "noNums":
+                    MessageBox.Show("New user could not be created: no numbers included in password");
+                    break;
+                case "tooShort":
+                    MessageBox.Show("New user could not be created: password incorrect length");
+                    break;
             }
             
-            else
-                MessageBox.Show("Passwords did not match!");
+            
         }
         
         /// <summary>
