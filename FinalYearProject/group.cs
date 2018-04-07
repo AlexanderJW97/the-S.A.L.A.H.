@@ -10,34 +10,50 @@ namespace theSALAH
     public class group
     {
         [Key]
-        public int groupID { get; set; }
+        public int groupID{ get; set; }
 
         public string group_name { get; set; }
         public string meeting_place { get; set; }
         public string group_type { get; set; }
-        public ICollection<scout> Scouts { get; set; }
-        public ICollection<resource> Resources { get; set; }
+        public List<int> scoutID { get; set; }
+        public List<int> resourceID { get; set; }
 
         public group()
         { }
 
-        /*public string get_meeting_place()
+        public group(string name, string place, string type)
         {
-            return meeting_place;
+            
+            group_name = name;
+            meeting_place = place;
+            group_type = type;
         }
 
-        public void set_meeting_place(string new_meeting_place)
+        public static bool AddNewGroup(group newGroup, user user)
         {
+            bool groupAdded = false;
+            bool groupAddedToUser = false;
             try
             {
-                meeting_place = new_meeting_place;
-                return;
+                using (var ctx = new SALAHContext())
+                {
+                    ctx.Groups.Add(newGroup);
+                    ctx.SaveChanges();
+                }
+                
+                groupAddedToUser = user.addGroupToUser(user, newGroup.groupID);
+                if (groupAddedToUser)
+                {
+                    groupAdded = true;
+                }
+                return groupAdded;
+
             }
             catch
             {
-                MessageBox.Show("New meeting place could not be set");
-                return;
+                groupAdded = false;
+                return groupAdded;
             }
-        }*/
+        }
     }
 }

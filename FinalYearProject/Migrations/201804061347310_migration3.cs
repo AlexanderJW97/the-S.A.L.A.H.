@@ -7,14 +7,12 @@ namespace theSALAH.Migrations
     {
         public override void Up()
         {
-            AlterColumn("dbo.users", "Password", c => c.Binary());
-            AlterColumn("dbo.users", "StoredSalt", c => c.Binary());
+            
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.users", "StoredSalt", c => c.String());
-            AlterColumn("dbo.users", "Password", c => c.String());
+            
         }
     }
 }

@@ -226,6 +226,7 @@
             this.cancelNewScoutBtn.TabIndex = 19;
             this.cancelNewScoutBtn.Text = "Cancel";
             this.cancelNewScoutBtn.UseVisualStyleBackColor = true;
+            this.cancelNewScoutBtn.Click += new System.EventHandler(this.cancelNewScoutBtn_Click);
             // 
             // houseNumbTxtBx
             // 

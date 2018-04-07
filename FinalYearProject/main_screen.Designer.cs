@@ -38,7 +38,7 @@
             this.home_screen_time_lbl = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.newYoungPersonBtn = new System.Windows.Forms.Button();
-            this.groupComboBoxScouts = new System.Windows.Forms.ComboBox();
+            this.groupComboBoxGroups = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.attendanceStatsBtn = new System.Windows.Forms.Button();
             this.registerBtn = new System.Windows.Forms.Button();
@@ -53,6 +53,8 @@
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
             this.exit_btn = new System.Windows.Forms.Button();
             this.log_out_btn = new System.Windows.Forms.Button();
+            this.chooseGroupLbl = new System.Windows.Forms.Label();
+            this.updateComboBoxBtn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -77,6 +79,7 @@
             this.new_group_bttn.TabIndex = 1;
             this.new_group_bttn.Text = "Add a new group";
             this.new_group_bttn.UseVisualStyleBackColor = true;
+            this.new_group_bttn.Click += new System.EventHandler(this.new_group_bttn_Click);
             // 
             // new_scout_bttn
             // 
@@ -119,7 +122,7 @@
             // 
             this.welcome_text_lbl.AutoSize = true;
             this.welcome_text_lbl.Font = new System.Drawing.Font("Book Antiqua", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.welcome_text_lbl.Location = new System.Drawing.Point(963, 3);
+            this.welcome_text_lbl.Location = new System.Drawing.Point(3, 3);
             this.welcome_text_lbl.Name = "welcome_text_lbl";
             this.welcome_text_lbl.Size = new System.Drawing.Size(125, 47);
             this.welcome_text_lbl.TabIndex = 4;
@@ -129,16 +132,19 @@
             // 
             this.home_screen_time_lbl.AutoSize = true;
             this.home_screen_time_lbl.Font = new System.Drawing.Font("Book Antiqua", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.home_screen_time_lbl.Location = new System.Drawing.Point(828, 50);
+            this.home_screen_time_lbl.Location = new System.Drawing.Point(3, 50);
             this.home_screen_time_lbl.Name = "home_screen_time_lbl";
             this.home_screen_time_lbl.Size = new System.Drawing.Size(260, 47);
             this.home_screen_time_lbl.TabIndex = 3;
             this.home_screen_time_lbl.Text = "Current Time";
+            this.home_screen_time_lbl.Click += new System.EventHandler(this.home_screen_time_lbl_Click);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.updateComboBoxBtn);
+            this.tabPage2.Controls.Add(this.chooseGroupLbl);
             this.tabPage2.Controls.Add(this.newYoungPersonBtn);
-            this.tabPage2.Controls.Add(this.groupComboBoxScouts);
+            this.tabPage2.Controls.Add(this.groupComboBoxGroups);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -149,21 +155,21 @@
             // 
             // newYoungPersonBtn
             // 
-            this.newYoungPersonBtn.Location = new System.Drawing.Point(289, 53);
+            this.newYoungPersonBtn.Location = new System.Drawing.Point(852, 720);
             this.newYoungPersonBtn.Name = "newYoungPersonBtn";
             this.newYoungPersonBtn.Size = new System.Drawing.Size(208, 45);
             this.newYoungPersonBtn.TabIndex = 1;
             this.newYoungPersonBtn.Text = "Add new Young Person";
             this.newYoungPersonBtn.UseVisualStyleBackColor = true;
             // 
-            // groupComboBoxScouts
+            // groupComboBoxGroups
             // 
-            this.groupComboBoxScouts.FormattingEnabled = true;
-            this.groupComboBoxScouts.Location = new System.Drawing.Point(15, 53);
-            this.groupComboBoxScouts.Name = "groupComboBoxScouts";
-            this.groupComboBoxScouts.Size = new System.Drawing.Size(227, 28);
-            this.groupComboBoxScouts.TabIndex = 0;
-            this.groupComboBoxScouts.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.groupComboBoxGroups.FormattingEnabled = true;
+            this.groupComboBoxGroups.Location = new System.Drawing.Point(15, 53);
+            this.groupComboBoxGroups.Name = "groupComboBoxGroups";
+            this.groupComboBoxGroups.Size = new System.Drawing.Size(227, 28);
+            this.groupComboBoxGroups.TabIndex = 0;
+            this.groupComboBoxGroups.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -295,6 +301,27 @@
             this.log_out_btn.TabIndex = 5;
             this.log_out_btn.Text = "Log Out";
             this.log_out_btn.UseVisualStyleBackColor = true;
+            this.log_out_btn.Click += new System.EventHandler(this.log_out_btn_Click);
+            // 
+            // chooseGroupLbl
+            // 
+            this.chooseGroupLbl.AutoSize = true;
+            this.chooseGroupLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.chooseGroupLbl.Location = new System.Drawing.Point(11, 31);
+            this.chooseGroupLbl.Name = "chooseGroupLbl";
+            this.chooseGroupLbl.Size = new System.Drawing.Size(168, 19);
+            this.chooseGroupLbl.TabIndex = 2;
+            this.chooseGroupLbl.Text = "Choose a group to view";
+            // 
+            // updateComboBoxBtn
+            // 
+            this.updateComboBoxBtn.Location = new System.Drawing.Point(248, 53);
+            this.updateComboBoxBtn.Name = "updateComboBoxBtn";
+            this.updateComboBoxBtn.Size = new System.Drawing.Size(163, 28);
+            this.updateComboBoxBtn.TabIndex = 3;
+            this.updateComboBoxBtn.Text = "Update group list";
+            this.updateComboBoxBtn.UseVisualStyleBackColor = true;
+            this.updateComboBoxBtn.Click += new System.EventHandler(this.updateComboBoxBtn_Click);
             // 
             // main_screen
             // 
@@ -311,6 +338,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -334,7 +362,7 @@
         private System.Windows.Forms.Button log_out_btn;
         private System.Windows.Forms.Label welcome_text_lbl;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.ComboBox groupComboBoxScouts;
+        private System.Windows.Forms.ComboBox groupComboBoxGroups;
         private System.Windows.Forms.Button newYoungPersonBtn;
         private System.Windows.Forms.Button attendanceStatsBtn;
         private System.Windows.Forms.Button registerBtn;
@@ -345,6 +373,8 @@
         private System.Windows.Forms.Button editResourcesBtn;
         private System.Windows.Forms.Button editLocationsBtn;
         private System.Windows.Forms.ComboBox locationComboBox;
+        private System.Windows.Forms.Button updateComboBoxBtn;
+        private System.Windows.Forms.Label chooseGroupLbl;
     }
 }
 

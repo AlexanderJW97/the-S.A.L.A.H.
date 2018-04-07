@@ -29,27 +29,19 @@ namespace theSALAH
             meetingplace = meetingPlaceTxtBx.Text;
             type = ageGroupCBox.Text;
             group newGroup = new group(name, meetingplace, type);
-            
-            using (var context = new SALAHContext())
+            bool userAdded = group.AddNewGroup(newGroup, user);
+            if (userAdded)
             {
-                context.Groups.Add(newGroup);
-                context.SaveChanges();
-
-                var result = context.Users.SingleOrDefault(b => b.ID == user.ID);
-                if (result != null)
-                {
-                    result.groups.Add(newGroup);
-                    context.SaveChanges();
-                }
-                context.Dispose();
+                MessageBox.Show("Group was successfully added.");
+                main_screen open_screen = new main_screen(user);
+                this.Close();
+                open_screen.Show();
+            }
+            if(!userAdded)
+            {
+                MessageBox.Show("Group was not added. Please try again.");
             }
 
-            user.groups.Add(newGroup);
-
-            MessageBox.Show("Group was successfully added.");
-            main_screen open_screen = new main_screen(user);
-            this.Close();
-            open_screen.Show();
         }
     }
 }

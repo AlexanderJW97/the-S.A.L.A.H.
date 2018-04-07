@@ -42,7 +42,7 @@ namespace theSALAH
                     MessageBox.Show("New user was created successfully.");
                     if (user.AddNewUser(user: User))
                     {
-                        main_screen openMainScreen = new main_screen();
+                        main_screen openMainScreen = new main_screen(User);
                         openMainScreen.Show();
                         Visible = false;
                     }

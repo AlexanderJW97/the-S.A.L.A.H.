@@ -20,9 +20,9 @@ namespace theSALAH
 
         public void newUserBtn_Click(object sender, EventArgs e)
         {
-           new_user_screen openScreen = new new_user_screen();
-           openScreen.Show();
-           Visible = false;
+            new_user_screen openScreen = new new_user_screen();
+            openScreen.Show();
+            Visible = false;
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -37,8 +37,31 @@ namespace theSALAH
             username = usernameTxtBx.Text;
             password = passwordTxtBx.Text;
             user user = new user(username, password);
-            user.checkLogin(user);
+            bool loginSuccess = user.checkLogin(user);
+            if (loginSuccess == true)
+            {
+                using (var context = new SALAHContext())
+                {
+                    var query = from data in context.Users
+                                where data.Name == username
+                                select new { data.Name, data.groupIDs, data.ID };
+                    foreach (var result in query)
+                    {
+                        user.ID = result.ID;
+                        user.groupIDs = result.groupIDs;
+                    }
 
+                    MessageBox.Show("Login successful! Welcome: " + username);
+                    main_screen openScreen = new main_screen(user);
+                    openScreen.Show();
+                    Visible = false;
+                }
+                if (loginSuccess == false)
+                {
+                    MessageBox.Show("Login unsuccessful. Please ensure the username and password are entered correctly.");
+                }
+
+            }
         }
     }
 }
