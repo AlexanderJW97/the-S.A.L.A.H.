@@ -46,10 +46,6 @@ namespace theSALAH
             this.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -63,10 +59,6 @@ namespace theSALAH
             Visible = false;
         }
 
-        private void home_screen_time_lbl_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void log_out_btn_Click(object sender, EventArgs e)
         {
@@ -91,7 +83,7 @@ namespace theSALAH
         private void updateComboBox()
         {
            
-          string[] usersGroups;
+            string[] usersGroups;
             usersGroups = user.getUsersGroups(loggedInUser);
             user.AddGroupsToComboBox(groupComboBoxGroups, usersGroups);
         }
@@ -117,6 +109,13 @@ namespace theSALAH
             }
             clearComboBox();
             updateComboBox();
+        }
+
+        private void newYoungPersonBtn_Click(object sender, EventArgs e)
+        {
+            addNewScout open_screen = new addNewScout(loggedInUser);
+            this.Close();
+            open_screen.Show();
         }
     }
 }

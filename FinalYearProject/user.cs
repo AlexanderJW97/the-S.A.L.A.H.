@@ -81,6 +81,33 @@ namespace theSALAH
                 return userAdded;
             }
         }
+
+        /// <summary>
+        /// checks the username of a new user against existing usernames to ensure there are no users already using that username
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public static bool checkUsername(string username)
+        {
+            bool usernameUsed = false;
+
+            using (var context = new SALAHContext())
+            {
+                var query = from data in context.Users
+                            where data.Name == username
+                            select new { data.Name};
+                foreach (var result in query)
+                {
+                    if (result.Name == username)
+                    {
+                        usernameUsed = true;
+                    }
+                }
+            }
+
+            return usernameUsed;
+        }
+
         /// <summary>
         /// Checks the login details of a user trying to gain access
         /// </summary>

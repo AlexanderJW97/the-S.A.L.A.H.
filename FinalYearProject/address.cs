@@ -23,7 +23,7 @@ namespace theSALAH
 
         public string postcode { get; set; }
 
-        public List<scout> scouts { get; set; }
+        public string scouts { get; set; }
 
         public address(string houseNumberOrName, string street, string city, string county, string country, string postcode)
         {

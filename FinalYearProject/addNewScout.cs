@@ -18,6 +18,7 @@ namespace theSALAH
         {
             currentUser = loggedInUser;
             InitializeComponent();
+            updateComboBox();
         }
 
         private void addNewScoutBtn_Click(object sender, EventArgs e)
@@ -26,7 +27,6 @@ namespace theSALAH
             string firstName = "";
             string secondName = "";
             string dateOfBirth = "";
-            string Group = "";
             string pEmail = "";
             string pFName = "";
             string pSName = "";
@@ -40,31 +40,71 @@ namespace theSALAH
             string postcode = "";
             address Address;
 
-            scout Scout = getPersonalDetails(firstName, secondName, dateOfBirth, (Address = getAddress(houseNum, street, city, county, country, postcode)), Group, pEmail, pFName, pSName, pNumb, healthInfo);
-
-            addScoutToDB(Scout: Scout, Address: Address);
-
-        }
-        public scout getPersonalDetails(string firstName, string secondName, string dateOfBirth, address Address, string Group, string pEmail, string pFName, string pSName, int pNumb, string healthInfo)
-        {
-            firstName = firstNameTxtbx.Text;
-            secondName = secondNameTxtBx.Text;
-            dateOfBirth = DOBPicker.Text;
-            Group = ageGroupCBox.Text;
-            pEmail = pEmailTxtBx.Text;
-            pFName = pFirstNameTxtBx.Text;
-            pSName = pSecondNameTxtBx.Text;
+            scout Scout = getPersonalDetails(firstName, secondName, dateOfBirth, (Address = getAddress(houseNum, street, city, county, country, postcode)), pEmail, pFName, pSName, pNumb, healthInfo);
             try
             {
+                scout.addNewScout(Scout);
+                string groupName = getGroupName();
+                group.addScoutToGroup(groupName, Scout.scoutID);
+            }
+            catch
+            {
+                MessageBox.Show("New scout could not be created. Please try again.");
+            }
+
+        }
+
+        /// <summary>
+        /// returns a string containing the name of the group the new scout is to be added to
+        /// </summary>
+        /// <returns></returns>
+        public string getGroupName()
+        {
+            string groupName = chooseGroupComboBox.SelectedItem.ToString();
+            return groupName;
+        }
+
+
+        /// <summary>
+        /// gets the personal details for the new scout that has been entered in the form and returns a scout object
+        /// </summary>
+        /// <param name="firstName">first name</param>
+        /// <param name="secondName">surname</param>
+        /// <param name="dateOfBirth">date of birth</param>
+        /// <param name="Address">address</param>
+        /// <param name="pEmail">parents email</param>
+        /// <param name="pFName">parents first name</param>
+        /// <param name="pSName">parent surname</param>
+        /// <param name="pNumb">parent phone #</param>
+        /// <param name="healthInfo">health information for scout</param>
+        /// <returns></returns>
+        public scout getPersonalDetails(string firstName, string secondName, string dateOfBirth, address Address, string pEmail, string pFName, string pSName, int pNumb, string healthInfo)
+        {
+            try
+            {
+                firstName = firstNameTxtbx.Text;
+                secondName = secondNameTxtBx.Text;
+                dateOfBirth = DOBPicker.Text;
+                pEmail = pEmailTxtBx.Text;
+                pFName = pFirstNameTxtBx.Text;
+                pSName = pSecondNameTxtBx.Text;
+                healthInfo = healthTxtBx.Text;
+            }
+            catch
+            {
+                MessageBox.Show("New scout could not be created. Please try again.");
+            }
+            try
+            { 
                 pNumb = parsePhoneNumber(pContactNumTxtBx.Text);
 
             }
             catch
             {
-                MessageBox.Show("The phone number you have entered is incorrect and may contain characters other than numbers. Please ensure it is correctly entered.");
+                MessageBox.Show("The phone number you have entered is incorrect and may contain characters other than numbers. Please try again.");
             }
-            healthInfo = healthTxtBx.Text;
-            scout Scout = new scout(firstName: firstName, secondName: secondName, dateOfBirth: dateOfBirth, address: Address, groupType: Group, parentEmail: pEmail, pFirstName: pFName, pSecondName: pSName, parentNumb: pNumb, healthInfo: healthInfo);
+            
+            scout Scout = new scout(firstName: firstName, secondName: secondName, dateOfBirth: dateOfBirth, address: Address, parentEmail: pEmail, pFirstName: pFName, pSecondName: pSName, parentNumb: pNumb, healthInfo: healthInfo);
             return Scout;
         }
         public address getAddress(string houseNum, string street, string city, string county, string country, string postcode)
@@ -105,7 +145,7 @@ namespace theSALAH
                 this.Close();
                 open_screen.Show();
             }
-            catch (Exception e)
+            catch
             {
                 MessageBox.Show("Unable to add scout. Please ensure all information is correct and try again.");
             }
@@ -122,6 +162,14 @@ namespace theSALAH
                 this.Close();
                 open_screen.Show();
             }
+        }
+
+        private void updateComboBox()
+        {
+            string[] usersGroups;
+            usersGroups = user.getUsersGroups(currentUser);
+            ComboBox chooseGroupComboBox = new ComboBox();
+            user.AddGroupsToComboBox(chooseGroupComboBox, usersGroups);
         }
     }
 }

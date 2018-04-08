@@ -18,16 +18,7 @@ namespace theSALAH
         public string dateOfBirth { get; set; }
 
         public address Address { get; set; }
-
-        public enum groupType
-        {
-            Beaver,
-            Cub,
-            Scout,
-            Explorer,
-            Network,
-        }
-
+        
         public string parentEmail { get; set; }
 
         public string parentFirstName { get; set; }
@@ -38,9 +29,30 @@ namespace theSALAH
 
         public string healthInfo { get; set; }
 
-        public scout(string firstName, string secondName, string dateOfBirth, address address, string groupType, string parentEmail, string pFirstName, string pSecondName, int parentNumb, string healthInfo)
+        public scout(string firstName, string secondName, string dateOfBirth, address address, string parentEmail, string pFirstName, string pSecondName, int parentNumb, string healthInfo)
         {
             
+        }
+
+        public static bool addNewScout(scout scout)
+        {
+            bool scoutAdded = false;
+            try
+            {
+                using (var ctx = new SALAHContext())
+                {
+                    ctx.Scouts.Add(scout);
+                    ctx.SaveChanges();
+                }
+                scoutAdded = true;
+                return scoutAdded;
+
+            }
+            catch
+            {
+                scoutAdded = false;
+                return scoutAdded;
+            }
         }
     }
 }

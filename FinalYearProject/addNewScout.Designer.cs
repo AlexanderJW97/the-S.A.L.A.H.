@@ -61,6 +61,8 @@
             this.heallthTxtBx = new System.Windows.Forms.TextBox();
             this.postcodeLbl = new System.Windows.Forms.Label();
             this.healthTxtBx = new System.Windows.Forms.Label();
+            this.chooseGroupComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLbl
@@ -341,11 +343,30 @@
             this.healthTxtBx.TabIndex = 33;
             this.healthTxtBx.Text = "Health Info:";
             // 
+            // chooseGroupComboBox
+            // 
+            this.chooseGroupComboBox.FormattingEnabled = true;
+            this.chooseGroupComboBox.Location = new System.Drawing.Point(635, 398);
+            this.chooseGroupComboBox.Name = "chooseGroupComboBox";
+            this.chooseGroupComboBox.Size = new System.Drawing.Size(298, 28);
+            this.chooseGroupComboBox.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(523, 401);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Group:";
+            // 
             // addNewScout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(945, 616);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.chooseGroupComboBox);
             this.Controls.Add(this.healthTxtBx);
             this.Controls.Add(this.heallthTxtBx);
             this.Controls.Add(this.postcodeLbl);
@@ -421,5 +442,7 @@
         private System.Windows.Forms.TextBox heallthTxtBx;
         private System.Windows.Forms.Label postcodeLbl;
         private System.Windows.Forms.Label healthTxtBx;
+        private System.Windows.Forms.ComboBox chooseGroupComboBox;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace theSALAH
+﻿using System;
+
+namespace theSALAH
 {
     partial class main_screen
     {
@@ -37,6 +39,8 @@
             this.welcome_text_lbl = new System.Windows.Forms.Label();
             this.home_screen_time_lbl = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.updateComboBoxBtn = new System.Windows.Forms.Button();
+            this.chooseGroupLbl = new System.Windows.Forms.Label();
             this.newYoungPersonBtn = new System.Windows.Forms.Button();
             this.groupComboBoxGroups = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -53,13 +57,13 @@
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
             this.exit_btn = new System.Windows.Forms.Button();
             this.log_out_btn = new System.Windows.Forms.Button();
-            this.chooseGroupLbl = new System.Windows.Forms.Label();
-            this.updateComboBoxBtn = new System.Windows.Forms.Button();
+            this.displayScoutsDGV = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // upcoming_meetings_lbl
@@ -67,7 +71,7 @@
             this.upcoming_meetings_lbl.AutoSize = true;
             this.upcoming_meetings_lbl.Location = new System.Drawing.Point(46, 311);
             this.upcoming_meetings_lbl.Name = "upcoming_meetings_lbl";
-            this.upcoming_meetings_lbl.Size = new System.Drawing.Size(150, 20);
+            this.upcoming_meetings_lbl.Size = new System.Drawing.Size(148, 19);
             this.upcoming_meetings_lbl.TabIndex = 0;
             this.upcoming_meetings_lbl.Text = "Upcoming Meetings";
             // 
@@ -97,6 +101,7 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage5);
+            this.tabControl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.tabControl.Location = new System.Drawing.Point(3, 2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -137,39 +142,61 @@
             this.home_screen_time_lbl.Size = new System.Drawing.Size(260, 47);
             this.home_screen_time_lbl.TabIndex = 3;
             this.home_screen_time_lbl.Text = "Current Time";
-            this.home_screen_time_lbl.Click += new System.EventHandler(this.home_screen_time_lbl_Click);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.displayScoutsDGV);
             this.tabPage2.Controls.Add(this.updateComboBoxBtn);
             this.tabPage2.Controls.Add(this.chooseGroupLbl);
             this.tabPage2.Controls.Add(this.newYoungPersonBtn);
             this.tabPage2.Controls.Add(this.groupComboBoxGroups);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1094, 808);
+            this.tabPage2.Size = new System.Drawing.Size(1094, 809);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Scouts";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // updateComboBoxBtn
+            // 
+            this.updateComboBoxBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.updateComboBoxBtn.Location = new System.Drawing.Point(248, 43);
+            this.updateComboBoxBtn.Name = "updateComboBoxBtn";
+            this.updateComboBoxBtn.Size = new System.Drawing.Size(208, 46);
+            this.updateComboBoxBtn.TabIndex = 3;
+            this.updateComboBoxBtn.Text = "Update group list";
+            this.updateComboBoxBtn.UseVisualStyleBackColor = true;
+            this.updateComboBoxBtn.Click += new System.EventHandler(this.updateComboBoxBtn_Click);
+            // 
+            // chooseGroupLbl
+            // 
+            this.chooseGroupLbl.AutoSize = true;
+            this.chooseGroupLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.chooseGroupLbl.Location = new System.Drawing.Point(11, 31);
+            this.chooseGroupLbl.Name = "chooseGroupLbl";
+            this.chooseGroupLbl.Size = new System.Drawing.Size(168, 19);
+            this.chooseGroupLbl.TabIndex = 2;
+            this.chooseGroupLbl.Text = "Choose a group to view";
+            // 
             // newYoungPersonBtn
             // 
-            this.newYoungPersonBtn.Location = new System.Drawing.Point(852, 720);
+            this.newYoungPersonBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.newYoungPersonBtn.Location = new System.Drawing.Point(462, 43);
             this.newYoungPersonBtn.Name = "newYoungPersonBtn";
             this.newYoungPersonBtn.Size = new System.Drawing.Size(208, 45);
             this.newYoungPersonBtn.TabIndex = 1;
             this.newYoungPersonBtn.Text = "Add new Young Person";
             this.newYoungPersonBtn.UseVisualStyleBackColor = true;
+            this.newYoungPersonBtn.Click += new System.EventHandler(this.newYoungPersonBtn_Click);
             // 
             // groupComboBoxGroups
             // 
             this.groupComboBoxGroups.FormattingEnabled = true;
             this.groupComboBoxGroups.Location = new System.Drawing.Point(15, 53);
             this.groupComboBoxGroups.Name = "groupComboBoxGroups";
-            this.groupComboBoxGroups.Size = new System.Drawing.Size(227, 28);
+            this.groupComboBoxGroups.Size = new System.Drawing.Size(227, 27);
             this.groupComboBoxGroups.TabIndex = 0;
-            this.groupComboBoxGroups.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -219,17 +246,17 @@
             this.upcomingMeetingsLbl.AutoSize = true;
             this.upcomingMeetingsLbl.Location = new System.Drawing.Point(21, 113);
             this.upcomingMeetingsLbl.Name = "upcomingMeetingsLbl";
-            this.upcomingMeetingsLbl.Size = new System.Drawing.Size(150, 20);
+            this.upcomingMeetingsLbl.Size = new System.Drawing.Size(148, 19);
             this.upcomingMeetingsLbl.TabIndex = 2;
             this.upcomingMeetingsLbl.Text = "Upcoming Meetings";
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
+            this.listBox1.ItemHeight = 19;
             this.listBox1.Location = new System.Drawing.Point(21, 152);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(592, 624);
+            this.listBox1.Size = new System.Drawing.Size(592, 612);
             this.listBox1.TabIndex = 1;
             // 
             // groupComboBoxMeetings
@@ -237,7 +264,7 @@
             this.groupComboBoxMeetings.FormattingEnabled = true;
             this.groupComboBoxMeetings.Location = new System.Drawing.Point(19, 53);
             this.groupComboBoxMeetings.Name = "groupComboBoxMeetings";
-            this.groupComboBoxMeetings.Size = new System.Drawing.Size(216, 28);
+            this.groupComboBoxMeetings.Size = new System.Drawing.Size(216, 27);
             this.groupComboBoxMeetings.TabIndex = 0;
             // 
             // tabPage5
@@ -276,7 +303,7 @@
             this.locationComboBox.FormattingEnabled = true;
             this.locationComboBox.Location = new System.Drawing.Point(13, 63);
             this.locationComboBox.Name = "locationComboBox";
-            this.locationComboBox.Size = new System.Drawing.Size(205, 28);
+            this.locationComboBox.Size = new System.Drawing.Size(205, 27);
             this.locationComboBox.TabIndex = 0;
             // 
             // main_screen_tmr
@@ -285,6 +312,7 @@
             // 
             // exit_btn
             // 
+            this.exit_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.exit_btn.Location = new System.Drawing.Point(1194, 31);
             this.exit_btn.Name = "exit_btn";
             this.exit_btn.Size = new System.Drawing.Size(77, 31);
@@ -295,6 +323,7 @@
             // 
             // log_out_btn
             // 
+            this.log_out_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.log_out_btn.Location = new System.Drawing.Point(1111, 31);
             this.log_out_btn.Name = "log_out_btn";
             this.log_out_btn.Size = new System.Drawing.Size(77, 31);
@@ -303,25 +332,14 @@
             this.log_out_btn.UseVisualStyleBackColor = true;
             this.log_out_btn.Click += new System.EventHandler(this.log_out_btn_Click);
             // 
-            // chooseGroupLbl
+            // displayScoutsDGV
             // 
-            this.chooseGroupLbl.AutoSize = true;
-            this.chooseGroupLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.chooseGroupLbl.Location = new System.Drawing.Point(11, 31);
-            this.chooseGroupLbl.Name = "chooseGroupLbl";
-            this.chooseGroupLbl.Size = new System.Drawing.Size(168, 19);
-            this.chooseGroupLbl.TabIndex = 2;
-            this.chooseGroupLbl.Text = "Choose a group to view";
-            // 
-            // updateComboBoxBtn
-            // 
-            this.updateComboBoxBtn.Location = new System.Drawing.Point(248, 53);
-            this.updateComboBoxBtn.Name = "updateComboBoxBtn";
-            this.updateComboBoxBtn.Size = new System.Drawing.Size(163, 28);
-            this.updateComboBoxBtn.TabIndex = 3;
-            this.updateComboBoxBtn.Text = "Update group list";
-            this.updateComboBoxBtn.UseVisualStyleBackColor = true;
-            this.updateComboBoxBtn.Click += new System.EventHandler(this.updateComboBoxBtn_Click);
+            this.displayScoutsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.displayScoutsDGV.Location = new System.Drawing.Point(15, 96);
+            this.displayScoutsDGV.Name = "displayScoutsDGV";
+            this.displayScoutsDGV.RowTemplate.Height = 28;
+            this.displayScoutsDGV.Size = new System.Drawing.Size(831, 669);
+            this.displayScoutsDGV.TabIndex = 4;
             // 
             // main_screen
             // 
@@ -342,8 +360,14 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).EndInit();
             this.ResumeLayout(false);
 
+        }
+
+        private void home_screen_time_lbl_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -375,6 +399,7 @@
         private System.Windows.Forms.ComboBox locationComboBox;
         private System.Windows.Forms.Button updateComboBoxBtn;
         private System.Windows.Forms.Label chooseGroupLbl;
+        private System.Windows.Forms.DataGridView displayScoutsDGV;
     }
 }
 

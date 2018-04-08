@@ -30,9 +30,16 @@ namespace theSALAH
 
             string salt = null;
 
-            string passwordValid = passwordManager.passwordValidation(password1TxtBx.Text, password2TxtBx.Text);
+            string newUserValid = passwordManager.passwordValidation(password1TxtBx.Text, password2TxtBx.Text);
 
-            switch (passwordValid) //switch provides the user with detailed error messages when trying to create a new user
+            bool usernameUsed = user.checkUsername(usernameTxtBx.Text);
+
+            if (usernameUsed == true)
+            {
+                newUserValid = "usernameUsed";
+            }
+
+            switch (newUserValid) //switch provides the user with detailed error messages when trying to create a new user
             {
                 case "valid":
                     password = password1TxtBx.Text;
@@ -61,6 +68,9 @@ namespace theSALAH
                     break;
                 case "tooShort":
                     MessageBox.Show("New user could not be created: password incorrect length");
+                    break;
+                case "usernameUsed":
+                    MessageBox.Show("New user could not be created: username already in use on this system; please choose a new one.");
                     break;
             }
             
