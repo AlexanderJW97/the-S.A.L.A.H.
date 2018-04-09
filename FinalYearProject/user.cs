@@ -155,7 +155,6 @@ namespace theSALAH
 
         }
 
-
         /// <summary>
         /// adds a groupID into the users groupIDs string
         /// </summary>
@@ -197,6 +196,12 @@ namespace theSALAH
         }
 
 
+
+        /// <summary>
+        /// adds the users groups into the combobox for selection
+        /// </summary>
+        /// <param name="comboBox">target combo box</param>
+        /// <param name="groups">string array of groups to be added</param>
         public static void AddGroupsToComboBox(ComboBox comboBox, string[] groups)
         {
             int length = groups.Length; //get length of the groupID array

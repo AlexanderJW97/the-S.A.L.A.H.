@@ -11,27 +11,39 @@ namespace theSALAH
         [Key]
         public int scoutID { get; set; }
 
-        public string firstName { get; set;}
+        public string firstName { get; set; }
 
         public string secondName { get; set; }
 
         public string dateOfBirth { get; set; }
 
         public address Address { get; set; }
-        
+
         public string parentEmail { get; set; }
 
         public string parentFirstName { get; set; }
 
         public string parentSecondName { get; set; }
 
-        public int parentEmergencyNumb { get; set; }
+        public string parentEmergencyNumb { get; set; }
 
         public string healthInfo { get; set; }
 
-        public scout(string firstName, string secondName, string dateOfBirth, address address, string parentEmail, string pFirstName, string pSecondName, int parentNumb, string healthInfo)
+        public scout()
+        { } 
+
+        public scout(string firstN, string secondN, string DOB, address add, string parentE, string pFirst, string pSecond, string parentN, string health)
         {
-            
+            scoutID = scoutID++;
+            firstName = firstN;
+            secondName = secondN;
+            dateOfBirth = DOB;
+            Address = add;
+            parentEmail = parentE;
+            parentFirstName = pFirst;
+            parentSecondName = pSecond;
+            parentEmergencyNumb = parentN;
+            healthInfo = health;
         }
 
         public static bool addNewScout(scout scout)
@@ -53,6 +65,40 @@ namespace theSALAH
                 scoutAdded = false;
                 return scoutAdded;
             }
+        }
+
+        /// <summary>
+        /// Gets the first and second names of scouts from their scout IDs
+        /// </summary>
+        /// <param name="scoutIDs">an array of scout IDs to be foundi wil   </param>
+        /// <returns></returns>
+        public static string[] getScoutNames(string[] scoutIDs)
+        {
+            string[] scoutNames = new string[scoutIDs.Length];
+
+            int i = 0;
+
+            using (var ctx = new SALAHContext())
+            {
+                foreach (string s in scoutIDs)
+                {
+                    int idInt = 0;
+                    if (s != "")
+                        idInt = int.Parse(s);
+                    var query = from data in ctx.Scouts //create a query to find the groupIDs of the logged in user
+                                where data.scoutID == idInt
+                                select new { data.firstName, data.secondName };
+
+                    foreach (var result in query)
+                    {
+                        scoutNames[i] = result.firstName + " " + result.secondName;
+                        i++;
+                    }
+
+                }
+            }
+
+            return scoutNames;
         }
     }
 }

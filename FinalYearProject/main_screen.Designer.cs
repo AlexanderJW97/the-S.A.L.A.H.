@@ -39,6 +39,7 @@ namespace theSALAH
             this.welcome_text_lbl = new System.Windows.Forms.Label();
             this.home_screen_time_lbl = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.displayScoutsDGV = new System.Windows.Forms.DataGridView();
             this.updateComboBoxBtn = new System.Windows.Forms.Button();
             this.chooseGroupLbl = new System.Windows.Forms.Label();
             this.newYoungPersonBtn = new System.Windows.Forms.Button();
@@ -57,13 +58,12 @@ namespace theSALAH
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
             this.exit_btn = new System.Windows.Forms.Button();
             this.log_out_btn = new System.Windows.Forms.Button();
-            this.displayScoutsDGV = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // upcoming_meetings_lbl
@@ -115,10 +115,10 @@ namespace theSALAH
             this.tabPage1.Controls.Add(this.upcoming_meetings_lbl);
             this.tabPage1.Controls.Add(this.new_scout_bttn);
             this.tabPage1.Controls.Add(this.new_group_bttn);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1094, 808);
+            this.tabPage1.Size = new System.Drawing.Size(1094, 809);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -157,6 +157,15 @@ namespace theSALAH
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Scouts";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // displayScoutsDGV
+            // 
+            this.displayScoutsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.displayScoutsDGV.Location = new System.Drawing.Point(15, 96);
+            this.displayScoutsDGV.Name = "displayScoutsDGV";
+            this.displayScoutsDGV.RowTemplate.Height = 28;
+            this.displayScoutsDGV.Size = new System.Drawing.Size(831, 669);
+            this.displayScoutsDGV.TabIndex = 4;
             // 
             // updateComboBoxBtn
             // 
@@ -197,6 +206,7 @@ namespace theSALAH
             this.groupComboBoxGroups.Name = "groupComboBoxGroups";
             this.groupComboBoxGroups.Size = new System.Drawing.Size(227, 27);
             this.groupComboBoxGroups.TabIndex = 0;
+            this.groupComboBoxGroups.SelectedIndexChanged += new System.EventHandler(this.groupComboBoxGroups_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -206,10 +216,10 @@ namespace theSALAH
             this.tabPage3.Controls.Add(this.upcomingMeetingsLbl);
             this.tabPage3.Controls.Add(this.listBox1);
             this.tabPage3.Controls.Add(this.groupComboBoxMeetings);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1094, 808);
+            this.tabPage3.Size = new System.Drawing.Size(1094, 809);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Meetings";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -272,10 +282,10 @@ namespace theSALAH
             this.tabPage5.Controls.Add(this.editResourcesBtn);
             this.tabPage5.Controls.Add(this.editLocationsBtn);
             this.tabPage5.Controls.Add(this.locationComboBox);
-            this.tabPage5.Location = new System.Drawing.Point(4, 29);
+            this.tabPage5.Location = new System.Drawing.Point(4, 28);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1094, 808);
+            this.tabPage5.Size = new System.Drawing.Size(1094, 809);
             this.tabPage5.TabIndex = 3;
             this.tabPage5.Text = "Resources";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -332,15 +342,6 @@ namespace theSALAH
             this.log_out_btn.UseVisualStyleBackColor = true;
             this.log_out_btn.Click += new System.EventHandler(this.log_out_btn_Click);
             // 
-            // displayScoutsDGV
-            // 
-            this.displayScoutsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.displayScoutsDGV.Location = new System.Drawing.Point(15, 96);
-            this.displayScoutsDGV.Name = "displayScoutsDGV";
-            this.displayScoutsDGV.RowTemplate.Height = 28;
-            this.displayScoutsDGV.Size = new System.Drawing.Size(831, 669);
-            this.displayScoutsDGV.TabIndex = 4;
-            // 
             // main_screen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -357,10 +358,10 @@ namespace theSALAH
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).EndInit();
             this.ResumeLayout(false);
 
         }

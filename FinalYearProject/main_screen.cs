@@ -117,5 +117,22 @@ namespace theSALAH
             this.Close();
             open_screen.Show();
         }
+
+        private void groupComboBoxGroups_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int i = 1;
+            string chosenGroupString = groupComboBoxGroups.SelectedItem.ToString();
+            group chosenGroup = group.getGroup(chosenGroupString);
+            string[] scoutIDs = group.getScoutIDs(chosenGroup);
+            string[] scoutNames = scout.getScoutNames(scoutIDs);
+            displayScoutsDGV.Columns.Add("Name", "Scout Name");
+            displayScoutsDGV.Columns.Add("Index", "Index");
+
+            foreach (string s in scoutNames)
+            {
+                displayScoutsDGV.Rows.Add(i,s);
+                i++;
+            }
+        }
     }
 }

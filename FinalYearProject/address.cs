@@ -25,8 +25,20 @@ namespace theSALAH
 
         public string scouts { get; set; }
 
-        public address(string houseNumberOrName, string street, string city, string county, string country, string postcode)
+        public address()
+        { }
+
+
+        public address(string houseNum, string st, string cty, string cnty, string cntry, string pcode, int sID)
         {
+            addressIdentifier = addressIdentifier++;
+            houseNumberOrName = houseNum;
+            street = st;
+            city = cty;
+            county = cnty;
+            country = cntry;
+            postcode = pcode;
+            scouts = scouts + sID.ToString() + ",";
 
         }
     }

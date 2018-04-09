@@ -32,8 +32,6 @@
             this.firstNameLbl = new System.Windows.Forms.Label();
             this.secondNameLbl = new System.Windows.Forms.Label();
             this.dateOfBirthLbl = new System.Windows.Forms.Label();
-            this.ageGroupLbl = new System.Windows.Forms.Label();
-            this.ageGroupCBox = new System.Windows.Forms.ComboBox();
             this.firstNameTxtbx = new System.Windows.Forms.TextBox();
             this.secondNameTxtBx = new System.Windows.Forms.TextBox();
             this.DOBPicker = new System.Windows.Forms.DateTimePicker();
@@ -58,75 +56,57 @@
             this.cityLbl = new System.Windows.Forms.Label();
             this.countyLbl = new System.Windows.Forms.Label();
             this.countryLbl = new System.Windows.Forms.Label();
-            this.heallthTxtBx = new System.Windows.Forms.TextBox();
+            this.healthTxtBx = new System.Windows.Forms.TextBox();
             this.postcodeLbl = new System.Windows.Forms.Label();
-            this.healthTxtBx = new System.Windows.Forms.Label();
+            this.deadtxtbx = new System.Windows.Forms.Label();
             this.chooseGroupComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.updateGroupComboBoxBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLbl
             // 
             this.titleLbl.AutoSize = true;
-            this.titleLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLbl.Font = new System.Drawing.Font("Times New Roman", 16F);
             this.titleLbl.Location = new System.Drawing.Point(11, 12);
             this.titleLbl.Name = "titleLbl";
-            this.titleLbl.Size = new System.Drawing.Size(260, 37);
+            this.titleLbl.Size = new System.Drawing.Size(239, 36);
             this.titleLbl.TabIndex = 0;
-            this.titleLbl.Text = "Add a new Scout";
+            this.titleLbl.Text = "Add a New Scout";
             // 
             // firstNameLbl
             // 
             this.firstNameLbl.AutoSize = true;
+            this.firstNameLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.firstNameLbl.Location = new System.Drawing.Point(11, 177);
             this.firstNameLbl.Name = "firstNameLbl";
-            this.firstNameLbl.Size = new System.Drawing.Size(88, 20);
+            this.firstNameLbl.Size = new System.Drawing.Size(86, 19);
             this.firstNameLbl.TabIndex = 1;
             this.firstNameLbl.Text = "First name:";
             // 
             // secondNameLbl
             // 
             this.secondNameLbl.AutoSize = true;
+            this.secondNameLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.secondNameLbl.Location = new System.Drawing.Point(11, 209);
             this.secondNameLbl.Name = "secondNameLbl";
-            this.secondNameLbl.Size = new System.Drawing.Size(112, 20);
+            this.secondNameLbl.Size = new System.Drawing.Size(104, 19);
             this.secondNameLbl.TabIndex = 2;
             this.secondNameLbl.Text = "Second name:";
             // 
             // dateOfBirthLbl
             // 
             this.dateOfBirthLbl.AutoSize = true;
+            this.dateOfBirthLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.dateOfBirthLbl.Location = new System.Drawing.Point(11, 243);
             this.dateOfBirthLbl.Name = "dateOfBirthLbl";
-            this.dateOfBirthLbl.Size = new System.Drawing.Size(103, 20);
+            this.dateOfBirthLbl.Size = new System.Drawing.Size(104, 19);
             this.dateOfBirthLbl.TabIndex = 3;
             this.dateOfBirthLbl.Text = "Date of Birth:";
             // 
-            // ageGroupLbl
-            // 
-            this.ageGroupLbl.AutoSize = true;
-            this.ageGroupLbl.Location = new System.Drawing.Point(11, 273);
-            this.ageGroupLbl.Name = "ageGroupLbl";
-            this.ageGroupLbl.Size = new System.Drawing.Size(87, 20);
-            this.ageGroupLbl.TabIndex = 4;
-            this.ageGroupLbl.Text = "Age group:";
-            // 
-            // ageGroupCBox
-            // 
-            this.ageGroupCBox.FormattingEnabled = true;
-            this.ageGroupCBox.Items.AddRange(new object[] {
-            "Beaver",
-            "Cub",
-            "Scout",
-            "Explorer",
-            "Network"});
-            this.ageGroupCBox.Location = new System.Drawing.Point(225, 270);
-            this.ageGroupCBox.Name = "ageGroupCBox";
-            this.ageGroupCBox.Size = new System.Drawing.Size(298, 28);
-            this.ageGroupCBox.TabIndex = 5;
-            // 
             // firstNameTxtbx
             // 
+            this.firstNameTxtbx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.firstNameTxtbx.Location = new System.Drawing.Point(225, 174);
             this.firstNameTxtbx.Name = "firstNameTxtbx";
             this.firstNameTxtbx.Size = new System.Drawing.Size(298, 26);
@@ -134,6 +114,7 @@
             // 
             // secondNameTxtBx
             // 
+            this.secondNameTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.secondNameTxtBx.Location = new System.Drawing.Point(225, 206);
             this.secondNameTxtBx.Name = "secondNameTxtBx";
             this.secondNameTxtBx.Size = new System.Drawing.Size(298, 26);
@@ -141,6 +122,7 @@
             // 
             // DOBPicker
             // 
+            this.DOBPicker.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.DOBPicker.Location = new System.Drawing.Point(225, 237);
             this.DOBPicker.Name = "DOBPicker";
             this.DOBPicker.Size = new System.Drawing.Size(298, 26);
@@ -148,7 +130,8 @@
             // 
             // pFirstNameTxtBx
             // 
-            this.pFirstNameTxtBx.Location = new System.Drawing.Point(225, 331);
+            this.pFirstNameTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.pFirstNameTxtBx.Location = new System.Drawing.Point(225, 444);
             this.pFirstNameTxtBx.Name = "pFirstNameTxtBx";
             this.pFirstNameTxtBx.Size = new System.Drawing.Size(298, 26);
             this.pFirstNameTxtBx.TabIndex = 11;
@@ -156,15 +139,17 @@
             // parentFirstNameLbl
             // 
             this.parentFirstNameLbl.AutoSize = true;
-            this.parentFirstNameLbl.Location = new System.Drawing.Point(14, 337);
+            this.parentFirstNameLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.parentFirstNameLbl.Location = new System.Drawing.Point(11, 450);
             this.parentFirstNameLbl.Name = "parentFirstNameLbl";
-            this.parentFirstNameLbl.Size = new System.Drawing.Size(134, 20);
+            this.parentFirstNameLbl.Size = new System.Drawing.Size(131, 19);
             this.parentFirstNameLbl.TabIndex = 10;
             this.parentFirstNameLbl.Text = "Parent first name:";
             // 
             // pSecondNameTxtBx
             // 
-            this.pSecondNameTxtBx.Location = new System.Drawing.Point(225, 363);
+            this.pSecondNameTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.pSecondNameTxtBx.Location = new System.Drawing.Point(225, 476);
             this.pSecondNameTxtBx.Name = "pSecondNameTxtBx";
             this.pSecondNameTxtBx.Size = new System.Drawing.Size(298, 26);
             this.pSecondNameTxtBx.TabIndex = 13;
@@ -172,15 +157,17 @@
             // parentSecondName
             // 
             this.parentSecondName.AutoSize = true;
-            this.parentSecondName.Location = new System.Drawing.Point(11, 366);
+            this.parentSecondName.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.parentSecondName.Location = new System.Drawing.Point(11, 482);
             this.parentSecondName.Name = "parentSecondName";
-            this.parentSecondName.Size = new System.Drawing.Size(160, 20);
+            this.parentSecondName.Size = new System.Drawing.Size(150, 19);
             this.parentSecondName.TabIndex = 12;
             this.parentSecondName.Text = "Parent second name:";
             // 
             // pEmailTxtBx
             // 
-            this.pEmailTxtBx.Location = new System.Drawing.Point(225, 395);
+            this.pEmailTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.pEmailTxtBx.Location = new System.Drawing.Point(225, 508);
             this.pEmailTxtBx.Name = "pEmailTxtBx";
             this.pEmailTxtBx.Size = new System.Drawing.Size(298, 26);
             this.pEmailTxtBx.TabIndex = 15;
@@ -188,15 +175,17 @@
             // parentEmailLbl
             // 
             this.parentEmailLbl.AutoSize = true;
-            this.parentEmailLbl.Location = new System.Drawing.Point(11, 398);
+            this.parentEmailLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.parentEmailLbl.Location = new System.Drawing.Point(11, 514);
             this.parentEmailLbl.Name = "parentEmailLbl";
-            this.parentEmailLbl.Size = new System.Drawing.Size(162, 20);
+            this.parentEmailLbl.Size = new System.Drawing.Size(155, 19);
             this.parentEmailLbl.TabIndex = 14;
             this.parentEmailLbl.Text = "Parent email address:";
             // 
             // pContactNumTxtBx
             // 
-            this.pContactNumTxtBx.Location = new System.Drawing.Point(225, 427);
+            this.pContactNumTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.pContactNumTxtBx.Location = new System.Drawing.Point(225, 540);
             this.pContactNumTxtBx.Name = "pContactNumTxtBx";
             this.pContactNumTxtBx.Size = new System.Drawing.Size(298, 26);
             this.pContactNumTxtBx.TabIndex = 17;
@@ -204,25 +193,28 @@
             // parentPhoneLbl
             // 
             this.parentPhoneLbl.AutoSize = true;
-            this.parentPhoneLbl.Location = new System.Drawing.Point(11, 430);
+            this.parentPhoneLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.parentPhoneLbl.Location = new System.Drawing.Point(11, 543);
             this.parentPhoneLbl.Name = "parentPhoneLbl";
-            this.parentPhoneLbl.Size = new System.Drawing.Size(208, 20);
+            this.parentPhoneLbl.Size = new System.Drawing.Size(200, 19);
             this.parentPhoneLbl.TabIndex = 16;
             this.parentPhoneLbl.Text = "Emergency contact number:";
             // 
             // addNewScoutBtn
             // 
-            this.addNewScoutBtn.Location = new System.Drawing.Point(154, 477);
+            this.addNewScoutBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.addNewScoutBtn.Location = new System.Drawing.Point(895, 572);
             this.addNewScoutBtn.Name = "addNewScoutBtn";
             this.addNewScoutBtn.Size = new System.Drawing.Size(117, 53);
             this.addNewScoutBtn.TabIndex = 18;
-            this.addNewScoutBtn.Text = "OK";
+            this.addNewScoutBtn.Text = "Add Scout";
             this.addNewScoutBtn.UseVisualStyleBackColor = true;
             this.addNewScoutBtn.Click += new System.EventHandler(this.addNewScoutBtn_Click);
             // 
             // cancelNewScoutBtn
             // 
-            this.cancelNewScoutBtn.Location = new System.Drawing.Point(15, 477);
+            this.cancelNewScoutBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.cancelNewScoutBtn.Location = new System.Drawing.Point(714, 572);
             this.cancelNewScoutBtn.Name = "cancelNewScoutBtn";
             this.cancelNewScoutBtn.Size = new System.Drawing.Size(117, 53);
             this.cancelNewScoutBtn.TabIndex = 19;
@@ -232,7 +224,8 @@
             // 
             // houseNumbTxtBx
             // 
-            this.houseNumbTxtBx.Location = new System.Drawing.Point(635, 174);
+            this.houseNumbTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.houseNumbTxtBx.Location = new System.Drawing.Point(714, 174);
             this.houseNumbTxtBx.Name = "houseNumbTxtBx";
             this.houseNumbTxtBx.Size = new System.Drawing.Size(298, 26);
             this.houseNumbTxtBx.TabIndex = 20;
@@ -240,52 +233,59 @@
             // houseNumNamLbl
             // 
             this.houseNumNamLbl.AutoSize = true;
-            this.houseNumNamLbl.Location = new System.Drawing.Point(523, 177);
+            this.houseNumNamLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.houseNumNamLbl.Location = new System.Drawing.Point(550, 180);
             this.houseNumNamLbl.Name = "houseNumNamLbl";
-            this.houseNumNamLbl.Size = new System.Drawing.Size(106, 20);
+            this.houseNumNamLbl.Size = new System.Drawing.Size(103, 19);
             this.houseNumNamLbl.TabIndex = 21;
             this.houseNumNamLbl.Text = "House Numb:";
             // 
             // streetLbl
             // 
             this.streetLbl.AutoSize = true;
-            this.streetLbl.Location = new System.Drawing.Point(523, 209);
+            this.streetLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.streetLbl.Location = new System.Drawing.Point(550, 212);
             this.streetLbl.Name = "streetLbl";
-            this.streetLbl.Size = new System.Drawing.Size(57, 20);
+            this.streetLbl.Size = new System.Drawing.Size(55, 19);
             this.streetLbl.TabIndex = 22;
             this.streetLbl.Text = "Street:";
             // 
             // postcodeTxtBx
             // 
-            this.postcodeTxtBx.Location = new System.Drawing.Point(635, 334);
+            this.postcodeTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.postcodeTxtBx.Location = new System.Drawing.Point(714, 334);
             this.postcodeTxtBx.Name = "postcodeTxtBx";
             this.postcodeTxtBx.Size = new System.Drawing.Size(298, 26);
             this.postcodeTxtBx.TabIndex = 23;
             // 
             // countryTxtBx
             // 
-            this.countryTxtBx.Location = new System.Drawing.Point(635, 302);
+            this.countryTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.countryTxtBx.Location = new System.Drawing.Point(714, 302);
             this.countryTxtBx.Name = "countryTxtBx";
             this.countryTxtBx.Size = new System.Drawing.Size(298, 26);
             this.countryTxtBx.TabIndex = 24;
             // 
             // countyTxtBx
             // 
-            this.countyTxtBx.Location = new System.Drawing.Point(635, 270);
+            this.countyTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.countyTxtBx.Location = new System.Drawing.Point(714, 270);
             this.countyTxtBx.Name = "countyTxtBx";
             this.countyTxtBx.Size = new System.Drawing.Size(298, 26);
             this.countyTxtBx.TabIndex = 25;
             // 
             // cityTxtBx
             // 
-            this.cityTxtBx.Location = new System.Drawing.Point(635, 238);
+            this.cityTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.cityTxtBx.Location = new System.Drawing.Point(714, 238);
             this.cityTxtBx.Name = "cityTxtBx";
             this.cityTxtBx.Size = new System.Drawing.Size(298, 26);
             this.cityTxtBx.TabIndex = 26;
             // 
             // streetTxtBx
             // 
-            this.streetTxtBx.Location = new System.Drawing.Point(635, 206);
+            this.streetTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.streetTxtBx.Location = new System.Drawing.Point(714, 206);
             this.streetTxtBx.Name = "streetTxtBx";
             this.streetTxtBx.Size = new System.Drawing.Size(298, 26);
             this.streetTxtBx.TabIndex = 27;
@@ -293,82 +293,102 @@
             // cityLbl
             // 
             this.cityLbl.AutoSize = true;
-            this.cityLbl.Location = new System.Drawing.Point(523, 241);
+            this.cityLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.cityLbl.Location = new System.Drawing.Point(550, 244);
             this.cityLbl.Name = "cityLbl";
-            this.cityLbl.Size = new System.Drawing.Size(39, 20);
+            this.cityLbl.Size = new System.Drawing.Size(43, 19);
             this.cityLbl.TabIndex = 28;
             this.cityLbl.Text = "City:";
             // 
             // countyLbl
             // 
             this.countyLbl.AutoSize = true;
-            this.countyLbl.Location = new System.Drawing.Point(523, 273);
+            this.countyLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.countyLbl.Location = new System.Drawing.Point(550, 273);
             this.countyLbl.Name = "countyLbl";
-            this.countyLbl.Size = new System.Drawing.Size(63, 20);
+            this.countyLbl.Size = new System.Drawing.Size(63, 19);
             this.countyLbl.TabIndex = 29;
             this.countyLbl.Text = "County:";
             // 
             // countryLbl
             // 
             this.countryLbl.AutoSize = true;
-            this.countryLbl.Location = new System.Drawing.Point(523, 305);
+            this.countryLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.countryLbl.Location = new System.Drawing.Point(550, 305);
             this.countryLbl.Name = "countryLbl";
-            this.countryLbl.Size = new System.Drawing.Size(68, 20);
+            this.countryLbl.Size = new System.Drawing.Size(69, 19);
             this.countryLbl.TabIndex = 30;
             this.countryLbl.Text = "Country:";
             // 
-            // heallthTxtBx
+            // healthTxtBx
             // 
-            this.heallthTxtBx.Location = new System.Drawing.Point(635, 366);
-            this.heallthTxtBx.MinimumSize = new System.Drawing.Size(4, 200);
-            this.heallthTxtBx.Name = "heallthTxtBx";
-            this.heallthTxtBx.Size = new System.Drawing.Size(298, 26);
-            this.heallthTxtBx.TabIndex = 32;
+            this.healthTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.healthTxtBx.Location = new System.Drawing.Point(714, 366);
+            this.healthTxtBx.MinimumSize = new System.Drawing.Size(4, 200);
+            this.healthTxtBx.Name = "healthTxtBx";
+            this.healthTxtBx.Size = new System.Drawing.Size(298, 200);
+            this.healthTxtBx.TabIndex = 32;
             // 
             // postcodeLbl
             // 
             this.postcodeLbl.AutoSize = true;
-            this.postcodeLbl.Location = new System.Drawing.Point(523, 337);
+            this.postcodeLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.postcodeLbl.Location = new System.Drawing.Point(550, 337);
             this.postcodeLbl.Name = "postcodeLbl";
-            this.postcodeLbl.Size = new System.Drawing.Size(87, 20);
+            this.postcodeLbl.Size = new System.Drawing.Size(85, 19);
             this.postcodeLbl.TabIndex = 31;
             this.postcodeLbl.Text = "Post Code:";
             // 
-            // healthTxtBx
+            // deadtxtbx
             // 
-            this.healthTxtBx.AutoSize = true;
-            this.healthTxtBx.Location = new System.Drawing.Point(523, 366);
-            this.healthTxtBx.Name = "healthTxtBx";
-            this.healthTxtBx.Size = new System.Drawing.Size(92, 20);
-            this.healthTxtBx.TabIndex = 33;
-            this.healthTxtBx.Text = "Health Info:";
+            this.deadtxtbx.AutoSize = true;
+            this.deadtxtbx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.deadtxtbx.Location = new System.Drawing.Point(550, 366);
+            this.deadtxtbx.Name = "deadtxtbx";
+            this.deadtxtbx.Size = new System.Drawing.Size(91, 19);
+            this.deadtxtbx.TabIndex = 33;
+            this.deadtxtbx.Text = "Health Info:";
             // 
             // chooseGroupComboBox
             // 
+            this.chooseGroupComboBox.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.chooseGroupComboBox.FormattingEnabled = true;
-            this.chooseGroupComboBox.Location = new System.Drawing.Point(635, 398);
+            this.chooseGroupComboBox.Location = new System.Drawing.Point(225, 269);
             this.chooseGroupComboBox.Name = "chooseGroupComboBox";
-            this.chooseGroupComboBox.Size = new System.Drawing.Size(298, 28);
+            this.chooseGroupComboBox.Size = new System.Drawing.Size(298, 27);
             this.chooseGroupComboBox.TabIndex = 34;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(523, 401);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.label1.Location = new System.Drawing.Point(11, 276);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.Size = new System.Drawing.Size(57, 19);
             this.label1.TabIndex = 35;
             this.label1.Text = "Group:";
+            // 
+            // updateGroupComboBoxBtn
+            // 
+            this.updateGroupComboBoxBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.updateGroupComboBoxBtn.Location = new System.Drawing.Point(225, 305);
+            this.updateGroupComboBoxBtn.Name = "updateGroupComboBoxBtn";
+            this.updateGroupComboBoxBtn.Size = new System.Drawing.Size(298, 41);
+            this.updateGroupComboBoxBtn.TabIndex = 36;
+            this.updateGroupComboBoxBtn.Text = "Update group list";
+            this.updateGroupComboBoxBtn.UseVisualStyleBackColor = true;
+            this.updateGroupComboBoxBtn.Click += new System.EventHandler(this.updateGroupComboBoxBtn_Click);
             // 
             // addNewScout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 616);
+            this.ClientSize = new System.Drawing.Size(1024, 638);
+            this.Controls.Add(this.updateGroupComboBoxBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chooseGroupComboBox);
+            this.Controls.Add(this.deadtxtbx);
             this.Controls.Add(this.healthTxtBx);
-            this.Controls.Add(this.heallthTxtBx);
             this.Controls.Add(this.postcodeLbl);
             this.Controls.Add(this.countryLbl);
             this.Controls.Add(this.countyLbl);
@@ -394,8 +414,6 @@
             this.Controls.Add(this.DOBPicker);
             this.Controls.Add(this.secondNameTxtBx);
             this.Controls.Add(this.firstNameTxtbx);
-            this.Controls.Add(this.ageGroupCBox);
-            this.Controls.Add(this.ageGroupLbl);
             this.Controls.Add(this.dateOfBirthLbl);
             this.Controls.Add(this.secondNameLbl);
             this.Controls.Add(this.firstNameLbl);
@@ -413,8 +431,6 @@
         private System.Windows.Forms.Label firstNameLbl;
         private System.Windows.Forms.Label secondNameLbl;
         private System.Windows.Forms.Label dateOfBirthLbl;
-        private System.Windows.Forms.Label ageGroupLbl;
-        private System.Windows.Forms.ComboBox ageGroupCBox;
         private System.Windows.Forms.TextBox firstNameTxtbx;
         private System.Windows.Forms.TextBox secondNameTxtBx;
         private System.Windows.Forms.DateTimePicker DOBPicker;
@@ -439,10 +455,11 @@
         private System.Windows.Forms.Label cityLbl;
         private System.Windows.Forms.Label countyLbl;
         private System.Windows.Forms.Label countryLbl;
-        private System.Windows.Forms.TextBox heallthTxtBx;
+        private System.Windows.Forms.TextBox healthTxtBx;
         private System.Windows.Forms.Label postcodeLbl;
-        private System.Windows.Forms.Label healthTxtBx;
+        private System.Windows.Forms.Label deadtxtbx;
         private System.Windows.Forms.ComboBox chooseGroupComboBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button updateGroupComboBoxBtn;
     }
 }

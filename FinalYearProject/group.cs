@@ -10,7 +10,7 @@ namespace theSALAH
     public class group
     {
         [Key]
-        public int groupID{ get; set; }
+        public int groupID { get; set; }
 
         public string group_name { get; set; }
         public string meeting_place { get; set; }
@@ -22,10 +22,11 @@ namespace theSALAH
 
         public group(string name, string place, string type)
         {
-            
+
             group_name = name;
             meeting_place = place;
             group_type = type;
+            scoutID = "";
         }
 
         /// <summary>
@@ -41,16 +42,11 @@ namespace theSALAH
             {
                 using (var ctx = new SALAHContext())
                 {
-                    var query = from data in ctx.Groups //create a query to find the name of the group from the groupID
-                                where data.group_name == groupName
-                                select new { data.scoutID };
-                    foreach (var result in query)
-                    {
-                        string scoutIDs = result.scoutID;
-                        scoutIDs = scoutIDs + newScoutID + ",";
-                        ctx.SaveChanges();
-                        scoutAdded = true;
-                    }
+                    group groupQuery = ctx.Groups.FirstOrDefault(m => m.group_name == groupName);
+                    groupQuery.scoutID = groupQuery.scoutID + newScoutID + ",";
+                    ctx.SaveChanges();
+                    scoutAdded = true;
+
                 }
             }
             catch
@@ -77,7 +73,7 @@ namespace theSALAH
                     ctx.Groups.Add(newGroup);
                     ctx.SaveChanges();
                 }
-                
+
                 groupAddedToUser = user.addGroupToUser(user, newGroup.groupID);
                 if (groupAddedToUser)
                 {
@@ -91,6 +87,43 @@ namespace theSALAH
                 groupAdded = false;
                 return groupAdded;
             }
+        }
+
+        /// <summary>
+        /// Gets all of the scouts that are part of a specified group
+        /// </summary>
+        /// <param name="group">The group that the scouts belong to</param>
+        /// <returns></returns>
+        public static string[] getScoutIDs(group group)
+        {
+            char stringSplitterChar = ',';
+            string scoutIDs = group.scoutID;
+            string[] scoutIDsArray = scoutIDs.Split(stringSplitterChar);
+            return scoutIDsArray;
+
+        }
+
+        /// <summary>
+        /// Gets a group object from a specified group name
+        /// </summary>
+        /// <param name="groupName">name of the group to be found</param>
+        /// <returns></returns>
+        public static group getGroup(string groupName)
+        {
+            group groupQuery = new group();
+            try
+            {
+                using (var ctx = new SALAHContext())
+                {
+                    groupQuery = ctx.Groups.FirstOrDefault(m => m.group_name == groupName);
+                    
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Group could not be found.");
+            }
+            return groupQuery;
         }
     }
 }
