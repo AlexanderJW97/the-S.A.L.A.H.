@@ -141,7 +141,7 @@ namespace theSALAH
             // 
             // new_user_screen
             // 
-            this.ClientSize = new System.Drawing.Size(858, 498);
+            this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkPWLbl);
             this.Controls.Add(this.passwordCritLbl);

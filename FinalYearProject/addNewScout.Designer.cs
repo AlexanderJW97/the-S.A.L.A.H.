@@ -203,7 +203,7 @@
             // addNewScoutBtn
             // 
             this.addNewScoutBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.addNewScoutBtn.Location = new System.Drawing.Point(895, 572);
+            this.addNewScoutBtn.Location = new System.Drawing.Point(873, 575);
             this.addNewScoutBtn.Name = "addNewScoutBtn";
             this.addNewScoutBtn.Size = new System.Drawing.Size(117, 53);
             this.addNewScoutBtn.TabIndex = 18;
@@ -214,7 +214,7 @@
             // cancelNewScoutBtn
             // 
             this.cancelNewScoutBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.cancelNewScoutBtn.Location = new System.Drawing.Point(714, 572);
+            this.cancelNewScoutBtn.Location = new System.Drawing.Point(692, 575);
             this.cancelNewScoutBtn.Name = "cancelNewScoutBtn";
             this.cancelNewScoutBtn.Size = new System.Drawing.Size(117, 53);
             this.cancelNewScoutBtn.TabIndex = 19;
@@ -225,7 +225,7 @@
             // houseNumbTxtBx
             // 
             this.houseNumbTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.houseNumbTxtBx.Location = new System.Drawing.Point(714, 174);
+            this.houseNumbTxtBx.Location = new System.Drawing.Point(692, 177);
             this.houseNumbTxtBx.Name = "houseNumbTxtBx";
             this.houseNumbTxtBx.Size = new System.Drawing.Size(298, 26);
             this.houseNumbTxtBx.TabIndex = 20;
@@ -234,7 +234,7 @@
             // 
             this.houseNumNamLbl.AutoSize = true;
             this.houseNumNamLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.houseNumNamLbl.Location = new System.Drawing.Point(550, 180);
+            this.houseNumNamLbl.Location = new System.Drawing.Point(538, 181);
             this.houseNumNamLbl.Name = "houseNumNamLbl";
             this.houseNumNamLbl.Size = new System.Drawing.Size(103, 19);
             this.houseNumNamLbl.TabIndex = 21;
@@ -244,7 +244,7 @@
             // 
             this.streetLbl.AutoSize = true;
             this.streetLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.streetLbl.Location = new System.Drawing.Point(550, 212);
+            this.streetLbl.Location = new System.Drawing.Point(538, 213);
             this.streetLbl.Name = "streetLbl";
             this.streetLbl.Size = new System.Drawing.Size(55, 19);
             this.streetLbl.TabIndex = 22;
@@ -253,7 +253,7 @@
             // postcodeTxtBx
             // 
             this.postcodeTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.postcodeTxtBx.Location = new System.Drawing.Point(714, 334);
+            this.postcodeTxtBx.Location = new System.Drawing.Point(692, 337);
             this.postcodeTxtBx.Name = "postcodeTxtBx";
             this.postcodeTxtBx.Size = new System.Drawing.Size(298, 26);
             this.postcodeTxtBx.TabIndex = 23;
@@ -261,7 +261,7 @@
             // countryTxtBx
             // 
             this.countryTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.countryTxtBx.Location = new System.Drawing.Point(714, 302);
+            this.countryTxtBx.Location = new System.Drawing.Point(692, 305);
             this.countryTxtBx.Name = "countryTxtBx";
             this.countryTxtBx.Size = new System.Drawing.Size(298, 26);
             this.countryTxtBx.TabIndex = 24;
@@ -269,7 +269,7 @@
             // countyTxtBx
             // 
             this.countyTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.countyTxtBx.Location = new System.Drawing.Point(714, 270);
+            this.countyTxtBx.Location = new System.Drawing.Point(692, 273);
             this.countyTxtBx.Name = "countyTxtBx";
             this.countyTxtBx.Size = new System.Drawing.Size(298, 26);
             this.countyTxtBx.TabIndex = 25;
@@ -277,7 +277,7 @@
             // cityTxtBx
             // 
             this.cityTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.cityTxtBx.Location = new System.Drawing.Point(714, 238);
+            this.cityTxtBx.Location = new System.Drawing.Point(692, 241);
             this.cityTxtBx.Name = "cityTxtBx";
             this.cityTxtBx.Size = new System.Drawing.Size(298, 26);
             this.cityTxtBx.TabIndex = 26;
@@ -285,7 +285,7 @@
             // streetTxtBx
             // 
             this.streetTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.streetTxtBx.Location = new System.Drawing.Point(714, 206);
+            this.streetTxtBx.Location = new System.Drawing.Point(692, 209);
             this.streetTxtBx.Name = "streetTxtBx";
             this.streetTxtBx.Size = new System.Drawing.Size(298, 26);
             this.streetTxtBx.TabIndex = 27;
@@ -294,7 +294,7 @@
             // 
             this.cityLbl.AutoSize = true;
             this.cityLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.cityLbl.Location = new System.Drawing.Point(550, 244);
+            this.cityLbl.Location = new System.Drawing.Point(538, 245);
             this.cityLbl.Name = "cityLbl";
             this.cityLbl.Size = new System.Drawing.Size(43, 19);
             this.cityLbl.TabIndex = 28;
@@ -304,7 +304,7 @@
             // 
             this.countyLbl.AutoSize = true;
             this.countyLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.countyLbl.Location = new System.Drawing.Point(550, 273);
+            this.countyLbl.Location = new System.Drawing.Point(538, 273);
             this.countyLbl.Name = "countyLbl";
             this.countyLbl.Size = new System.Drawing.Size(63, 19);
             this.countyLbl.TabIndex = 29;
@@ -314,7 +314,7 @@
             // 
             this.countryLbl.AutoSize = true;
             this.countryLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.countryLbl.Location = new System.Drawing.Point(550, 305);
+            this.countryLbl.Location = new System.Drawing.Point(538, 305);
             this.countryLbl.Name = "countryLbl";
             this.countryLbl.Size = new System.Drawing.Size(69, 19);
             this.countryLbl.TabIndex = 30;
@@ -323,7 +323,7 @@
             // healthTxtBx
             // 
             this.healthTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.healthTxtBx.Location = new System.Drawing.Point(714, 366);
+            this.healthTxtBx.Location = new System.Drawing.Point(692, 369);
             this.healthTxtBx.MinimumSize = new System.Drawing.Size(4, 200);
             this.healthTxtBx.Name = "healthTxtBx";
             this.healthTxtBx.Size = new System.Drawing.Size(298, 200);
@@ -333,7 +333,7 @@
             // 
             this.postcodeLbl.AutoSize = true;
             this.postcodeLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.postcodeLbl.Location = new System.Drawing.Point(550, 337);
+            this.postcodeLbl.Location = new System.Drawing.Point(538, 337);
             this.postcodeLbl.Name = "postcodeLbl";
             this.postcodeLbl.Size = new System.Drawing.Size(85, 19);
             this.postcodeLbl.TabIndex = 31;
@@ -343,7 +343,7 @@
             // 
             this.deadtxtbx.AutoSize = true;
             this.deadtxtbx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.deadtxtbx.Location = new System.Drawing.Point(550, 366);
+            this.deadtxtbx.Location = new System.Drawing.Point(538, 369);
             this.deadtxtbx.Name = "deadtxtbx";
             this.deadtxtbx.Size = new System.Drawing.Size(91, 19);
             this.deadtxtbx.TabIndex = 33;
@@ -383,7 +383,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 638);
+            this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.updateGroupComboBoxBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chooseGroupComboBox);

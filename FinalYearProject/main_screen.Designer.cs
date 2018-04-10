@@ -69,7 +69,7 @@ namespace theSALAH
             // upcoming_meetings_lbl
             // 
             this.upcoming_meetings_lbl.AutoSize = true;
-            this.upcoming_meetings_lbl.Location = new System.Drawing.Point(46, 311);
+            this.upcoming_meetings_lbl.Location = new System.Drawing.Point(7, 112);
             this.upcoming_meetings_lbl.Name = "upcoming_meetings_lbl";
             this.upcoming_meetings_lbl.Size = new System.Drawing.Size(148, 19);
             this.upcoming_meetings_lbl.TabIndex = 0;
@@ -77,7 +77,7 @@ namespace theSALAH
             // 
             // new_group_bttn
             // 
-            this.new_group_bttn.Location = new System.Drawing.Point(783, 534);
+            this.new_group_bttn.Location = new System.Drawing.Point(752, 610);
             this.new_group_bttn.Name = "new_group_bttn";
             this.new_group_bttn.Size = new System.Drawing.Size(231, 60);
             this.new_group_bttn.TabIndex = 1;
@@ -87,7 +87,7 @@ namespace theSALAH
             // 
             // new_scout_bttn
             // 
-            this.new_scout_bttn.Location = new System.Drawing.Point(783, 458);
+            this.new_scout_bttn.Location = new System.Drawing.Point(752, 544);
             this.new_scout_bttn.Name = "new_scout_bttn";
             this.new_scout_bttn.Size = new System.Drawing.Size(231, 60);
             this.new_scout_bttn.TabIndex = 2;
@@ -105,7 +105,7 @@ namespace theSALAH
             this.tabControl.Location = new System.Drawing.Point(3, 2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1102, 841);
+            this.tabControl.Size = new System.Drawing.Size(1024, 768);
             this.tabControl.TabIndex = 3;
             // 
             // tabPage1
@@ -153,18 +153,20 @@ namespace theSALAH
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1094, 809);
+            this.tabPage2.Size = new System.Drawing.Size(1016, 736);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Scouts";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // displayScoutsDGV
             // 
-            this.displayScoutsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.displayScoutsDGV.AllowUserToAddRows = false;
+            this.displayScoutsDGV.AllowUserToDeleteRows = false;
+            this.displayScoutsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.displayScoutsDGV.Location = new System.Drawing.Point(15, 96);
             this.displayScoutsDGV.Name = "displayScoutsDGV";
             this.displayScoutsDGV.RowTemplate.Height = 28;
-            this.displayScoutsDGV.Size = new System.Drawing.Size(831, 669);
+            this.displayScoutsDGV.Size = new System.Drawing.Size(968, 574);
             this.displayScoutsDGV.TabIndex = 4;
             // 
             // updateComboBoxBtn
@@ -219,7 +221,7 @@ namespace theSALAH
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1094, 809);
+            this.tabPage3.Size = new System.Drawing.Size(1016, 736);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Meetings";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -285,7 +287,7 @@ namespace theSALAH
             this.tabPage5.Location = new System.Drawing.Point(4, 28);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1094, 809);
+            this.tabPage5.Size = new System.Drawing.Size(1016, 736);
             this.tabPage5.TabIndex = 3;
             this.tabPage5.Text = "Resources";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -346,7 +348,7 @@ namespace theSALAH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1276, 843);
+            this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.exit_btn);
             this.Controls.Add(this.log_out_btn);
             this.Controls.Add(this.tabControl);

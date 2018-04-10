@@ -15,6 +15,7 @@ namespace theSALAH
         public new_user_screen()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         /// <summary>

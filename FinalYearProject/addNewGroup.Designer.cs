@@ -42,7 +42,7 @@
             // cancelNewGroupBtn
             // 
             this.cancelNewGroupBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.cancelNewGroupBtn.Location = new System.Drawing.Point(11, 182);
+            this.cancelNewGroupBtn.Location = new System.Drawing.Point(221, 197);
             this.cancelNewGroupBtn.Name = "cancelNewGroupBtn";
             this.cancelNewGroupBtn.Size = new System.Drawing.Size(117, 53);
             this.cancelNewGroupBtn.TabIndex = 52;
@@ -52,7 +52,7 @@
             // addNewGroupBtn
             // 
             this.addNewGroupBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.addNewGroupBtn.Location = new System.Drawing.Point(134, 182);
+            this.addNewGroupBtn.Location = new System.Drawing.Point(402, 197);
             this.addNewGroupBtn.Name = "addNewGroupBtn";
             this.addNewGroupBtn.Size = new System.Drawing.Size(117, 53);
             this.addNewGroupBtn.TabIndex = 51;
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 252);
+            this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.cancelNewGroupBtn);
             this.Controls.Add(this.addNewGroupBtn);
             this.Controls.Add(this.meetingPlaceTxtBx);
