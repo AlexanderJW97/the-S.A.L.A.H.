@@ -124,7 +124,7 @@ namespace theSALAH
                 pNumb = pContactNumTxtBx.Text;
                 
                 Scout = new scout(firstName, secondName,dateOfBirth,Address, pEmail, pFName, pSName, pNumb,healthInfo);
-                Address = getAddress(Scout.scoutID);
+                Address = getAddress();
                 Scout.Address = Address;
             }
             if (!phoneNumberCheck)
@@ -138,7 +138,7 @@ namespace theSALAH
         /// gets the details of the address from the form and creates and returns an address object
         /// </summary>
         /// <returns></returns>
-        public address getAddress(int scoutID)
+        public address getAddress()
         {
             string houseNum = houseNumbTxtBx.Text;
             string street = streetTxtBx.Text;
@@ -146,7 +146,7 @@ namespace theSALAH
             string county = countyTxtBx.Text;
             string country = countryTxtBx.Text;
             string postcode = postcodeTxtBx.Text;
-            address Address = new address(houseNum,street,city,county,country, postcode, scoutID);
+            address Address = new address(houseNum,street,city,county,country, postcode);
             return Address;
         }
 

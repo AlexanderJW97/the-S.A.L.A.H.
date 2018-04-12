@@ -56,12 +56,13 @@ namespace theSALAH
                     openScreen.Show();
                     Visible = false;
                 }
-                if (loginSuccess == false)
-                {
-                    MessageBox.Show("Login unsuccessful. Please ensure the username and password are entered correctly.");
-                }
-
             }
+            if (loginSuccess == false)
+            {
+                MessageBox.Show("Login unsuccessful. Please ensure the username and password are entered correctly.");
+            }
+
+            
         }
     }
 }

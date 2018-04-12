@@ -110,7 +110,9 @@ namespace theSALAH
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.exit_btn);
             this.tabPage1.Controls.Add(this.welcome_text_lbl);
+            this.tabPage1.Controls.Add(this.log_out_btn);
             this.tabPage1.Controls.Add(this.home_screen_time_lbl);
             this.tabPage1.Controls.Add(this.upcoming_meetings_lbl);
             this.tabPage1.Controls.Add(this.new_scout_bttn);
@@ -118,7 +120,7 @@ namespace theSALAH
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1094, 809);
+            this.tabPage1.Size = new System.Drawing.Size(1016, 736);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -168,6 +170,7 @@ namespace theSALAH
             this.displayScoutsDGV.RowTemplate.Height = 28;
             this.displayScoutsDGV.Size = new System.Drawing.Size(968, 574);
             this.displayScoutsDGV.TabIndex = 4;
+            this.displayScoutsDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.displayScoutsDGV_CellClick);
             // 
             // updateComboBoxBtn
             // 
@@ -325,7 +328,7 @@ namespace theSALAH
             // exit_btn
             // 
             this.exit_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.exit_btn.Location = new System.Drawing.Point(1194, 31);
+            this.exit_btn.Location = new System.Drawing.Point(906, 6);
             this.exit_btn.Name = "exit_btn";
             this.exit_btn.Size = new System.Drawing.Size(77, 31);
             this.exit_btn.TabIndex = 4;
@@ -336,7 +339,7 @@ namespace theSALAH
             // log_out_btn
             // 
             this.log_out_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.log_out_btn.Location = new System.Drawing.Point(1111, 31);
+            this.log_out_btn.Location = new System.Drawing.Point(823, 6);
             this.log_out_btn.Name = "log_out_btn";
             this.log_out_btn.Size = new System.Drawing.Size(77, 31);
             this.log_out_btn.TabIndex = 5;
@@ -349,8 +352,6 @@ namespace theSALAH
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
-            this.Controls.Add(this.exit_btn);
-            this.Controls.Add(this.log_out_btn);
             this.Controls.Add(this.tabControl);
             this.Name = "main_screen";
             this.Text = "Form1";

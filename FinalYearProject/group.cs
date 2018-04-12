@@ -90,15 +90,35 @@ namespace theSALAH
         }
 
         /// <summary>
+        /// Checks the group to see if it has scouts
+        /// </summary>
+        /// <param name="group">group to be checked</param>
+        /// <returns>bool value</returns>
+        public static bool checkForScoutIDs(group group)
+        {
+            bool hasScouts = false;
+
+            if (group.scoutID != "" && group.scoutID != null)
+                hasScouts = true;
+
+            return hasScouts;
+        }
+
+
+        /// <summary>
         /// Gets all of the scouts that are part of a specified group
         /// </summary>
         /// <param name="group">The group that the scouts belong to</param>
         /// <returns></returns>
         public static string[] getScoutIDs(group group)
         {
+            string[] scoutIDsArray = new string[100];
             char stringSplitterChar = ',';
-            string scoutIDs = group.scoutID;
-            string[] scoutIDsArray = scoutIDs.Split(stringSplitterChar);
+            if (group.scoutID != null)
+            {
+                string scoutIDs = group.scoutID;
+                scoutIDsArray = scoutIDs.Split(stringSplitterChar);
+            }
             return scoutIDsArray;
 
         }

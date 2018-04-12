@@ -23,13 +23,12 @@ namespace theSALAH
 
         public string postcode { get; set; }
 
-        public string scouts { get; set; }
 
         public address()
         { }
 
 
-        public address(string houseNum, string st, string cty, string cnty, string cntry, string pcode, int sID)
+        public address(string houseNum, string st, string cty, string cnty, string cntry, string pcode)
         {
             addressIdentifier = addressIdentifier++;
             houseNumberOrName = houseNum;
@@ -38,7 +37,6 @@ namespace theSALAH
             county = cnty;
             country = cntry;
             postcode = pcode;
-            scouts = scouts + sID.ToString() + ",";
 
         }
     }

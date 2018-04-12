@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using theSALAH.Properties;
 
 namespace theSALAH
 {
@@ -14,6 +15,7 @@ namespace theSALAH
         public string username;
         public ICollection<group> groups;
         public static user loggedInUser = new user();
+        public static group selectedGroup;
 
         public main_screen(user user)
         {
@@ -120,19 +122,44 @@ namespace theSALAH
 
         private void groupComboBoxGroups_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int i = 1;
-            string chosenGroupString = groupComboBoxGroups.SelectedItem.ToString();
-            group chosenGroup = group.getGroup(chosenGroupString);
-            string[] scoutIDs = group.getScoutIDs(chosenGroup);
-            string[] scoutNames = scout.getScoutNames(scoutIDs);
-            displayScoutsDGV.Columns.Add("Name", "Scout Name");
-            displayScoutsDGV.Columns.Add("Index", "Index");
+            displayScoutsDGV.Columns.Clear();
 
-            foreach (string s in scoutNames)
+
+            string chosenGroupString = groupComboBoxGroups.SelectedItem.ToString();
+
+            group chosenGroup = group.getGroup(chosenGroupString);
+            selectedGroup = chosenGroup;
+
+            if(group.checkForScoutIDs(chosenGroup))
             {
-                displayScoutsDGV.Rows.Add(i,s);
-                i++;
+                string[] scoutIDs = group.getScoutIDs(chosenGroup);
+            
+                string[] scoutNames = scout.getScoutNames(scoutIDs);
+
+                int i = 0;
+                
+                displayScoutsDGV.Columns.Add("Index", "Scout ID Number");
+                displayScoutsDGV.Columns.Add("Name", "Scout Name");
+
+                foreach (string s in scoutNames)
+                {
+                    displayScoutsDGV.Rows.Add(scoutIDs[i], s);
+                    i++;
+                }
             }
+        }
+
+        private void displayScoutsDGV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (displayScoutsDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                //MessageBox.Show(displayScoutsDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+                scout Scout = scout.getScout(int.Parse(displayScoutsDGV.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                editScout open_screen = new editScout(Scout, selectedGroup, loggedInUser);
+                this.Enabled = false;
+                open_screen.Show();
+            }
+
         }
     }
 }

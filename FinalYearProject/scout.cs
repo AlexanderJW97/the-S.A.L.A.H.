@@ -83,7 +83,7 @@ namespace theSALAH
                 foreach (string s in scoutIDs)
                 {
                     int idInt = 0;
-                    if (s != "")
+                    if (s != null && s != "")
                         idInt = int.Parse(s);
                     var query = from data in ctx.Scouts //create a query to find the groupIDs of the logged in user
                                 where data.scoutID == idInt
@@ -100,5 +100,39 @@ namespace theSALAH
 
             return scoutNames;
         }
+
+
+        public static scout getScout(int idNumber)
+        {
+            scout Scout = new scout();
+
+
+
+
+            using (var ctx = new SALAHContext())
+            {
+                    var query = from data in ctx.Scouts //create a query to find the groupIDs of the logged in user
+                                where data.scoutID == idNumber 
+                                select new { data.firstName, data.secondName, data.Address, data.dateOfBirth, data.healthInfo, data.parentEmail, data.parentEmergencyNumb, data.parentFirstName, data.parentSecondName};
+
+                    foreach (var result in query)
+                    {
+                    Scout.firstName = result.firstName;
+                    Scout.secondName = result.secondName;
+                    Scout.Address = result.Address;
+                    Scout.dateOfBirth = result.dateOfBirth;
+                    Scout.healthInfo = result.healthInfo;
+                    Scout.parentEmail = result.parentEmail;
+                    Scout.parentEmergencyNumb = result.parentEmergencyNumb;
+                    Scout.parentFirstName = result.parentFirstName;
+                    Scout.parentSecondName = result.parentSecondName;
+                    }
+
+                
+            }
+
+            return Scout;
+        }
+
     }
 }
