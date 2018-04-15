@@ -224,15 +224,61 @@ namespace theSALAH
 
                         foreach (var result in query)
                         {
-                            groupNames[i] = result.group_name; //add the group name into the groupnames array
+                            if (result.group_name != null  && result.group_name != "")
+                                groupNames[i] = result.group_name; //add the group name into the groupnames array
                         }
 
-
-                        comboBox.Items.Add(groupNames[i]); //add the latest array entry into the combobox
+                        if(groupNames[i] != null && groupNames[i] != "")
+                            comboBox.Items.Add(groupNames[i]); //add the latest array entry into the combobox
                     }
                     
                 }
             }
+        }
+
+        internal static bool groupRemovedFromUser(int groupID, user user)
+        {
+            bool groupRemovedFromUser = false;
+
+            using (var ctx = new SALAHContext())
+            {
+                try
+                {
+                    var result = ctx.Users.SingleOrDefault(u => u.ID == user.ID);
+                    if (result != null)
+                    {
+                        user = result;
+                    }
+
+                    string[] oldUsersGroups = user.groupIDs.Split(',');
+
+                    for (int i = 0; i < oldUsersGroups.Length; i++)
+                    {
+                        if (oldUsersGroups[i] == groupID.ToString())
+                        {
+                            var result1 = ctx.Users.SingleOrDefault(u => u.ID == user.ID);
+                            if (result1 != null)
+                            {
+                                result1.groupIDs = "";
+
+                                for (int j = 0; j < oldUsersGroups.Length - 1; j++)
+                                {
+                                    if (i != j)
+                                    {
+                                        result1.groupIDs += oldUsersGroups[j] + ",";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    groupRemovedFromUser = true;
+                }
+                catch
+                {
+                    groupRemovedFromUser = false;
+                }
+            }
+            return groupRemovedFromUser;
         }
     }
 }

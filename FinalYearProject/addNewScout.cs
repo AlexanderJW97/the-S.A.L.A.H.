@@ -35,7 +35,7 @@ namespace theSALAH
             address Address = new address();
             string groupName = "";
             bool groupChosen = false;
-
+            bool scoutAdded = false;
 
             scout Scout = getPersonalDetails(firstName, secondName, dateOfBirth, Address, pEmail, pFName, pSName, pNumb, healthInfo);
 
@@ -47,6 +47,7 @@ namespace theSALAH
             catch (Exception e2)
             {
                 MessageBox.Show("New scout could not be created: Please select a group to add the scout to.");
+                scoutAdded = false;
             }
             try
             {
@@ -54,23 +55,31 @@ namespace theSALAH
                 {
                     scout.addNewScout(Scout);
                     MessageBox.Show("New scout was created.");
+                    scoutAdded = true;
+
                 }
             }
             catch (Exception e1)
             {
                 MessageBox.Show("New scout could not be created. Please try again.");
+                scoutAdded = false;
             }
             try
             {
-                if (groupChosen)
-                    group.addScoutToGroup(groupName, Scout.scoutID);
-                main_screen open_screen = new main_screen(currentUser);
-                open_screen.Show();
-                this.Close();
+                int groupID = group.getGroupID(groupName);
+
+                if (groupChosen && scoutAdded == true)
+                {
+                    group.addScoutToGroup(groupID, Scout.scoutID);
+                    main_screen open_screen = new main_screen(currentUser);
+                    open_screen.Show();
+                    this.Close();
+                }
             }
             catch (Exception e2)
             {
                 MessageBox.Show("New scout created, but not added to group");
+                scoutAdded = false;
             }
         }
         
@@ -234,8 +243,8 @@ namespace theSALAH
                             groupNames[i] = result.group_name; //add the group name into the groupnames array
                         }
 
-
-                        chooseGroupComboBox.Items.Add(groupNames[i]); //add the latest array entry into the combobox
+                        if (groupNames[i] != null && groupNames[i] != "")
+                            chooseGroupComboBox.Items.Add(groupNames[i]); //add the latest array entry into the combobox
                     }
 
                 }

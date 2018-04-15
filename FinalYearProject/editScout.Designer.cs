@@ -62,6 +62,7 @@
             this.secondNameLbl = new System.Windows.Forms.Label();
             this.firstNameLbl = new System.Windows.Forms.Label();
             this.titleLbl = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // updateGroupComboBoxBtn
@@ -93,6 +94,7 @@
             this.chooseGroupComboBox.Name = "chooseGroupComboBox";
             this.chooseGroupComboBox.Size = new System.Drawing.Size(298, 27);
             this.chooseGroupComboBox.TabIndex = 68;
+            this.chooseGroupComboBox.SelectedIndexChanged += new System.EventHandler(this.chooseGroupComboBox_SelectedIndexChanged);
             // 
             // deadtxtbx
             // 
@@ -110,7 +112,7 @@
             this.healthTxtBx.Location = new System.Drawing.Point(693, 405);
             this.healthTxtBx.MinimumSize = new System.Drawing.Size(4, 200);
             this.healthTxtBx.Name = "healthTxtBx";
-            this.healthTxtBx.Size = new System.Drawing.Size(298, 200);
+            this.healthTxtBx.Size = new System.Drawing.Size(298, 26);
             this.healthTxtBx.TabIndex = 66;
             // 
             // postcodeLbl
@@ -224,7 +226,7 @@
             // discardChangesBtn
             // 
             this.discardChangesBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.discardChangesBtn.Location = new System.Drawing.Point(693, 611);
+            this.discardChangesBtn.Location = new System.Drawing.Point(589, 611);
             this.discardChangesBtn.Name = "discardChangesBtn";
             this.discardChangesBtn.Size = new System.Drawing.Size(130, 53);
             this.discardChangesBtn.TabIndex = 53;
@@ -241,7 +243,7 @@
             this.saveChangesBtn.TabIndex = 52;
             this.saveChangesBtn.Text = "Save changes";
             this.saveChangesBtn.UseVisualStyleBackColor = true;
-            //this.saveChangesBtn.Click += new System.EventHandler(this.saveChangesBtn_Click);
+            this.saveChangesBtn.Click += new System.EventHandler(this.saveChangesBtn_Click_1);
             // 
             // pContactNumTxtBx
             // 
@@ -379,11 +381,24 @@
             this.titleLbl.TabIndex = 37;
             this.titleLbl.Text = "Edit Scout";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(725, 611);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 53);
+            this.button1.TabIndex = 71;
+            this.button1.Text = "Delete scout";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // editScout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.updateGroupComboBoxBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chooseGroupComboBox);
@@ -461,5 +476,6 @@
         private System.Windows.Forms.Label secondNameLbl;
         private System.Windows.Forms.Label firstNameLbl;
         private System.Windows.Forms.Label titleLbl;
+        private System.Windows.Forms.Button button1;
     }
 }

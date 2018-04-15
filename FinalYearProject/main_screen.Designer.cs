@@ -36,9 +36,12 @@ namespace theSALAH
             this.new_scout_bttn = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.exit_btn = new System.Windows.Forms.Button();
             this.welcome_text_lbl = new System.Windows.Forms.Label();
+            this.log_out_btn = new System.Windows.Forms.Button();
             this.home_screen_time_lbl = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.displayScoutsDGV = new System.Windows.Forms.DataGridView();
             this.updateComboBoxBtn = new System.Windows.Forms.Button();
             this.chooseGroupLbl = new System.Windows.Forms.Label();
@@ -48,22 +51,22 @@ namespace theSALAH
             this.attendanceStatsBtn = new System.Windows.Forms.Button();
             this.registerBtn = new System.Windows.Forms.Button();
             this.planMeetingBtn = new System.Windows.Forms.Button();
-            this.upcomingMeetingsLbl = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupComboBoxMeetings = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.editResourcesBtn = new System.Windows.Forms.Button();
             this.editLocationsBtn = new System.Windows.Forms.Button();
             this.locationComboBox = new System.Windows.Forms.ComboBox();
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
-            this.exit_btn = new System.Windows.Forms.Button();
-            this.log_out_btn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // upcoming_meetings_lbl
@@ -81,7 +84,7 @@ namespace theSALAH
             this.new_group_bttn.Name = "new_group_bttn";
             this.new_group_bttn.Size = new System.Drawing.Size(231, 60);
             this.new_group_bttn.TabIndex = 1;
-            this.new_group_bttn.Text = "Add a new group";
+            this.new_group_bttn.Text = "Add a New Group";
             this.new_group_bttn.UseVisualStyleBackColor = true;
             this.new_group_bttn.Click += new System.EventHandler(this.new_group_bttn_Click);
             // 
@@ -91,7 +94,7 @@ namespace theSALAH
             this.new_scout_bttn.Name = "new_scout_bttn";
             this.new_scout_bttn.Size = new System.Drawing.Size(231, 60);
             this.new_scout_bttn.TabIndex = 2;
-            this.new_scout_bttn.Text = "Add a new scout";
+            this.new_scout_bttn.Text = "Add a New Scout";
             this.new_scout_bttn.UseVisualStyleBackColor = true;
             this.new_scout_bttn.Click += new System.EventHandler(this.new_scout_bttn_Click);
             // 
@@ -125,6 +128,17 @@ namespace theSALAH
             this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // exit_btn
+            // 
+            this.exit_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.exit_btn.Location = new System.Drawing.Point(906, 6);
+            this.exit_btn.Name = "exit_btn";
+            this.exit_btn.Size = new System.Drawing.Size(77, 31);
+            this.exit_btn.TabIndex = 4;
+            this.exit_btn.Text = "Exit";
+            this.exit_btn.UseVisualStyleBackColor = true;
+            this.exit_btn.Click += new System.EventHandler(this.exit_btn_Click);
+            // 
             // welcome_text_lbl
             // 
             this.welcome_text_lbl.AutoSize = true;
@@ -134,6 +148,17 @@ namespace theSALAH
             this.welcome_text_lbl.Size = new System.Drawing.Size(125, 47);
             this.welcome_text_lbl.TabIndex = 4;
             this.welcome_text_lbl.Text = "label1";
+            // 
+            // log_out_btn
+            // 
+            this.log_out_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.log_out_btn.Location = new System.Drawing.Point(823, 6);
+            this.log_out_btn.Name = "log_out_btn";
+            this.log_out_btn.Size = new System.Drawing.Size(77, 31);
+            this.log_out_btn.TabIndex = 5;
+            this.log_out_btn.Text = "Log Out";
+            this.log_out_btn.UseVisualStyleBackColor = true;
+            this.log_out_btn.Click += new System.EventHandler(this.log_out_btn_Click);
             // 
             // home_screen_time_lbl
             // 
@@ -147,6 +172,7 @@ namespace theSALAH
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.displayScoutsDGV);
             this.tabPage2.Controls.Add(this.updateComboBoxBtn);
             this.tabPage2.Controls.Add(this.chooseGroupLbl);
@@ -160,6 +186,17 @@ namespace theSALAH
             this.tabPage2.Text = "Scouts";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.button1.Location = new System.Drawing.Point(671, 153);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(306, 51);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Edit Selected Group";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // displayScoutsDGV
             // 
             this.displayScoutsDGV.AllowUserToAddRows = false;
@@ -168,7 +205,7 @@ namespace theSALAH
             this.displayScoutsDGV.Location = new System.Drawing.Point(15, 96);
             this.displayScoutsDGV.Name = "displayScoutsDGV";
             this.displayScoutsDGV.RowTemplate.Height = 28;
-            this.displayScoutsDGV.Size = new System.Drawing.Size(968, 574);
+            this.displayScoutsDGV.Size = new System.Drawing.Size(650, 580);
             this.displayScoutsDGV.TabIndex = 4;
             this.displayScoutsDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.displayScoutsDGV_CellClick);
             // 
@@ -179,7 +216,7 @@ namespace theSALAH
             this.updateComboBoxBtn.Name = "updateComboBoxBtn";
             this.updateComboBoxBtn.Size = new System.Drawing.Size(208, 46);
             this.updateComboBoxBtn.TabIndex = 3;
-            this.updateComboBoxBtn.Text = "Update group list";
+            this.updateComboBoxBtn.Text = "Update Group List";
             this.updateComboBoxBtn.UseVisualStyleBackColor = true;
             this.updateComboBoxBtn.Click += new System.EventHandler(this.updateComboBoxBtn_Click);
             // 
@@ -189,18 +226,18 @@ namespace theSALAH
             this.chooseGroupLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.chooseGroupLbl.Location = new System.Drawing.Point(11, 31);
             this.chooseGroupLbl.Name = "chooseGroupLbl";
-            this.chooseGroupLbl.Size = new System.Drawing.Size(168, 19);
+            this.chooseGroupLbl.Size = new System.Drawing.Size(118, 19);
             this.chooseGroupLbl.TabIndex = 2;
-            this.chooseGroupLbl.Text = "Choose a group to view";
+            this.chooseGroupLbl.Text = "Groups To View";
             // 
             // newYoungPersonBtn
             // 
             this.newYoungPersonBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.newYoungPersonBtn.Location = new System.Drawing.Point(462, 43);
+            this.newYoungPersonBtn.Location = new System.Drawing.Point(671, 96);
             this.newYoungPersonBtn.Name = "newYoungPersonBtn";
-            this.newYoungPersonBtn.Size = new System.Drawing.Size(208, 45);
+            this.newYoungPersonBtn.Size = new System.Drawing.Size(306, 51);
             this.newYoungPersonBtn.TabIndex = 1;
-            this.newYoungPersonBtn.Text = "Add new Young Person";
+            this.newYoungPersonBtn.Text = "Add a New Scout";
             this.newYoungPersonBtn.UseVisualStyleBackColor = true;
             this.newYoungPersonBtn.Click += new System.EventHandler(this.newYoungPersonBtn_Click);
             // 
@@ -215,11 +252,12 @@ namespace theSALAH
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button2);
+            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.attendanceStatsBtn);
             this.tabPage3.Controls.Add(this.registerBtn);
             this.tabPage3.Controls.Add(this.planMeetingBtn);
-            this.tabPage3.Controls.Add(this.upcomingMeetingsLbl);
-            this.tabPage3.Controls.Add(this.listBox1);
             this.tabPage3.Controls.Add(this.groupComboBoxMeetings);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
@@ -231,7 +269,7 @@ namespace theSALAH
             // 
             // attendanceStatsBtn
             // 
-            this.attendanceStatsBtn.Location = new System.Drawing.Point(635, 265);
+            this.attendanceStatsBtn.Location = new System.Drawing.Point(672, 209);
             this.attendanceStatsBtn.Name = "attendanceStatsBtn";
             this.attendanceStatsBtn.Size = new System.Drawing.Size(305, 50);
             this.attendanceStatsBtn.TabIndex = 5;
@@ -240,7 +278,7 @@ namespace theSALAH
             // 
             // registerBtn
             // 
-            this.registerBtn.Location = new System.Drawing.Point(635, 209);
+            this.registerBtn.Location = new System.Drawing.Point(671, 153);
             this.registerBtn.Name = "registerBtn";
             this.registerBtn.Size = new System.Drawing.Size(305, 50);
             this.registerBtn.TabIndex = 4;
@@ -249,37 +287,20 @@ namespace theSALAH
             // 
             // planMeetingBtn
             // 
-            this.planMeetingBtn.Location = new System.Drawing.Point(635, 152);
+            this.planMeetingBtn.Location = new System.Drawing.Point(671, 96);
             this.planMeetingBtn.Name = "planMeetingBtn";
             this.planMeetingBtn.Size = new System.Drawing.Size(306, 51);
             this.planMeetingBtn.TabIndex = 3;
             this.planMeetingBtn.Text = "Meeting Planner";
             this.planMeetingBtn.UseVisualStyleBackColor = true;
-            // 
-            // upcomingMeetingsLbl
-            // 
-            this.upcomingMeetingsLbl.AutoSize = true;
-            this.upcomingMeetingsLbl.Location = new System.Drawing.Point(21, 113);
-            this.upcomingMeetingsLbl.Name = "upcomingMeetingsLbl";
-            this.upcomingMeetingsLbl.Size = new System.Drawing.Size(148, 19);
-            this.upcomingMeetingsLbl.TabIndex = 2;
-            this.upcomingMeetingsLbl.Text = "Upcoming Meetings";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 19;
-            this.listBox1.Location = new System.Drawing.Point(21, 152);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(592, 612);
-            this.listBox1.TabIndex = 1;
+            this.planMeetingBtn.Click += new System.EventHandler(this.planMeetingBtn_Click);
             // 
             // groupComboBoxMeetings
             // 
             this.groupComboBoxMeetings.FormattingEnabled = true;
-            this.groupComboBoxMeetings.Location = new System.Drawing.Point(19, 53);
+            this.groupComboBoxMeetings.Location = new System.Drawing.Point(15, 53);
             this.groupComboBoxMeetings.Name = "groupComboBoxMeetings";
-            this.groupComboBoxMeetings.Size = new System.Drawing.Size(216, 27);
+            this.groupComboBoxMeetings.Size = new System.Drawing.Size(227, 27);
             this.groupComboBoxMeetings.TabIndex = 0;
             // 
             // tabPage5
@@ -325,27 +346,36 @@ namespace theSALAH
             // 
             this.main_screen_tmr.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // exit_btn
+            // label1
             // 
-            this.exit_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.exit_btn.Location = new System.Drawing.Point(906, 6);
-            this.exit_btn.Name = "exit_btn";
-            this.exit_btn.Size = new System.Drawing.Size(77, 31);
-            this.exit_btn.TabIndex = 4;
-            this.exit_btn.Text = "Exit";
-            this.exit_btn.UseVisualStyleBackColor = true;
-            this.exit_btn.Click += new System.EventHandler(this.exit_btn_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.label1.Location = new System.Drawing.Point(11, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 19);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Group\'s Meetings To View";
             // 
-            // log_out_btn
+            // dataGridView1
             // 
-            this.log_out_btn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.log_out_btn.Location = new System.Drawing.Point(823, 6);
-            this.log_out_btn.Name = "log_out_btn";
-            this.log_out_btn.Size = new System.Drawing.Size(77, 31);
-            this.log_out_btn.TabIndex = 5;
-            this.log_out_btn.Text = "Log Out";
-            this.log_out_btn.UseVisualStyleBackColor = true;
-            this.log_out_btn.Click += new System.EventHandler(this.log_out_btn_Click);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 96);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(650, 580);
+            this.dataGridView1.TabIndex = 7;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.button2.Location = new System.Drawing.Point(248, 43);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(208, 46);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Update Group List";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // main_screen
             // 
@@ -354,7 +384,7 @@ namespace theSALAH
             this.ClientSize = new System.Drawing.Size(1002, 712);
             this.Controls.Add(this.tabControl);
             this.Name = "main_screen";
-            this.Text = "Form1";
+            this.Text = "The S.A.L.A.H.";
             this.Load += new System.EventHandler(this.main_screen_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -365,6 +395,7 @@ namespace theSALAH
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -395,8 +426,6 @@ namespace theSALAH
         private System.Windows.Forms.Button attendanceStatsBtn;
         private System.Windows.Forms.Button registerBtn;
         private System.Windows.Forms.Button planMeetingBtn;
-        private System.Windows.Forms.Label upcomingMeetingsLbl;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ComboBox groupComboBoxMeetings;
         private System.Windows.Forms.Button editResourcesBtn;
         private System.Windows.Forms.Button editLocationsBtn;
@@ -404,6 +433,10 @@ namespace theSALAH
         private System.Windows.Forms.Button updateComboBoxBtn;
         private System.Windows.Forms.Label chooseGroupLbl;
         private System.Windows.Forms.DataGridView displayScoutsDGV;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

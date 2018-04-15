@@ -18,6 +18,7 @@ namespace theSALAH
         public DbSet<resource> Resources { get; set; }
         public DbSet<group> Groups { get; set; }
         public DbSet<user> Users { get; set; }
+        public DbSet<meeting> Meetings { get; set; }
 
     }
 }

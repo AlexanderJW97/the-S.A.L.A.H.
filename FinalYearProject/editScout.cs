@@ -14,8 +14,10 @@ namespace theSALAH.Properties
     {
         public static scout scoutToBeEdited;
         public static group currentGroup;
+        public static group newGroup = new group();
         public static user currentUser;
         public static address scoutsAddress;
+        public static bool moveGroup = false;
 
         public editScout(scout scout, group group, user user)
         {
@@ -31,6 +33,7 @@ namespace theSALAH.Properties
 
         private void setUpForm()
         {
+            titleLbl.Text = "Edit Scout: " + scoutToBeEdited.firstName + " " + scoutToBeEdited.secondName;
             firstNameTxtbx.Text = scoutToBeEdited.firstName;
             secondNameTxtBx.Text = scoutToBeEdited.secondName;
             chooseGroupComboBox.Text = currentGroup.group_name;
@@ -95,8 +98,8 @@ namespace theSALAH.Properties
                             groupNames[i] = result.group_name; //add the group name into the groupnames array
                         }
 
-
-                        chooseGroupComboBox.Items.Add(groupNames[i]); //add the latest array entry into the combobox
+                        if(groupNames[i] != null && groupNames[i] != "")
+                            chooseGroupComboBox.Items.Add(groupNames[i]); //add the latest array entry into the combobox
                     }
 
                 }
@@ -130,31 +133,80 @@ namespace theSALAH.Properties
 
         private void saveChangesBtn_Click(object sender, EventArgs e)
         {
-            int scoutId = scoutToBeEdited.scoutID;
 
 
+        }
 
-            using (var ctx = new SALAHContext())
+        private void saveChangesBtn_Click_1(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to save your changes?",
+                                                 "Save changes",
+                                                 MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+
             {
-                var result = ctx.Scouts.SingleOrDefault(s => s.scoutID == scoutId);
-                if (result != null)
+
+                if (newGroup.group_name == currentGroup.group_name)
+                    moveGroup = false;
+
+                group.changeGroup(currentGroup, newGroup, scoutToBeEdited, moveGroup);
+
+                int scoutId = scoutToBeEdited.scoutID;
+
+                using (var ctx = new SALAHContext())
                 {
-                    result.firstName = firstNameTxtbx.Text;
-                    result.secondName = secondNameTxtBx.Text;
-                    result.Address = GetNewAddress();
-                    result.dateOfBirth = DOBPicker.Value.ToString();
-                    result.healthInfo = healthTxtBx.Text;
-                    result.parentEmail = pEmailTxtBx.Text;
-                    result.parentEmergencyNumb = pContactNumTxtBx.Text;
-                    result.parentFirstName = pFirstNameTxtBx.Text;
-                    result.parentSecondName = pSecondNameTxtBx.Text;
+                    var result = ctx.Scouts.SingleOrDefault(s => s.scoutID == scoutId);
+                    if (result != null)
+                    {
+                        result.firstName = firstNameTxtbx.Text;
+                        result.secondName = secondNameTxtBx.Text;
+                        result.Address = GetNewAddress();
+                        result.dateOfBirth = DOBPicker.Value.ToString();
+                        result.healthInfo = healthTxtBx.Text;
+                        result.parentEmail = pEmailTxtBx.Text;
+                        result.parentEmergencyNumb = pContactNumTxtBx.Text;
+                        result.parentFirstName = pFirstNameTxtBx.Text;
+                        result.parentSecondName = pSecondNameTxtBx.Text;
+                    }
+
+                    ctx.SaveChanges();
+                    ctx.Dispose();
                 }
 
+                main_screen open_screen = new main_screen(currentUser);
+                this.Close();
+                open_screen.Show();
 
             }
-
             return;
         }
-                
+
+        private void chooseGroupComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            moveGroup = true;
+            newGroup.group_name = chooseGroupComboBox.SelectedItem.ToString();
+            newGroup = group.getGroup(newGroup.group_name);
+            return;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this scout? This action cannot be undone.",
+                                                "Delete Scout: " + scoutToBeEdited.firstName + " " + scoutToBeEdited.secondName,
+                                                MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                try
+                {
+                    group.RemoveScoutFromGroup(currentGroup, scoutToBeEdited);
+                    scout.deleteScout(scoutToBeEdited.scoutID);
+                }
+                catch
+                {
+                    MessageBox.Show("Scout could not be deleted. Please check the details and try again.");
+                }
+            }
+        }
     }
 }

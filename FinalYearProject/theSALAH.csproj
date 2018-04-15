@@ -71,6 +71,12 @@
     <Compile Include="addNewGroup.Designer.cs">
       <DependentUpon>addNewGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="addNewMeeting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addNewMeeting.Designer.cs">
+      <DependentUpon>addNewMeeting.cs</DependentUpon>
+    </Compile>
     <Compile Include="addNewScout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,12 @@
       <DependentUpon>addNewScout.cs</DependentUpon>
     </Compile>
     <Compile Include="address.cs" />
+    <Compile Include="editGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editGroup.Designer.cs">
+      <DependentUpon>editGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="group.cs" />
     <Compile Include="location.cs" />
     <Compile Include="login.cs">
@@ -92,6 +104,7 @@
     <Compile Include="main_screen.Designer.cs">
       <DependentUpon>main_screen.cs</DependentUpon>
     </Compile>
+    <Compile Include="meeting.cs" />
     <Compile Include="Migrations\201804031204155_initial.cs" />
     <Compile Include="Migrations\201804031204155_initial.Designer.cs">
       <DependentUpon>201804031204155_initial.cs</DependentUpon>
@@ -135,8 +148,14 @@
     <EmbeddedResource Include="addNewGroup.resx">
       <DependentUpon>addNewGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addNewMeeting.resx">
+      <DependentUpon>addNewMeeting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addNewScout.resx">
       <DependentUpon>addNewScout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editGroup.resx">
+      <DependentUpon>editGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>

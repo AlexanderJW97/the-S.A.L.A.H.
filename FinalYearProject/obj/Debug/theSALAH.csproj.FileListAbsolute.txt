@@ -23,3 +23,5 @@ D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProj
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.Migrations.migration4.resources
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.csprojResolveAssemblyReference.cache
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.Properties.editScout.resources
+D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.editGroup.resources
+D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.addNewMeeting.resources

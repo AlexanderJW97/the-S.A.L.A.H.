@@ -56,12 +56,12 @@
             this.cityLbl = new System.Windows.Forms.Label();
             this.countyLbl = new System.Windows.Forms.Label();
             this.countryLbl = new System.Windows.Forms.Label();
-            this.healthTxtBx = new System.Windows.Forms.TextBox();
             this.postcodeLbl = new System.Windows.Forms.Label();
             this.deadtxtbx = new System.Windows.Forms.Label();
             this.chooseGroupComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.updateGroupComboBoxBtn = new System.Windows.Forms.Button();
+            this.healthTxtBx = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // titleLbl
@@ -320,15 +320,6 @@
             this.countryLbl.TabIndex = 30;
             this.countryLbl.Text = "Country:";
             // 
-            // healthTxtBx
-            // 
-            this.healthTxtBx.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.healthTxtBx.Location = new System.Drawing.Point(692, 369);
-            this.healthTxtBx.MinimumSize = new System.Drawing.Size(4, 200);
-            this.healthTxtBx.Name = "healthTxtBx";
-            this.healthTxtBx.Size = new System.Drawing.Size(298, 200);
-            this.healthTxtBx.TabIndex = 32;
-            // 
             // postcodeLbl
             // 
             this.postcodeLbl.AutoSize = true;
@@ -379,16 +370,25 @@
             this.updateGroupComboBoxBtn.UseVisualStyleBackColor = true;
             this.updateGroupComboBoxBtn.Click += new System.EventHandler(this.updateGroupComboBoxBtn_Click);
             // 
+            // healthTxtBx
+            // 
+            this.healthTxtBx.Location = new System.Drawing.Point(692, 369);
+            this.healthTxtBx.Name = "healthTxtBx";
+            this.healthTxtBx.Size = new System.Drawing.Size(298, 196);
+            this.healthTxtBx.TabIndex = 37;
+            this.healthTxtBx.Text = "Enter the Scouts health information here. Remember to always keep a paper copy wi" +
+    "th you in case of technological fault.";
+            // 
             // addNewScout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 712);
+            this.Controls.Add(this.healthTxtBx);
             this.Controls.Add(this.updateGroupComboBoxBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chooseGroupComboBox);
             this.Controls.Add(this.deadtxtbx);
-            this.Controls.Add(this.healthTxtBx);
             this.Controls.Add(this.postcodeLbl);
             this.Controls.Add(this.countryLbl);
             this.Controls.Add(this.countyLbl);
@@ -455,11 +455,11 @@
         private System.Windows.Forms.Label cityLbl;
         private System.Windows.Forms.Label countyLbl;
         private System.Windows.Forms.Label countryLbl;
-        private System.Windows.Forms.TextBox healthTxtBx;
         private System.Windows.Forms.Label postcodeLbl;
         private System.Windows.Forms.Label deadtxtbx;
         private System.Windows.Forms.ComboBox chooseGroupComboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button updateGroupComboBoxBtn;
+        private System.Windows.Forms.RichTextBox healthTxtBx;
     }
 }

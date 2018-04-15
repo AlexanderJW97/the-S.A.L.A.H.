@@ -117,6 +117,7 @@ namespace theSALAH
 
                     foreach (var result in query)
                     {
+                    Scout.scoutID = idNumber;
                     Scout.firstName = result.firstName;
                     Scout.secondName = result.secondName;
                     Scout.Address = result.Address;
@@ -132,6 +133,31 @@ namespace theSALAH
             }
 
             return Scout;
+        }
+
+
+        public static bool deleteScout(int scoutID)
+        {
+            bool scoutDeleted = false;
+            scout scoutQuery = new scout();
+
+            using (var ctx = new SALAHContext())
+            {
+                try
+                {
+                    scoutQuery = ctx.Scouts.FirstOrDefault(m => m.scoutID == scoutID);
+                    ctx.Scouts.Remove(scoutQuery);
+                    ctx.SaveChanges();
+                    ctx.Dispose();
+                    //if (group.RemoveUserFromGroup())
+                    scoutDeleted = true;
+                }
+                catch
+                {
+                    scoutDeleted = false;
+                }
+            }
+            return scoutDeleted;
         }
 
     }

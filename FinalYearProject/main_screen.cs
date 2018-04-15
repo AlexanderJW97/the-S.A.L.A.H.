@@ -12,7 +12,7 @@ namespace theSALAH
 {
     public partial class main_screen : Form
     {
-        public string username;
+        public string username = "";
         public ICollection<group> groups;
         public static user loggedInUser = new user();
         public static group selectedGroup;
@@ -30,7 +30,8 @@ namespace theSALAH
 
         private void main_screen_Load(object sender, EventArgs e)
         {
-            updateComboBox();
+            updateComboBox(groupComboBoxGroups);
+            updateComboBox(groupComboBoxMeetings);
         }
         /// <summary>
         /// displays clock on main screen
@@ -58,7 +59,7 @@ namespace theSALAH
         {
             addNewScout openScreen = new addNewScout(loggedInUser);
             openScreen.Show();
-            Visible = false;
+            this.Close();
         }
 
 
@@ -82,17 +83,17 @@ namespace theSALAH
             open_screen.Show();
         }
 
-        private void updateComboBox()
+        private void updateComboBox(ComboBox comboBox)
         {
            
             string[] usersGroups;
             usersGroups = user.getUsersGroups(loggedInUser);
-            user.AddGroupsToComboBox(groupComboBoxGroups, usersGroups);
+            user.AddGroupsToComboBox(comboBox, usersGroups);
         }
 
-        private void clearComboBox()
+        private void clearComboBox(ComboBox comboBox)
         {
-            groupComboBoxGroups.Items.Clear();
+            comboBox.Items.Clear();
         }
 
         private void updateComboBoxBtn_Click(object sender, EventArgs e)
@@ -109,8 +110,8 @@ namespace theSALAH
                 }
 
             }
-            clearComboBox();
-            updateComboBox();
+            clearComboBox(groupComboBoxGroups);
+            updateComboBox(groupComboBoxGroups);
         }
 
         private void newYoungPersonBtn_Click(object sender, EventArgs e)
@@ -127,7 +128,9 @@ namespace theSALAH
 
             string chosenGroupString = groupComboBoxGroups.SelectedItem.ToString();
 
+
             group chosenGroup = group.getGroup(chosenGroupString);
+
             selectedGroup = chosenGroup;
 
             if(group.checkForScoutIDs(chosenGroup))
@@ -156,10 +159,24 @@ namespace theSALAH
                 //MessageBox.Show(displayScoutsDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
                 scout Scout = scout.getScout(int.Parse(displayScoutsDGV.Rows[e.RowIndex].Cells[0].Value.ToString()));
                 editScout open_screen = new editScout(Scout, selectedGroup, loggedInUser);
-                this.Enabled = false;
+                this.Close();
                 open_screen.Show();
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            editGroup open_screen = new editGroup(selectedGroup, loggedInUser);
+            this.Close(); ;
+            open_screen.Show();
+        }
+
+        private void planMeetingBtn_Click(object sender, EventArgs e)
+        {
+            addNewMeeting open_screen = new addNewMeeting(loggedInUser);
+            this.Close(); ;
+            open_screen.Show();
         }
     }
 }
