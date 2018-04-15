@@ -14,7 +14,6 @@ namespace theSALAH
     {
         user currentUser;
         group currentGroup;
-        string meetingPlace;
 
 
         public addNewMeeting(user user)
@@ -81,6 +80,7 @@ namespace theSALAH
                     newMeeting.Location = meetingPlaceTxtBx.Text;
                     newMeeting.meetingDesc = meetingDescTxtBx.Text;
                     newMeeting.DateTime = meetingDatePicker.Value.ToString();
+                    newMeeting.meetingTitle = meetingTitleTxtBx.Text;
                     meeting.addNewMeeting(newMeeting, currentGroup);
                     main_screen open_screen = new main_screen(currentUser);
                     open_screen.Show();

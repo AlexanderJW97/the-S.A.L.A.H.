@@ -13,7 +13,6 @@ namespace theSALAH
         public int resourceID { get; set; }
         public string name { get; set; }
         public int quantity { get; set; }
-        public location storageLocation { get; set; }
         public string notes { get; set; }
     }
 }

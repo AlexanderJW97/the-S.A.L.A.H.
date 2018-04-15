@@ -58,7 +58,7 @@
             this.addNewGroupBtn.TabIndex = 51;
             this.addNewGroupBtn.Text = "OK";
             this.addNewGroupBtn.UseVisualStyleBackColor = true;
-            this.addNewGroupBtn.Click += new System.EventHandler(this.addNewScoutBtn_Click);
+            this.addNewGroupBtn.Click += new System.EventHandler(this.addNewGroupBtn_Click);
             // 
             // meetingPlaceTxtBx
             // 

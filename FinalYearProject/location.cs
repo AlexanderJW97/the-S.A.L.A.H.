@@ -11,6 +11,7 @@ namespace theSALAH
         public int locationID { get; set; }
         public string locationName { get; set; }
         public address Address { get; set; }
+        public string resourceIDs { get; set; }
 
     }
 }

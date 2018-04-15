@@ -171,6 +171,42 @@ namespace theSALAH
             return hasScouts;
         }
 
+        public static bool checkForMeetingIDs(group group)
+        {
+            bool hasMeetings = false;
+
+            if (group.meetingIDs != "" && group.meetingIDs != null)
+                hasMeetings = true;
+
+            return hasMeetings;
+        }
+
+        public static string[] getMeetingIDs(group group)
+        {
+            string[] meetingIDsArray = group.meetingIDs.Split(',');
+            
+            int count = 0;
+            foreach (string s in meetingIDsArray)
+            {
+                if (s != null && s!= "")
+                {
+                    count++;
+                }
+            }
+            string[] meetingsIDs = new string[count];
+            int i = 0;
+            foreach (string s in meetingIDsArray)
+            {
+                if (s != null && s != "")
+                {
+                    meetingsIDs[i] = s;
+                    i++;
+                }
+            }
+
+            return meetingsIDs;
+        }
+
 
         /// <summary>
         /// Gets all of the scouts that are part of a specified group
@@ -213,6 +249,43 @@ namespace theSALAH
             return groupQuery;
         }
 
+        public static string[] getGroupNames(user user)
+        {
+            
+            string[] userGroups = user.groupIDs.Split(',');
+            string[] existingGroupNames = new string[userGroups.Length-1];
+            int i = 0;
+
+            try
+            {
+                using (var ctx = new SALAHContext())
+                {
+                    foreach (string s in userGroups)
+                    {
+                        int groupID;
+                        if (s != "")
+                        {
+                            groupID = int.Parse(s);
+
+                            group groupNamesQuery = ctx.Groups.FirstOrDefault(g => g.groupID == groupID);
+                            if (groupNamesQuery != null)
+                            {
+                                existingGroupNames[i] = groupNamesQuery.group_name;
+                                i++;
+                            }
+                            if (groupNamesQuery == null)
+                                user.groupRemovedFromUser(groupID, user);
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("New group could not be created. Please try again with a different group name");
+            }
+            return existingGroupNames;
+        }
 
         public static int getGroupID(string groupName)
         {
@@ -258,7 +331,14 @@ namespace theSALAH
             return groupDeleted;
         }
 
-        public static void changeGroup(group oldGroup, group newGroup, scout scout, bool moveGroup)
+        /// <summary>
+        /// change which group the scout belongs to
+        /// </summary>
+        /// <param name="oldGroup">group the scout currently belongs to</param>
+        /// <param name="newGroup">group the scout is going to belong to</param>
+        /// <param name="scout">the scout to be moved</param>
+        /// <param name="moveGroup">if the scout needs to be moved</param>
+        public static void changeGroupScout(group oldGroup, group newGroup, scout scout, bool moveGroup)
         {
             if (moveGroup == true)
             {
@@ -301,6 +381,105 @@ namespace theSALAH
             }
 
 
+        }
+
+        /// <summary>
+        /// change which group the scout belongs to
+        /// </summary>
+        /// <param name="oldGroup">group the scout currently belongs to</param>
+        /// <param name="newGroup">group the scout is going to belong to</param>
+        /// <param name="scout">the scout to be moved</param>
+        /// <param name="moveGroup">if the scout needs to be moved</param>
+        public static void changeGroupMeeting(group oldGroup, group newGroup, meeting meeting, bool moveGroup)
+        {
+            if (moveGroup == true)
+            {
+                using (var ctx = new SALAHContext())
+                {
+                    var result = ctx.Groups.SingleOrDefault(g => g.groupID == newGroup.groupID);
+
+
+                    if (result != null)
+                    {
+                        newGroup = result;
+                    }
+
+                    string[] oldGroupMeetings = oldGroup.meetingIDs.Split(',');
+
+                    for (int i = 0; i < oldGroupMeetings.Length; i++)
+                    {
+                        if (oldGroupMeetings[i] == meeting.meetingID.ToString())
+                        {
+                            var result1 = ctx.Groups.SingleOrDefault(g => g.groupID == oldGroup.groupID);
+                            if (result1 != null)
+                            {
+                                result1.meetingIDs = "";
+
+                                for (int j = 0; j < oldGroupMeetings.Length - 1; j++)
+                                {
+                                    if (i != j)
+                                    {
+                                        result1.meetingIDs += oldGroupMeetings[j] + ",";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    group.addMeetingToGroup(newGroup.groupID, meeting.meetingID);
+                    ctx.SaveChanges();
+                    ctx.Dispose();
+
+                }
+            }
+
+
+        }
+
+        public static bool RemoveMeetingFromGroup(group group, meeting meeting)
+        {
+            bool meetingRemovedFromGroup = false;
+
+            using (var ctx = new SALAHContext())
+            {
+                try
+                {
+                    var result = ctx.Groups.SingleOrDefault(g => g.group_name == group.group_name);
+                    if (result != null)
+                    {
+                        group = result;
+                    }
+
+                    string[] oldGroupMeetings = group.meetingIDs.Split(',');
+
+                    for (int i = 0; i < oldGroupMeetings.Length; i++)
+                    {
+                        if (oldGroupMeetings[i] == meeting.meetingID.ToString())
+                        {
+                            var result1 = ctx.Groups.SingleOrDefault(g => g.group_name == group.group_name);
+                            if (result1 != null)
+                            {
+                                result1.meetingIDs = "";
+
+                                for (int j = 0; j < oldGroupMeetings.Length - 1; j++)
+                                {
+                                    if (i != j)
+                                    {
+                                        result1.meetingIDs += oldGroupMeetings[j] + ",";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    meetingRemovedFromGroup = true;
+                    ctx.SaveChanges();
+                    ctx.Dispose();
+                }
+                catch
+                {
+                    meetingRemovedFromGroup = false;
+                }
+            }
+            return meetingRemovedFromGroup;
         }
 
         public static bool RemoveScoutFromGroup(group group, scout scout)

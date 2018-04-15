@@ -48,25 +48,25 @@ namespace theSALAH
             this.newYoungPersonBtn = new System.Windows.Forms.Button();
             this.groupComboBoxGroups = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.displayMeetingsDGV = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.attendanceStatsBtn = new System.Windows.Forms.Button();
             this.registerBtn = new System.Windows.Forms.Button();
             this.planMeetingBtn = new System.Windows.Forms.Button();
-            this.groupComboBoxMeetings = new System.Windows.Forms.ComboBox();
+            this.meetingsChooseGroupCmbBx = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.editResourcesBtn = new System.Windows.Forms.Button();
             this.editLocationsBtn = new System.Windows.Forms.Button();
             this.locationComboBox = new System.Windows.Forms.ComboBox();
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayMeetingsDGV)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // upcoming_meetings_lbl
@@ -105,7 +105,7 @@ namespace theSALAH
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage5);
             this.tabControl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.tabControl.Location = new System.Drawing.Point(3, 2);
+            this.tabControl.Location = new System.Drawing.Point(3, 3);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1024, 768);
@@ -253,12 +253,12 @@ namespace theSALAH
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.button2);
-            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Controls.Add(this.displayMeetingsDGV);
             this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.attendanceStatsBtn);
             this.tabPage3.Controls.Add(this.registerBtn);
             this.tabPage3.Controls.Add(this.planMeetingBtn);
-            this.tabPage3.Controls.Add(this.groupComboBoxMeetings);
+            this.tabPage3.Controls.Add(this.meetingsChooseGroupCmbBx);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -266,6 +266,38 @@ namespace theSALAH
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Meetings";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.button2.Location = new System.Drawing.Point(248, 43);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(208, 46);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Update Group List";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // displayMeetingsDGV
+            // 
+            this.displayMeetingsDGV.AllowUserToAddRows = false;
+            this.displayMeetingsDGV.AllowUserToDeleteRows = false;
+            this.displayMeetingsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.displayMeetingsDGV.Location = new System.Drawing.Point(15, 96);
+            this.displayMeetingsDGV.Name = "displayMeetingsDGV";
+            this.displayMeetingsDGV.RowTemplate.Height = 28;
+            this.displayMeetingsDGV.Size = new System.Drawing.Size(650, 580);
+            this.displayMeetingsDGV.TabIndex = 7;
+            this.displayMeetingsDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.displayMeetingsDGV_CellContentClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.label1.Location = new System.Drawing.Point(11, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 19);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Group\'s Meetings To View";
             // 
             // attendanceStatsBtn
             // 
@@ -295,13 +327,14 @@ namespace theSALAH
             this.planMeetingBtn.UseVisualStyleBackColor = true;
             this.planMeetingBtn.Click += new System.EventHandler(this.planMeetingBtn_Click);
             // 
-            // groupComboBoxMeetings
+            // meetingsChooseGroupCmbBx
             // 
-            this.groupComboBoxMeetings.FormattingEnabled = true;
-            this.groupComboBoxMeetings.Location = new System.Drawing.Point(15, 53);
-            this.groupComboBoxMeetings.Name = "groupComboBoxMeetings";
-            this.groupComboBoxMeetings.Size = new System.Drawing.Size(227, 27);
-            this.groupComboBoxMeetings.TabIndex = 0;
+            this.meetingsChooseGroupCmbBx.FormattingEnabled = true;
+            this.meetingsChooseGroupCmbBx.Location = new System.Drawing.Point(15, 53);
+            this.meetingsChooseGroupCmbBx.Name = "meetingsChooseGroupCmbBx";
+            this.meetingsChooseGroupCmbBx.Size = new System.Drawing.Size(227, 27);
+            this.meetingsChooseGroupCmbBx.TabIndex = 0;
+            this.meetingsChooseGroupCmbBx.SelectedIndexChanged += new System.EventHandler(this.meetingsChooseGroupCmbBx_SelectedIndexChanged_1);
             // 
             // tabPage5
             // 
@@ -346,37 +379,6 @@ namespace theSALAH
             // 
             this.main_screen_tmr.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.label1.Location = new System.Drawing.Point(11, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 19);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Group\'s Meetings To View";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 96);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(650, 580);
-            this.dataGridView1.TabIndex = 7;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.button2.Location = new System.Drawing.Point(248, 43);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(208, 46);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Update Group List";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // main_screen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -394,8 +396,8 @@ namespace theSALAH
             ((System.ComponentModel.ISupportInitialize)(this.displayScoutsDGV)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.displayMeetingsDGV)).EndInit();
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -426,7 +428,7 @@ namespace theSALAH
         private System.Windows.Forms.Button attendanceStatsBtn;
         private System.Windows.Forms.Button registerBtn;
         private System.Windows.Forms.Button planMeetingBtn;
-        private System.Windows.Forms.ComboBox groupComboBoxMeetings;
+        private System.Windows.Forms.ComboBox meetingsChooseGroupCmbBx;
         private System.Windows.Forms.Button editResourcesBtn;
         private System.Windows.Forms.Button editLocationsBtn;
         private System.Windows.Forms.ComboBox locationComboBox;
@@ -436,7 +438,7 @@ namespace theSALAH
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView displayMeetingsDGV;
     }
 }
 

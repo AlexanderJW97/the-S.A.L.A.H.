@@ -40,6 +40,8 @@
             this.dateOfMeetingLbl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.meetingDescTxtBx = new System.Windows.Forms.RichTextBox();
+            this.meetingTitleTxtBx = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cancelNewGroupBtn
@@ -66,7 +68,7 @@
             // 
             // meetingPlaceTxtBx
             // 
-            this.meetingPlaceTxtBx.Location = new System.Drawing.Point(222, 147);
+            this.meetingPlaceTxtBx.Location = new System.Drawing.Point(222, 176);
             this.meetingPlaceTxtBx.Name = "meetingPlaceTxtBx";
             this.meetingPlaceTxtBx.Size = new System.Drawing.Size(298, 26);
             this.meetingPlaceTxtBx.TabIndex = 59;
@@ -75,11 +77,11 @@
             // 
             this.meetingPlaceLbl.AutoSize = true;
             this.meetingPlaceLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.meetingPlaceLbl.Location = new System.Drawing.Point(14, 151);
+            this.meetingPlaceLbl.Location = new System.Drawing.Point(14, 180);
             this.meetingPlaceLbl.Name = "meetingPlaceLbl";
-            this.meetingPlaceLbl.Size = new System.Drawing.Size(111, 19);
+            this.meetingPlaceLbl.Size = new System.Drawing.Size(113, 19);
             this.meetingPlaceLbl.TabIndex = 55;
-            this.meetingPlaceLbl.Text = "Meeting place:";
+            this.meetingPlaceLbl.Text = "Meeting Place:";
             // 
             // titleLbl
             // 
@@ -94,7 +96,7 @@
             // updateGroupComboBoxBtn
             // 
             this.updateGroupComboBoxBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.updateGroupComboBoxBtn.Location = new System.Drawing.Point(222, 94);
+            this.updateGroupComboBoxBtn.Location = new System.Drawing.Point(222, 97);
             this.updateGroupComboBoxBtn.Name = "updateGroupComboBoxBtn";
             this.updateGroupComboBoxBtn.Size = new System.Drawing.Size(298, 41);
             this.updateGroupComboBoxBtn.TabIndex = 64;
@@ -116,7 +118,7 @@
             // 
             this.chooseGroupMeetingComboBox.Font = new System.Drawing.Font("Times New Roman", 8.25F);
             this.chooseGroupMeetingComboBox.FormattingEnabled = true;
-            this.chooseGroupMeetingComboBox.Location = new System.Drawing.Point(222, 61);
+            this.chooseGroupMeetingComboBox.Location = new System.Drawing.Point(222, 64);
             this.chooseGroupMeetingComboBox.Name = "chooseGroupMeetingComboBox";
             this.chooseGroupMeetingComboBox.Size = new System.Drawing.Size(298, 27);
             this.chooseGroupMeetingComboBox.TabIndex = 62;
@@ -125,7 +127,7 @@
             // meetingDatePicker
             // 
             this.meetingDatePicker.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.meetingDatePicker.Location = new System.Drawing.Point(222, 179);
+            this.meetingDatePicker.Location = new System.Drawing.Point(222, 208);
             this.meetingDatePicker.Name = "meetingDatePicker";
             this.meetingDatePicker.Size = new System.Drawing.Size(298, 26);
             this.meetingDatePicker.TabIndex = 66;
@@ -134,7 +136,7 @@
             // 
             this.dateOfMeetingLbl.AutoSize = true;
             this.dateOfMeetingLbl.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.dateOfMeetingLbl.Location = new System.Drawing.Point(14, 185);
+            this.dateOfMeetingLbl.Location = new System.Drawing.Point(14, 208);
             this.dateOfMeetingLbl.Name = "dateOfMeetingLbl";
             this.dateOfMeetingLbl.Size = new System.Drawing.Size(126, 19);
             this.dateOfMeetingLbl.TabIndex = 65;
@@ -144,7 +146,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.label2.Location = new System.Drawing.Point(14, 215);
+            this.label2.Location = new System.Drawing.Point(14, 240);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 19);
             this.label2.TabIndex = 67;
@@ -152,17 +154,36 @@
             // 
             // meetingDescTxtBx
             // 
-            this.meetingDescTxtBx.Location = new System.Drawing.Point(222, 215);
+            this.meetingDescTxtBx.Location = new System.Drawing.Point(222, 240);
             this.meetingDescTxtBx.Name = "meetingDescTxtBx";
-            this.meetingDescTxtBx.Size = new System.Drawing.Size(298, 223);
+            this.meetingDescTxtBx.Size = new System.Drawing.Size(298, 198);
             this.meetingDescTxtBx.TabIndex = 68;
             this.meetingDescTxtBx.Text = "Enter a brief description for your meeting here";
+            // 
+            // meetingTitleTxtBx
+            // 
+            this.meetingTitleTxtBx.Location = new System.Drawing.Point(222, 144);
+            this.meetingTitleTxtBx.Name = "meetingTitleTxtBx";
+            this.meetingTitleTxtBx.Size = new System.Drawing.Size(298, 26);
+            this.meetingTitleTxtBx.TabIndex = 70;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.label3.Location = new System.Drawing.Point(14, 148);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 19);
+            this.label3.TabIndex = 69;
+            this.label3.Text = "Meeting Title:";
             // 
             // addNewMeeting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.meetingTitleTxtBx);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.meetingDescTxtBx);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.meetingDatePicker);
@@ -196,5 +217,7 @@
         private System.Windows.Forms.Label dateOfMeetingLbl;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox meetingDescTxtBx;
+        private System.Windows.Forms.TextBox meetingTitleTxtBx;
+        private System.Windows.Forms.Label label3;
     }
 }

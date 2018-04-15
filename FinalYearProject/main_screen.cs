@@ -24,14 +24,14 @@ namespace theSALAH
             loggedInUser = user;
             username = loggedInUser.Name;
             welcome_text_lbl.Text = "Welcome, " + username; //displays the username at the top of the main screen
-            
+
         }
 
 
         private void main_screen_Load(object sender, EventArgs e)
-        {
+        {   
             updateComboBox(groupComboBoxGroups);
-            updateComboBox(groupComboBoxMeetings);
+            updateComboBox(meetingsChooseGroupCmbBx);
         }
         /// <summary>
         /// displays clock on main screen
@@ -85,7 +85,7 @@ namespace theSALAH
 
         private void updateComboBox(ComboBox comboBox)
         {
-           
+
             string[] usersGroups;
             usersGroups = user.getUsersGroups(loggedInUser);
             user.AddGroupsToComboBox(comboBox, usersGroups);
@@ -133,14 +133,14 @@ namespace theSALAH
 
             selectedGroup = chosenGroup;
 
-            if(group.checkForScoutIDs(chosenGroup))
+            if (group.checkForScoutIDs(chosenGroup))
             {
                 string[] scoutIDs = group.getScoutIDs(chosenGroup);
-            
+
                 string[] scoutNames = scout.getScoutNames(scoutIDs);
 
                 int i = 0;
-                
+
                 displayScoutsDGV.Columns.Add("Index", "Scout ID Number");
                 displayScoutsDGV.Columns.Add("Name", "Scout Name");
 
@@ -156,7 +156,7 @@ namespace theSALAH
         {
             if (displayScoutsDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                //MessageBox.Show(displayScoutsDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+
                 scout Scout = scout.getScout(int.Parse(displayScoutsDGV.Rows[e.RowIndex].Cells[0].Value.ToString()));
                 editScout open_screen = new editScout(Scout, selectedGroup, loggedInUser);
                 this.Close();
@@ -177,6 +177,57 @@ namespace theSALAH
             addNewMeeting open_screen = new addNewMeeting(loggedInUser);
             this.Close(); ;
             open_screen.Show();
+        }
+
+
+        private void meetingsChooseGroupCmbBx_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            displayMeetingsDGV.Columns.Clear();
+
+
+            string chosenGroupString = meetingsChooseGroupCmbBx.SelectedItem.ToString();
+
+
+            group chosenGroup = group.getGroup(chosenGroupString);
+
+            selectedGroup = chosenGroup;
+
+            if (group.checkForMeetingIDs(chosenGroup))
+            {
+                string[] meetingIDs = group.getMeetingIDs(chosenGroup);
+
+                string[] meetingNames = meeting.getMeetingNames(meetingIDs);
+
+                int i = 0;
+
+                displayMeetingsDGV.Columns.Add("Index", "Meeting ID Number");
+                displayMeetingsDGV.Columns.Add("Name", "Meeting Title");
+
+                foreach (string s in meetingNames)
+                {
+                    if (s == null || s == "")
+                    {
+                        displayMeetingsDGV.Rows.Add(meetingIDs[i], "No meeting name given");
+                        i++;
+                    }
+                    if (s != null && s != "")
+                    {
+                        displayMeetingsDGV.Rows.Add(meetingIDs[i], s);
+                        i++;
+                    }
+                }
+            }
+        }
+
+        private void displayMeetingsDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (displayMeetingsDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                meeting Meeting = meeting.getMeeting(int.Parse(displayMeetingsDGV.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                editMeeting open_screen = new editMeeting(loggedInUser, selectedGroup, Meeting);
+                this.Close();
+                open_screen.Show();
+            }
         }
     }
 }

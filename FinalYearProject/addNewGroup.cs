@@ -16,6 +16,7 @@ namespace theSALAH
         string name = "";
         string meetingplace = "";
         string type = "";
+        bool groupNameValid = true;
 
         public addNewGroup(user loggedInUser)
         {
@@ -23,25 +24,37 @@ namespace theSALAH
             InitializeComponent();
         }
 
-        private void addNewScoutBtn_Click(object sender, EventArgs e)
+        private void addNewGroupBtn_Click(object sender, EventArgs e)
         {
             name = groupNameTxtbx.Text;
             meetingplace = meetingPlaceTxtBx.Text;
             type = ageGroupCBox.Text;
-            group newGroup = new group(name, meetingplace, type);
-            bool userAdded = group.AddNewGroup(newGroup, user);
-            if (userAdded)
+            groupNameValid = true;
+            foreach (string s in group.getGroupNames(user))
             {
-                MessageBox.Show("Group was successfully added.");
-                main_screen open_screen = new main_screen(user);
-                this.Close();
-                open_screen.Show();
+                if (name == s)
+                {
+                    MessageBox.Show("This group name is already taken.");
+                    groupNameValid = false;
+                    break;
+                }
             }
-            if(!userAdded)
+            if (groupNameValid)
             {
-                MessageBox.Show("Group was not added. Please try again.");
+                group newGroup = new group(name, meetingplace, type);
+                bool userAdded = group.AddNewGroup(newGroup, user);
+                if (userAdded)
+                {
+                    MessageBox.Show("Group was successfully added.");
+                    main_screen open_screen = new main_screen(user);
+                    this.Close();
+                    open_screen.Show();
+                }
+                if (!userAdded)
+                {
+                    MessageBox.Show("Group was not added. Please try again.");
+                }
             }
-
         }
     }
 }

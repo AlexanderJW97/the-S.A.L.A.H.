@@ -131,11 +131,6 @@ namespace theSALAH.Properties
             return newAddress;
         }
 
-        private void saveChangesBtn_Click(object sender, EventArgs e)
-        {
-
-
-        }
 
         private void saveChangesBtn_Click_1(object sender, EventArgs e)
         {
@@ -149,7 +144,7 @@ namespace theSALAH.Properties
                 if (newGroup.group_name == currentGroup.group_name)
                     moveGroup = false;
 
-                group.changeGroup(currentGroup, newGroup, scoutToBeEdited, moveGroup);
+                group.changeGroupScout(currentGroup, newGroup, scoutToBeEdited, moveGroup);
 
                 int scoutId = scoutToBeEdited.scoutID;
 
