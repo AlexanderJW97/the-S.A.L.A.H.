@@ -41,8 +41,11 @@ namespace theSALAH
             }
             if (groupNameValid)
             {
-                group newGroup = new group(name, meetingplace, type);
+                location location = new location(name);
+                location.addLocation(location);
+                group newGroup = new group(name, location.locationID, type);
                 bool userAdded = group.AddNewGroup(newGroup, user);
+                
                 if (userAdded)
                 {
                     MessageBox.Show("Group was successfully added.");

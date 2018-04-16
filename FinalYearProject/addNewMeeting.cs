@@ -33,7 +33,9 @@ namespace theSALAH
         {
             string chosenGroupString = chooseGroupMeetingComboBox.SelectedItem.ToString();
             currentGroup = group.getGroup(chosenGroupString);
-            meetingPlaceTxtBx.Text = currentGroup.meeting_place;
+            location location = location.getLocationWId(currentGroup.location_ID);
+            string locationName = location.locationName;
+            meetingPlaceTxtBx.Text = locationName;
         }
 
         private void updateComboBox(ComboBox comboBox)

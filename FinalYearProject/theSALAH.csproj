@@ -71,6 +71,12 @@
     <Compile Include="addNewGroup.Designer.cs">
       <DependentUpon>addNewGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="addNewLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addNewLocation.Designer.cs">
+      <DependentUpon>addNewLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="addNewMeeting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     <Compile Include="user.cs" />
     <EmbeddedResource Include="addNewGroup.resx">
       <DependentUpon>addNewGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addNewLocation.resx">
+      <DependentUpon>addNewLocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="addNewMeeting.resx">
       <DependentUpon>addNewMeeting.cs</DependentUpon>

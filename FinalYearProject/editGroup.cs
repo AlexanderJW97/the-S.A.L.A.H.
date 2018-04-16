@@ -29,7 +29,10 @@ namespace theSALAH
         {
             titleLbl.Text = "Edit Group: " + group.group_name;
             groupNameTxtbx.Text = group.group_name;
-            meetingPlaceTxtBx.Text = group.meeting_place;
+            int locationID = group.location_ID;
+            
+            string locationName = location.getLocationWId(locationID).locationName;
+            meetingPlaceTxtBx.Text = locationName;
             ageGroupCBox.Text = group.group_type;
             currentUser = user;
         }
@@ -81,7 +84,18 @@ namespace theSALAH
                     if (result != null)
                     {
                         result.group_name = groupNameTxtbx.Text;
-                        result.meeting_place = meetingPlaceTxtBx.Text;
+                        bool locationExists = location.checkLocationExists(meetingPlaceTxtBx.Text);
+                        if (locationExists == true)
+                        {
+                            location location = location.getLocationWName(meetingPlaceTxtBx.Text);
+                            result.location_ID = location.locationID;
+                        }
+                        else
+                        {
+                            location location = new location(meetingPlaceTxtBx.Text);
+                            location.addLocation(location);
+                        }
+                        
                         result.group_type = ageGroupCBox.SelectedItem.ToString();
                     }
 

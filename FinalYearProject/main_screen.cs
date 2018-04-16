@@ -16,6 +16,7 @@ namespace theSALAH
         public ICollection<group> groups;
         public static user loggedInUser = new user();
         public static group selectedGroup;
+        public static location selectedLocation;
 
         public main_screen(user user)
         {
@@ -32,6 +33,7 @@ namespace theSALAH
         {   
             updateComboBox(groupComboBoxGroups);
             updateComboBox(meetingsChooseGroupCmbBx);
+            updateLocationsComboBox(locationCmbBx);
         }
         /// <summary>
         /// displays clock on main screen
@@ -89,6 +91,21 @@ namespace theSALAH
             string[] usersGroups;
             usersGroups = user.getUsersGroups(loggedInUser);
             user.AddGroupsToComboBox(comboBox, usersGroups);
+        }
+
+        private void updateLocationsComboBox(ComboBox comboBox)
+        {
+            string[] usersGroups;
+
+            usersGroups = user.getUsersGroups(loggedInUser);
+
+            string[] locationNames = new string[usersGroups.Length];
+
+            for (int i = 0; i < usersGroups.Length; i++)
+            {
+                locationNames[i] = group.getGroupLocation(usersGroups[i]);
+            }
+            location.addLocationsToComboBox(locationNames, locationCmbBx);
         }
 
         private void clearComboBox(ComboBox comboBox)
@@ -228,6 +245,65 @@ namespace theSALAH
                 this.Close();
                 open_screen.Show();
             }
+        }
+
+        private void addLocationBtn_Click(object sender, EventArgs e)
+        {
+            addNewLocation open_screen = new addNewLocation(loggedInUser);
+            this.Close();
+            open_screen.Show();
+        }
+
+        private void locationCmbBx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            resourcesDGV.Columns.Clear();
+
+            string chosenLocationString = locationCmbBx.SelectedItem.ToString();
+
+            location chosenLocation = location.getLocationWName(chosenLocationString);
+
+            selectedLocation = chosenLocation;
+
+            if (location.checkResources(selectedLocation))
+            {
+                string[] resourceIDs = location.getLocationResources(selectedLocation);
+                string[] resourceNames = resource.getResourceNames(resourceIDs);
+                int[] resourceQuantities = resource.getResourceQuantities(resourceIDs);
+                string[] resourceNotes = resource.getResourceNotes(resourceIDs);
+
+
+
+                resourcesDGV.Columns.Add("Index", "Meeting ID Number");
+                resourcesDGV.Columns.Add("Name", "Resource Name");
+                resourcesDGV.Columns.Add("Quant", "Quantity");
+                resourcesDGV.Columns.Add("Note", "Notes");
+
+                for (int i = 0; i <resourceIDs.Length;i++)
+                {
+                    string name = resourceNames[i];
+                    string id = resourceIDs[i];
+                    int quantity = resourceQuantities[i];
+                    string notes = resourceNotes[i];
+
+                    if (notes != null && notes != "")
+                    {
+                        displayMeetingsDGV.Rows.Add(id, name, quantity, notes);
+                        i++;
+                    }
+                    else if (notes == null || notes == "")
+                    {
+                        notes = "No notes.";
+                        displayMeetingsDGV.Rows.Add(id, name, quantity, notes);
+                        i++;
+                    }
+                }
+            }
+        }
+
+        private void updateGroupListLocationsBtn_Click(object sender, EventArgs e)
+        {
+            clearComboBox(locationCmbBx);
+            updateLocationsComboBox(locationCmbBx);
         }
     }
 }

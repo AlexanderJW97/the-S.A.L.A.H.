@@ -56,9 +56,12 @@ namespace theSALAH
             this.planMeetingBtn = new System.Windows.Forms.Button();
             this.meetingsChooseGroupCmbBx = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.editResourcesBtn = new System.Windows.Forms.Button();
-            this.editLocationsBtn = new System.Windows.Forms.Button();
-            this.locationComboBox = new System.Windows.Forms.ComboBox();
+            this.addLocationBtn = new System.Windows.Forms.Button();
+            this.updateGroupListLocationsBtn = new System.Windows.Forms.Button();
+            this.resourcesDGV = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.addResourceBtn = new System.Windows.Forms.Button();
+            this.locationCmbBx = new System.Windows.Forms.ComboBox();
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -67,6 +70,7 @@ namespace theSALAH
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayMeetingsDGV)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resourcesDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // upcoming_meetings_lbl
@@ -338,9 +342,12 @@ namespace theSALAH
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.editResourcesBtn);
-            this.tabPage5.Controls.Add(this.editLocationsBtn);
-            this.tabPage5.Controls.Add(this.locationComboBox);
+            this.tabPage5.Controls.Add(this.addLocationBtn);
+            this.tabPage5.Controls.Add(this.updateGroupListLocationsBtn);
+            this.tabPage5.Controls.Add(this.resourcesDGV);
+            this.tabPage5.Controls.Add(this.label2);
+            this.tabPage5.Controls.Add(this.addResourceBtn);
+            this.tabPage5.Controls.Add(this.locationCmbBx);
             this.tabPage5.Location = new System.Drawing.Point(4, 28);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -349,31 +356,65 @@ namespace theSALAH
             this.tabPage5.Text = "Resources";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // editResourcesBtn
+            // addLocationBtn
             // 
-            this.editResourcesBtn.Location = new System.Drawing.Point(472, 63);
-            this.editResourcesBtn.Name = "editResourcesBtn";
-            this.editResourcesBtn.Size = new System.Drawing.Size(222, 51);
-            this.editResourcesBtn.TabIndex = 2;
-            this.editResourcesBtn.Text = "Edit Resources";
-            this.editResourcesBtn.UseVisualStyleBackColor = true;
+            this.addLocationBtn.Location = new System.Drawing.Point(662, 89);
+            this.addLocationBtn.Name = "addLocationBtn";
+            this.addLocationBtn.Size = new System.Drawing.Size(306, 51);
+            this.addLocationBtn.TabIndex = 16;
+            this.addLocationBtn.Text = "Add a Location";
+            this.addLocationBtn.UseVisualStyleBackColor = true;
+            this.addLocationBtn.Click += new System.EventHandler(this.addLocationBtn_Click);
             // 
-            // editLocationsBtn
+            // updateGroupListLocationsBtn
             // 
-            this.editLocationsBtn.Location = new System.Drawing.Point(244, 63);
-            this.editLocationsBtn.Name = "editLocationsBtn";
-            this.editLocationsBtn.Size = new System.Drawing.Size(222, 51);
-            this.editLocationsBtn.TabIndex = 1;
-            this.editLocationsBtn.Text = "Edit Locations";
-            this.editLocationsBtn.UseVisualStyleBackColor = true;
+            this.updateGroupListLocationsBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.updateGroupListLocationsBtn.Location = new System.Drawing.Point(239, 36);
+            this.updateGroupListLocationsBtn.Name = "updateGroupListLocationsBtn";
+            this.updateGroupListLocationsBtn.Size = new System.Drawing.Size(208, 46);
+            this.updateGroupListLocationsBtn.TabIndex = 15;
+            this.updateGroupListLocationsBtn.Text = "Update Location List";
+            this.updateGroupListLocationsBtn.UseVisualStyleBackColor = true;
+            this.updateGroupListLocationsBtn.Click += new System.EventHandler(this.updateGroupListLocationsBtn_Click);
             // 
-            // locationComboBox
+            // resourcesDGV
             // 
-            this.locationComboBox.FormattingEnabled = true;
-            this.locationComboBox.Location = new System.Drawing.Point(13, 63);
-            this.locationComboBox.Name = "locationComboBox";
-            this.locationComboBox.Size = new System.Drawing.Size(205, 27);
-            this.locationComboBox.TabIndex = 0;
+            this.resourcesDGV.AllowUserToAddRows = false;
+            this.resourcesDGV.AllowUserToDeleteRows = false;
+            this.resourcesDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.resourcesDGV.Location = new System.Drawing.Point(6, 89);
+            this.resourcesDGV.Name = "resourcesDGV";
+            this.resourcesDGV.RowTemplate.Height = 28;
+            this.resourcesDGV.Size = new System.Drawing.Size(650, 580);
+            this.resourcesDGV.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.label2.Location = new System.Drawing.Point(2, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 19);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Locations To View";
+            // 
+            // addResourceBtn
+            // 
+            this.addResourceBtn.Location = new System.Drawing.Point(662, 146);
+            this.addResourceBtn.Name = "addResourceBtn";
+            this.addResourceBtn.Size = new System.Drawing.Size(306, 51);
+            this.addResourceBtn.TabIndex = 10;
+            this.addResourceBtn.Text = "Add a Resource";
+            this.addResourceBtn.UseVisualStyleBackColor = true;
+            // 
+            // locationCmbBx
+            // 
+            this.locationCmbBx.FormattingEnabled = true;
+            this.locationCmbBx.Location = new System.Drawing.Point(6, 46);
+            this.locationCmbBx.Name = "locationCmbBx";
+            this.locationCmbBx.Size = new System.Drawing.Size(227, 27);
+            this.locationCmbBx.TabIndex = 9;
+            this.locationCmbBx.SelectedIndexChanged += new System.EventHandler(this.locationCmbBx_SelectedIndexChanged);
             // 
             // main_screen_tmr
             // 
@@ -398,6 +439,8 @@ namespace theSALAH
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.displayMeetingsDGV)).EndInit();
             this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resourcesDGV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -429,9 +472,6 @@ namespace theSALAH
         private System.Windows.Forms.Button registerBtn;
         private System.Windows.Forms.Button planMeetingBtn;
         private System.Windows.Forms.ComboBox meetingsChooseGroupCmbBx;
-        private System.Windows.Forms.Button editResourcesBtn;
-        private System.Windows.Forms.Button editLocationsBtn;
-        private System.Windows.Forms.ComboBox locationComboBox;
         private System.Windows.Forms.Button updateComboBoxBtn;
         private System.Windows.Forms.Label chooseGroupLbl;
         private System.Windows.Forms.DataGridView displayScoutsDGV;
@@ -439,6 +479,12 @@ namespace theSALAH
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView displayMeetingsDGV;
+        private System.Windows.Forms.Button updateGroupListLocationsBtn;
+        private System.Windows.Forms.DataGridView resourcesDGV;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button addResourceBtn;
+        private System.Windows.Forms.ComboBox locationCmbBx;
+        private System.Windows.Forms.Button addLocationBtn;
     }
 }
 

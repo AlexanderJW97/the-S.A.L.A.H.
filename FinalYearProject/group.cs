@@ -13,7 +13,7 @@ namespace theSALAH
         public int groupID { get; set; }
 
         public string group_name { get; set; }
-        public string meeting_place { get; set; }
+        public int location_ID { get; set; }
         public string group_type { get; set; }
         public string scoutID { get; set; }
         public string meetingIDs { get; set; }
@@ -21,11 +21,11 @@ namespace theSALAH
         public group()
         { }
 
-        public group(string name, string place, string type)
+        public group(string name, int locationID, string type)
         {
 
             group_name = name;
-            meeting_place = place;
+            location_ID = locationID;
             group_type = type;
             scoutID = "";
         }
@@ -78,6 +78,56 @@ namespace theSALAH
             return scoutAdded;
         }
 
+
+        public static string getGroupLocation(string groupId)
+        {
+
+            string groupLocation;
+            try
+            {
+                int intGroupId = int.Parse(groupId);
+                group groupQuery = new group();
+
+                using (var ctx = new SALAHContext())
+                {
+                    groupQuery = ctx.Groups.FirstOrDefault(m => m.groupID == intGroupId);
+                    groupLocation = location.getLocationWId(groupQuery.location_ID).locationName;
+                    return groupLocation;
+                }
+            }
+            catch (Exception e)
+            {
+                groupLocation = null;
+                return groupLocation;
+            }
+
+        }
+
+        public static bool changeLocationOfGroup(int groupID, int newLocationID)
+        {
+            bool locationAdded = false;
+            try
+            {
+                using (var ctx = new SALAHContext())
+                {
+                    group groupQuery = ctx.Groups.FirstOrDefault(g => g.groupID == groupID);
+
+
+                    groupQuery.location_ID = newLocationID;
+
+                    ctx.SaveChanges();
+
+                    locationAdded = true;
+
+                }
+            }
+            catch
+            {
+                locationAdded = false;
+            }
+            return locationAdded;
+        }
+
         public static bool addMeetingToGroup(int groupID, int newMeetingID)
         {
             bool meetingAdded = false;
@@ -94,7 +144,7 @@ namespace theSALAH
 
                         foreach (string s in groupsMeetings)
                         {
-                            
+
 
                             if (s != "" && s != null)
                             {
@@ -184,11 +234,11 @@ namespace theSALAH
         public static string[] getMeetingIDs(group group)
         {
             string[] meetingIDsArray = group.meetingIDs.Split(',');
-            
+
             int count = 0;
             foreach (string s in meetingIDsArray)
             {
-                if (s != null && s!= "")
+                if (s != null && s != "")
                 {
                     count++;
                 }
@@ -251,9 +301,9 @@ namespace theSALAH
 
         public static string[] getGroupNames(user user)
         {
-            
+
             string[] userGroups = user.groupIDs.Split(',');
-            string[] existingGroupNames = new string[userGroups.Length-1];
+            string[] existingGroupNames = new string[userGroups.Length - 1];
             int i = 0;
 
             try
@@ -277,7 +327,7 @@ namespace theSALAH
                                 user.groupRemovedFromUser(groupID, user);
                         }
                     }
-                    
+
                 }
             }
             catch (Exception e)
