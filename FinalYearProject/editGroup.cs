@@ -29,7 +29,7 @@ namespace theSALAH
         {
             titleLbl.Text = "Edit Group: " + group.group_name;
             groupNameTxtbx.Text = group.group_name;
-            int locationID = group.location_ID;
+            string locationID = group.location_ID;
             
             string locationName = location.getLocationWId(locationID).locationName;
             meetingPlaceTxtBx.Text = locationName;
@@ -88,12 +88,16 @@ namespace theSALAH
                         if (locationExists == true)
                         {
                             location location = location.getLocationWName(meetingPlaceTxtBx.Text);
-                            result.location_ID = location.locationID;
+                            group.changeLocationOfGroup(groupId, location.locationID);
+                            string locationIDString = location.locationID.ToString();
+                            result.location_ID = locationIDString;
                         }
                         else
                         {
                             location location = new location(meetingPlaceTxtBx.Text);
                             location.addLocation(location);
+                            group.changeLocationOfGroup(groupId, location.locationID);
+
                         }
                         
                         result.group_type = ageGroupCBox.SelectedItem.ToString();

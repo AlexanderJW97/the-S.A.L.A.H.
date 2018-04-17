@@ -27,3 +27,4 @@ D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProj
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.csprojResolveAssemblyReference.cache
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.editMeeting.resources
 D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.addNewLocation.resources
+D:\Libraries\Documents\University Year 3\08341_Development_Project\FinalYearProject\FinalYearProject\obj\Debug\theSALAH.editLocation.resources

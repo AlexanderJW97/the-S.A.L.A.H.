@@ -182,12 +182,20 @@ namespace theSALAH
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void editGroupBtn_Click(object sender, EventArgs e)
         {
-            editGroup open_screen = new editGroup(selectedGroup, loggedInUser);
-            this.Close(); ;
-            open_screen.Show();
+            if (selectedGroup != null)
+            {
+                editGroup open_screen = new editGroup(selectedGroup, loggedInUser);
+                this.Close(); ;
+                open_screen.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a group to edit.");
+            }
         }
+            
 
         private void planMeetingBtn_Click(object sender, EventArgs e)
         {
@@ -304,6 +312,24 @@ namespace theSALAH
         {
             clearComboBox(locationCmbBx);
             updateLocationsComboBox(locationCmbBx);
+        }
+
+        private void editLocationBtn_Click(object sender, EventArgs e)
+        {
+            location editLocation = new location();
+            if (locationCmbBx.SelectedItem.ToString() != null)
+            { editLocation.locationName = locationCmbBx.SelectedItem.ToString();
+            editLocation = location.getLocationWName(editLocation.locationName);
+            group locationsGroup = group.GetGroupWLocation(editLocation.locationID);
+            editLocation open_screen = new editLocation(loggedInUser, editLocation, locationsGroup);
+            open_screen.Show();
+            this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a location to edit.");
+            }
+            
         }
     }
 }

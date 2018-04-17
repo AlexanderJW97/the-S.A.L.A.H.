@@ -13,7 +13,7 @@ namespace theSALAH
         public int groupID { get; set; }
 
         public string group_name { get; set; }
-        public int location_ID { get; set; }
+        public string location_ID { get; set; }
         public string group_type { get; set; }
         public string scoutID { get; set; }
         public string meetingIDs { get; set; }
@@ -21,7 +21,7 @@ namespace theSALAH
         public group()
         { }
 
-        public group(string name, int locationID, string type)
+        public group(string name, string locationID, string type)
         {
 
             group_name = name;
@@ -91,6 +91,7 @@ namespace theSALAH
                 using (var ctx = new SALAHContext())
                 {
                     groupQuery = ctx.Groups.FirstOrDefault(m => m.groupID == intGroupId);
+
                     groupLocation = location.getLocationWId(groupQuery.location_ID).locationName;
                     return groupLocation;
                 }
@@ -106,6 +107,7 @@ namespace theSALAH
         public static bool changeLocationOfGroup(int groupID, int newLocationID)
         {
             bool locationAdded = false;
+            string locationIDString = newLocationID.ToString();
             try
             {
                 using (var ctx = new SALAHContext())
@@ -113,7 +115,7 @@ namespace theSALAH
                     group groupQuery = ctx.Groups.FirstOrDefault(g => g.groupID == groupID);
 
 
-                    groupQuery.location_ID = newLocationID;
+                    groupQuery.location_ID = locationIDString;
 
                     ctx.SaveChanges();
 
@@ -577,6 +579,37 @@ namespace theSALAH
             return userRemovedFromGroup;
         }
 
+        public static bool RemoveLocationFromGroup(location location)
+        {
+            bool locationRemoved = true;
+            group group = new group();
+            string locationIDString = location.locationID.ToString();
+            try
+            {
+                using (var ctx = new SALAHContext())
+                {
+                    var result = ctx.Groups.SingleOrDefault(g => g.location_ID == locationIDString);
+                    if (result != null)
+                    {
+                        group = result;
+                    }
+                    group.location_ID = null;
+                    
+                    ctx.SaveChanges();
+                    ctx.Dispose();
+                    locationRemoved = true;
+                    return locationRemoved;
+                }
+            }
+            catch
+            {
+                locationRemoved = false;
+                return locationRemoved;
+            }
+
+        }
+
+
 
         public static bool deleteGroup(int groupID, user currentUser)
         {
@@ -601,5 +634,24 @@ namespace theSALAH
             }
             return groupDeleted;
         }
+
+        public static group GetGroupWLocation(int locationID)
+        {
+            group group = new group();
+            string locationIDString = locationID.ToString();
+            using (var ctx = new SALAHContext())
+            {
+                var query = from data in ctx.Groups //create a query to find the groupIDs of the logged in user
+                            where data.location_ID == locationIDString
+                            select new { data.groupID };
+
+                foreach (var result in query)
+                {
+                    group = ctx.Groups.FirstOrDefault(m => m.groupID == result.groupID);
+                }
+            }
+            return group;
+        }
     }
 }
+

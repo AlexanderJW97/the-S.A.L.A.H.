@@ -41,7 +41,7 @@ namespace theSALAH
             this.log_out_btn = new System.Windows.Forms.Button();
             this.home_screen_time_lbl = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.editGroupBtn = new System.Windows.Forms.Button();
             this.displayScoutsDGV = new System.Windows.Forms.DataGridView();
             this.updateComboBoxBtn = new System.Windows.Forms.Button();
             this.chooseGroupLbl = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@ namespace theSALAH
             this.addResourceBtn = new System.Windows.Forms.Button();
             this.locationCmbBx = new System.Windows.Forms.ComboBox();
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
+            this.editLocationBtn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -176,7 +177,7 @@ namespace theSALAH
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.editGroupBtn);
             this.tabPage2.Controls.Add(this.displayScoutsDGV);
             this.tabPage2.Controls.Add(this.updateComboBoxBtn);
             this.tabPage2.Controls.Add(this.chooseGroupLbl);
@@ -190,16 +191,16 @@ namespace theSALAH
             this.tabPage2.Text = "Scouts";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // editGroupBtn
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.button1.Location = new System.Drawing.Point(671, 153);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(306, 51);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Edit Selected Group";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.editGroupBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.editGroupBtn.Location = new System.Drawing.Point(671, 153);
+            this.editGroupBtn.Name = "editGroupBtn";
+            this.editGroupBtn.Size = new System.Drawing.Size(306, 51);
+            this.editGroupBtn.TabIndex = 5;
+            this.editGroupBtn.Text = "Edit Selected Group";
+            this.editGroupBtn.UseVisualStyleBackColor = true;
+            this.editGroupBtn.Click += new System.EventHandler(this.editGroupBtn_Click);
             // 
             // displayScoutsDGV
             // 
@@ -342,6 +343,7 @@ namespace theSALAH
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.editLocationBtn);
             this.tabPage5.Controls.Add(this.addLocationBtn);
             this.tabPage5.Controls.Add(this.updateGroupListLocationsBtn);
             this.tabPage5.Controls.Add(this.resourcesDGV);
@@ -358,7 +360,7 @@ namespace theSALAH
             // 
             // addLocationBtn
             // 
-            this.addLocationBtn.Location = new System.Drawing.Point(662, 89);
+            this.addLocationBtn.Location = new System.Drawing.Point(662, 146);
             this.addLocationBtn.Name = "addLocationBtn";
             this.addLocationBtn.Size = new System.Drawing.Size(306, 51);
             this.addLocationBtn.TabIndex = 16;
@@ -400,7 +402,7 @@ namespace theSALAH
             // 
             // addResourceBtn
             // 
-            this.addResourceBtn.Location = new System.Drawing.Point(662, 146);
+            this.addResourceBtn.Location = new System.Drawing.Point(662, 203);
             this.addResourceBtn.Name = "addResourceBtn";
             this.addResourceBtn.Size = new System.Drawing.Size(306, 51);
             this.addResourceBtn.TabIndex = 10;
@@ -419,6 +421,16 @@ namespace theSALAH
             // main_screen_tmr
             // 
             this.main_screen_tmr.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // editLocationBtn
+            // 
+            this.editLocationBtn.Location = new System.Drawing.Point(662, 89);
+            this.editLocationBtn.Name = "editLocationBtn";
+            this.editLocationBtn.Size = new System.Drawing.Size(306, 51);
+            this.editLocationBtn.TabIndex = 17;
+            this.editLocationBtn.Text = "Edit Selected Location";
+            this.editLocationBtn.UseVisualStyleBackColor = true;
+            this.editLocationBtn.Click += new System.EventHandler(this.editLocationBtn_Click);
             // 
             // main_screen
             // 
@@ -475,7 +487,7 @@ namespace theSALAH
         private System.Windows.Forms.Button updateComboBoxBtn;
         private System.Windows.Forms.Label chooseGroupLbl;
         private System.Windows.Forms.DataGridView displayScoutsDGV;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button editGroupBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView displayMeetingsDGV;
@@ -485,6 +497,7 @@ namespace theSALAH
         private System.Windows.Forms.Button addResourceBtn;
         private System.Windows.Forms.ComboBox locationCmbBx;
         private System.Windows.Forms.Button addLocationBtn;
+        private System.Windows.Forms.Button editLocationBtn;
     }
 }
 

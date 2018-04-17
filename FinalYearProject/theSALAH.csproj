@@ -83,6 +83,12 @@
     <Compile Include="addNewMeeting.Designer.cs">
       <DependentUpon>addNewMeeting.cs</DependentUpon>
     </Compile>
+    <Compile Include="addNewResource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addNewResource.Designer.cs">
+      <DependentUpon>addNewResource.cs</DependentUpon>
+    </Compile>
     <Compile Include="addNewScout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,11 +102,23 @@
     <Compile Include="editGroup.Designer.cs">
       <DependentUpon>editGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="editLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editLocation.Designer.cs">
+      <DependentUpon>editLocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="editMeeting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="editMeeting.Designer.cs">
       <DependentUpon>editMeeting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editResource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editResource.Designer.cs">
+      <DependentUpon>editResource.cs</DependentUpon>
     </Compile>
     <Compile Include="group.cs" />
     <Compile Include="location.cs" />
@@ -166,14 +184,23 @@
     <EmbeddedResource Include="addNewMeeting.resx">
       <DependentUpon>addNewMeeting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addNewResource.resx">
+      <DependentUpon>addNewResource.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addNewScout.resx">
       <DependentUpon>addNewScout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editGroup.resx">
       <DependentUpon>editGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="editLocation.resx">
+      <DependentUpon>editLocation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editMeeting.resx">
       <DependentUpon>editMeeting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editResource.resx">
+      <DependentUpon>editResource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>

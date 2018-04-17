@@ -48,21 +48,25 @@ namespace theSALAH
             }
         }
 
-        public static location getLocationWId(int locationID)
+        public static location getLocationWId(string locationID)
         {
             location location = new location();
 
-            using (var ctx = new SALAHContext())
+            if (locationID != null && locationID != "")
             {
-                var query = from data in ctx.Locations //create a query to find the groupIDs of the logged in user
-                            where data.locationID == locationID
-                            select new { data.locationName, data.Address, data.resourceIDs };
-
-                foreach (var result in query)
+                int locationIDInt = int.Parse(locationID);
+                using (var ctx = new SALAHContext())
                 {
-                    location.locationName = result.locationName;
-                    location.Address = result.Address;
-                    location.resourceIDs = result.resourceIDs;
+                    var query = from data in ctx.Locations //create a query to find the groupIDs of the logged in user
+                                where data.locationID == locationIDInt
+                                select new { data.locationName, data.Address, data.resourceIDs };
+
+                    foreach (var result in query)
+                    {
+                        location.locationName = result.locationName;
+                        location.Address = result.Address;
+                        location.resourceIDs = result.resourceIDs;
+                    }
                 }
             }
             return location;
@@ -74,16 +78,7 @@ namespace theSALAH
 
             using (var ctx = new SALAHContext())
             {
-                var query = from data in ctx.Locations //create a query to find the groupIDs of the logged in user
-                            where data.locationName == locationName
-                            select new { data.locationName, data.Address, data.resourceIDs };
-
-                foreach (var result in query)
-                {
-                    location.locationName = result.locationName;
-                    location.Address = result.Address;
-                    location.resourceIDs = result.resourceIDs;
-                }
+                location = ctx.Locations.FirstOrDefault(l => l.locationName == locationName);
             }
             return location;
         }
@@ -95,11 +90,9 @@ namespace theSALAH
 
             using (var ctx = new SALAHContext())
             {
-                var query = from data in ctx.Locations //create a query to find the groupIDs of the logged in user
-                            where data.locationName == locationName
-                            select new { data.locationName, data.Address, data.resourceIDs };
+                location = ctx.Locations.FirstOrDefault(l => l.locationName == locationName);
 
-                if (query != null)
+                if (location != null)
                 {
                     locationExists = true;
                 }
@@ -193,6 +186,62 @@ namespace theSALAH
                     locationComboBox.Items.Add(locationNames[i]); //add the latest array entry into the combobox
             }
 
+        }
+
+        public static bool DeleteLocation(location location, group group)
+        {
+            bool locationDeleted = false;
+            location locationQuery = new location();
+            int locationIDint = location.locationID;
+
+            using (var ctx = new SALAHContext())
+            {
+                try
+                {
+                    locationQuery = ctx.Locations.FirstOrDefault(l => l.locationID == locationIDint);
+                    ctx.Locations.Remove(locationQuery);
+                    ctx.SaveChanges();
+                    ctx.Dispose();
+                    if (group.RemoveLocationFromGroup(location))
+                    {
+                        locationDeleted = true;
+                    }
+                }
+                catch
+                {
+                    locationDeleted = false;
+                }
+            }
+            return locationDeleted;
+        }
+
+        public static bool changeLocationsGroup(location location, group oldGroup, group newGroup, bool moveGroup)
+        {
+            bool locationMoved = true;
+            string locationIDString = location.locationID.ToString();
+            try
+            {
+                if (moveGroup == true)
+                {
+                    using (var ctx = new SALAHContext())
+                    {
+                        oldGroup = ctx.Groups.FirstOrDefault(g => g.location_ID == locationIDString);
+                        oldGroup.location_ID = null;
+                        newGroup = ctx.Groups.FirstOrDefault(g => g.groupID == newGroup.groupID);
+                        newGroup.location_ID = location.locationID.ToString();
+                        locationMoved = true;
+                        ctx.SaveChanges();
+                        ctx.Dispose();
+                        return locationMoved;
+                    }
+                }
+                return locationMoved;
+            }
+            catch
+            {
+                locationMoved = false;
+                return locationMoved;
+            }
         }
     }
 }

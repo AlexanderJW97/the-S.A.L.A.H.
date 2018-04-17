@@ -41,9 +41,10 @@ namespace theSALAH
             }
             if (groupNameValid)
             {
-                location location = new location(name);
+                location location = new location(meetingplace);
                 location.addLocation(location);
-                group newGroup = new group(name, location.locationID, type);
+                string locationIDString = location.locationID.ToString();
+                group newGroup = new group(name, locationIDString, type);
                 bool userAdded = group.AddNewGroup(newGroup, user);
                 
                 if (userAdded)
