@@ -110,31 +110,32 @@ namespace theSALAH
             return hasResources;
         }
 
-        public static bool addResourceToLocation(location location, int resourceId)
+        public static bool addResourceToLocation(int locationId, int resourceId)
         {
             bool resourceAdded = false;
             try
             {
                 using (var ctx = new SALAHContext())
                 {
-                    if (location.resourceIDs != null)
+                    location locationQuery = ctx.Locations.FirstOrDefault(l => l.locationID == locationId);
+                    if (locationQuery.resourceIDs != null)
                     {
-                        string[] locationsResources = location.resourceIDs.Split(',');
+                        string[] locationsResources = locationQuery.resourceIDs.Split(',');
 
-                        location.resourceIDs = "";
+                        locationQuery.resourceIDs = "";
 
                         foreach (string s in locationsResources)
                         {
                             if (s != "" && s != null)
                             {
-                                location.resourceIDs = location.resourceIDs + s + ",";
+                                locationQuery.resourceIDs = locationQuery.resourceIDs + s + ",";
                             }
                         }
-                        location.resourceIDs += resourceId + ",";
+                        locationQuery.resourceIDs += resourceId + ",";
                     }
-                    if (location.resourceIDs == null)
+                    if (locationQuery.resourceIDs == null)
                     {
-                        location.resourceIDs = resourceId + ",";
+                        locationQuery.resourceIDs = resourceId + ",";
                     }
 
                     ctx.SaveChanges();
@@ -241,6 +242,60 @@ namespace theSALAH
             {
                 locationMoved = false;
                 return locationMoved;
+            }
+        }
+
+        public static bool RemoveResourceFromLocation(location location, resource resourceToRemove)
+        {
+            bool resourceRemoved = false;
+            location currentLocation;
+            string[] resourceIDsArray = location.resourceIDs.Split(',');
+
+            int count = 0;
+            foreach (string s in resourceIDsArray)
+            {
+                if (s != null && s != "")
+                {
+                    count++;
+                }
+            }
+            string[] resourceIDs = new string[count];
+            int i = 0;
+            foreach (string s in resourceIDsArray)
+            {
+                if (s != null && s != "")
+                {
+                    resourceIDs[i] = s;
+                    i++;
+                }
+            }
+
+            string locationIDString = location.locationID.ToString();
+            try
+            {
+                using (var ctx = new SALAHContext())
+                {
+                    currentLocation = ctx.Locations.FirstOrDefault(l => l.locationID == location.locationID);
+                    currentLocation.resourceIDs = "";
+                    foreach (string s in resourceIDs)
+                    {
+                        if (s != resourceToRemove.resourceID.ToString())
+                        {
+                            currentLocation.resourceIDs += s + ",";
+                        }
+                    }
+
+                    ctx.SaveChanges();
+                    resourceRemoved = true;
+                    ctx.Dispose();
+                    return resourceRemoved;
+                }
+
+            }
+            catch
+            {
+                resourceRemoved = false;
+                return resourceRemoved;
             }
         }
     }

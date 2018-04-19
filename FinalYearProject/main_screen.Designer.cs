@@ -56,6 +56,7 @@ namespace theSALAH
             this.planMeetingBtn = new System.Windows.Forms.Button();
             this.meetingsChooseGroupCmbBx = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.editLocationBtn = new System.Windows.Forms.Button();
             this.addLocationBtn = new System.Windows.Forms.Button();
             this.updateGroupListLocationsBtn = new System.Windows.Forms.Button();
             this.resourcesDGV = new System.Windows.Forms.DataGridView();
@@ -63,7 +64,6 @@ namespace theSALAH
             this.addResourceBtn = new System.Windows.Forms.Button();
             this.locationCmbBx = new System.Windows.Forms.ComboBox();
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
-            this.editLocationBtn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -358,6 +358,16 @@ namespace theSALAH
             this.tabPage5.Text = "Resources";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // editLocationBtn
+            // 
+            this.editLocationBtn.Location = new System.Drawing.Point(662, 89);
+            this.editLocationBtn.Name = "editLocationBtn";
+            this.editLocationBtn.Size = new System.Drawing.Size(306, 51);
+            this.editLocationBtn.TabIndex = 17;
+            this.editLocationBtn.Text = "Edit Selected Location";
+            this.editLocationBtn.UseVisualStyleBackColor = true;
+            this.editLocationBtn.Click += new System.EventHandler(this.editLocationBtn_Click);
+            // 
             // addLocationBtn
             // 
             this.addLocationBtn.Location = new System.Drawing.Point(662, 146);
@@ -389,6 +399,7 @@ namespace theSALAH
             this.resourcesDGV.RowTemplate.Height = 28;
             this.resourcesDGV.Size = new System.Drawing.Size(650, 580);
             this.resourcesDGV.TabIndex = 14;
+            this.resourcesDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resourcesDGV_CellContentClick);
             // 
             // label2
             // 
@@ -408,6 +419,7 @@ namespace theSALAH
             this.addResourceBtn.TabIndex = 10;
             this.addResourceBtn.Text = "Add a Resource";
             this.addResourceBtn.UseVisualStyleBackColor = true;
+            this.addResourceBtn.Click += new System.EventHandler(this.addResourceBtn_Click);
             // 
             // locationCmbBx
             // 
@@ -421,16 +433,6 @@ namespace theSALAH
             // main_screen_tmr
             // 
             this.main_screen_tmr.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // editLocationBtn
-            // 
-            this.editLocationBtn.Location = new System.Drawing.Point(662, 89);
-            this.editLocationBtn.Name = "editLocationBtn";
-            this.editLocationBtn.Size = new System.Drawing.Size(306, 51);
-            this.editLocationBtn.TabIndex = 17;
-            this.editLocationBtn.Text = "Edit Selected Location";
-            this.editLocationBtn.UseVisualStyleBackColor = true;
-            this.editLocationBtn.Click += new System.EventHandler(this.editLocationBtn_Click);
             // 
             // main_screen
             // 

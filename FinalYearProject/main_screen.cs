@@ -281,7 +281,7 @@ namespace theSALAH
 
 
 
-                resourcesDGV.Columns.Add("Index", "Meeting ID Number");
+                resourcesDGV.Columns.Add("Index", "Resource ID Number");
                 resourcesDGV.Columns.Add("Name", "Resource Name");
                 resourcesDGV.Columns.Add("Quant", "Quantity");
                 resourcesDGV.Columns.Add("Note", "Notes");
@@ -295,13 +295,13 @@ namespace theSALAH
 
                     if (notes != null && notes != "")
                     {
-                        displayMeetingsDGV.Rows.Add(id, name, quantity, notes);
+                        resourcesDGV.Rows.Add(id, name, quantity, notes);
                         i++;
                     }
                     else if (notes == null || notes == "")
                     {
                         notes = "No notes.";
-                        displayMeetingsDGV.Rows.Add(id, name, quantity, notes);
+                        resourcesDGV.Rows.Add(id, name, quantity, notes);
                         i++;
                     }
                 }
@@ -330,6 +330,24 @@ namespace theSALAH
                 MessageBox.Show("Please select a location to edit.");
             }
             
+        }
+
+        private void addResourceBtn_Click(object sender, EventArgs e)
+        {
+            addNewResource open_screen = new addNewResource(loggedInUser, location.getLocationWName(locationCmbBx.SelectedItem.ToString()));
+            open_screen.Show();
+            this.Close();
+        }
+
+        private void resourcesDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (resourcesDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                resource resource = resource.GetResource(int.Parse(resourcesDGV.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                editResource open_screen = new editResource(loggedInUser, selectedLocation, resource);//create this method
+                this.Close();
+                open_screen.Show();
+            }
         }
     }
 }

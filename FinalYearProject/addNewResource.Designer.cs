@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.deadtxtbx = new System.Windows.Forms.Label();
-            this.venueNotesTxtBx = new System.Windows.Forms.RichTextBox();
+            this.resourceNotesTxtBx = new System.Windows.Forms.RichTextBox();
             this.updateGroupComboBoxBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.chooseGroupLocationComboBox = new System.Windows.Forms.ComboBox();
-            this.cancelNewLocationBtn = new System.Windows.Forms.Button();
-            this.addNewLocationBtn = new System.Windows.Forms.Button();
+            this.chooseLocationComboBox = new System.Windows.Forms.ComboBox();
+            this.cancelNewResourceBtn = new System.Windows.Forms.Button();
+            this.addNewResourceBtn = new System.Windows.Forms.Button();
             this.titleLbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.locationNameTxtBx = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.resourceNameTxtBx = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.quantityUpDown = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // deadtxtbx
@@ -52,13 +53,13 @@
             this.deadtxtbx.TabIndex = 121;
             this.deadtxtbx.Text = "Resource Notes:";
             // 
-            // venueNotesTxtBx
+            // resourceNotesTxtBx
             // 
-            this.venueNotesTxtBx.Location = new System.Drawing.Point(227, 182);
-            this.venueNotesTxtBx.Name = "venueNotesTxtBx";
-            this.venueNotesTxtBx.Size = new System.Drawing.Size(298, 174);
-            this.venueNotesTxtBx.TabIndex = 106;
-            this.venueNotesTxtBx.Text = "Enter a brief description for your meeting here";
+            this.resourceNotesTxtBx.Location = new System.Drawing.Point(227, 182);
+            this.resourceNotesTxtBx.Name = "resourceNotesTxtBx";
+            this.resourceNotesTxtBx.Size = new System.Drawing.Size(298, 174);
+            this.resourceNotesTxtBx.TabIndex = 106;
+            this.resourceNotesTxtBx.Text = "Enter any relevant notes about your resource here.";
             // 
             // updateGroupComboBoxBtn
             // 
@@ -80,34 +81,37 @@
             this.label1.TabIndex = 104;
             this.label1.Text = "Location of the Resource:";
             // 
-            // chooseGroupLocationComboBox
+            // chooseLocationComboBox
             // 
-            this.chooseGroupLocationComboBox.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.chooseGroupLocationComboBox.FormattingEnabled = true;
-            this.chooseGroupLocationComboBox.Location = new System.Drawing.Point(227, 70);
-            this.chooseGroupLocationComboBox.Name = "chooseGroupLocationComboBox";
-            this.chooseGroupLocationComboBox.Size = new System.Drawing.Size(298, 27);
-            this.chooseGroupLocationComboBox.TabIndex = 103;
+            this.chooseLocationComboBox.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.chooseLocationComboBox.FormattingEnabled = true;
+            this.chooseLocationComboBox.Location = new System.Drawing.Point(227, 70);
+            this.chooseLocationComboBox.Name = "chooseLocationComboBox";
+            this.chooseLocationComboBox.Size = new System.Drawing.Size(298, 27);
+            this.chooseLocationComboBox.TabIndex = 103;
+            this.chooseLocationComboBox.SelectedIndexChanged += new System.EventHandler(this.chooseLocationComboBox_SelectedIndexChanged);
             // 
-            // cancelNewLocationBtn
+            // cancelNewResourceBtn
             // 
-            this.cancelNewLocationBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.cancelNewLocationBtn.Location = new System.Drawing.Point(752, 327);
-            this.cancelNewLocationBtn.Name = "cancelNewLocationBtn";
-            this.cancelNewLocationBtn.Size = new System.Drawing.Size(117, 53);
-            this.cancelNewLocationBtn.TabIndex = 102;
-            this.cancelNewLocationBtn.Text = "Cancel";
-            this.cancelNewLocationBtn.UseVisualStyleBackColor = true;
+            this.cancelNewResourceBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.cancelNewResourceBtn.Location = new System.Drawing.Point(752, 327);
+            this.cancelNewResourceBtn.Name = "cancelNewResourceBtn";
+            this.cancelNewResourceBtn.Size = new System.Drawing.Size(117, 53);
+            this.cancelNewResourceBtn.TabIndex = 102;
+            this.cancelNewResourceBtn.Text = "Cancel";
+            this.cancelNewResourceBtn.UseVisualStyleBackColor = true;
+            this.cancelNewResourceBtn.Click += new System.EventHandler(this.cancelNewResourceBtn_Click);
             // 
-            // addNewLocationBtn
+            // addNewResourceBtn
             // 
-            this.addNewLocationBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
-            this.addNewLocationBtn.Location = new System.Drawing.Point(875, 327);
-            this.addNewLocationBtn.Name = "addNewLocationBtn";
-            this.addNewLocationBtn.Size = new System.Drawing.Size(117, 53);
-            this.addNewLocationBtn.TabIndex = 101;
-            this.addNewLocationBtn.Text = "OK";
-            this.addNewLocationBtn.UseVisualStyleBackColor = true;
+            this.addNewResourceBtn.Font = new System.Drawing.Font("Times New Roman", 8.25F);
+            this.addNewResourceBtn.Location = new System.Drawing.Point(875, 327);
+            this.addNewResourceBtn.Name = "addNewResourceBtn";
+            this.addNewResourceBtn.Size = new System.Drawing.Size(117, 53);
+            this.addNewResourceBtn.TabIndex = 101;
+            this.addNewResourceBtn.Text = "OK";
+            this.addNewResourceBtn.UseVisualStyleBackColor = true;
+            this.addNewResourceBtn.Click += new System.EventHandler(this.addNewResourceBtn_Click);
             // 
             // titleLbl
             // 
@@ -129,19 +133,12 @@
             this.label3.TabIndex = 107;
             this.label3.Text = "Name of Resource:";
             // 
-            // locationNameTxtBx
+            // resourceNameTxtBx
             // 
-            this.locationNameTxtBx.Location = new System.Drawing.Point(227, 150);
-            this.locationNameTxtBx.Name = "locationNameTxtBx";
-            this.locationNameTxtBx.Size = new System.Drawing.Size(298, 26);
-            this.locationNameTxtBx.TabIndex = 108;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(227, 362);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(298, 26);
-            this.textBox1.TabIndex = 123;
+            this.resourceNameTxtBx.Location = new System.Drawing.Point(227, 150);
+            this.resourceNameTxtBx.Name = "resourceNameTxtBx";
+            this.resourceNameTxtBx.Size = new System.Drawing.Size(298, 26);
+            this.resourceNameTxtBx.TabIndex = 108;
             // 
             // label2
             // 
@@ -153,25 +150,44 @@
             this.label2.TabIndex = 122;
             this.label2.Text = "Quantity of Resource:";
             // 
+            // quantityUpDown
+            // 
+            this.quantityUpDown.Location = new System.Drawing.Point(227, 363);
+            this.quantityUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quantityUpDown.Name = "quantityUpDown";
+            this.quantityUpDown.Size = new System.Drawing.Size(298, 26);
+            this.quantityUpDown.TabIndex = 124;
+            this.quantityUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.quantityUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // addNewResource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 394);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.quantityUpDown);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.deadtxtbx);
-            this.Controls.Add(this.locationNameTxtBx);
+            this.Controls.Add(this.resourceNameTxtBx);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.venueNotesTxtBx);
+            this.Controls.Add(this.resourceNotesTxtBx);
             this.Controls.Add(this.updateGroupComboBoxBtn);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.chooseGroupLocationComboBox);
-            this.Controls.Add(this.cancelNewLocationBtn);
-            this.Controls.Add(this.addNewLocationBtn);
+            this.Controls.Add(this.chooseLocationComboBox);
+            this.Controls.Add(this.cancelNewResourceBtn);
+            this.Controls.Add(this.addNewResourceBtn);
             this.Controls.Add(this.titleLbl);
             this.Name = "addNewResource";
             this.Text = "Add New Resource";
+            ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,16 +196,16 @@
         #endregion
 
         private System.Windows.Forms.Label deadtxtbx;
-        private System.Windows.Forms.RichTextBox venueNotesTxtBx;
+        private System.Windows.Forms.RichTextBox resourceNotesTxtBx;
         private System.Windows.Forms.Button updateGroupComboBoxBtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox chooseGroupLocationComboBox;
-        private System.Windows.Forms.Button cancelNewLocationBtn;
-        private System.Windows.Forms.Button addNewLocationBtn;
+        private System.Windows.Forms.ComboBox chooseLocationComboBox;
+        private System.Windows.Forms.Button cancelNewResourceBtn;
+        private System.Windows.Forms.Button addNewResourceBtn;
         private System.Windows.Forms.Label titleLbl;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox locationNameTxtBx;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox resourceNameTxtBx;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown quantityUpDown;
     }
 }
