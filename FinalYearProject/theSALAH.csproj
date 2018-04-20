@@ -96,6 +96,12 @@
       <DependentUpon>addNewScout.cs</DependentUpon>
     </Compile>
     <Compile Include="address.cs" />
+    <Compile Include="attendanceScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="attendanceScreen.Designer.cs">
+      <DependentUpon>attendanceScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="editGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addNewScout.resx">
       <DependentUpon>addNewScout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="attendanceScreen.resx">
+      <DependentUpon>attendanceScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editGroup.resx">
       <DependentUpon>editGroup.cs</DependentUpon>

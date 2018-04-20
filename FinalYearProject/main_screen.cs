@@ -223,24 +223,28 @@ namespace theSALAH
 
                 string[] meetingNames = meeting.getMeetingNames(meetingIDs);
 
+                DateTime[] meetingDates = meeting.GetMeetingDateTime(meetingIDs); 
+
                 int i = 0;
 
                 displayMeetingsDGV.Columns.Add("Index", "Meeting ID Number");
                 displayMeetingsDGV.Columns.Add("Name", "Meeting Title");
+                displayMeetingsDGV.Columns.Add("Date", "Date of Meeting");
 
                 foreach (string s in meetingNames)
                 {
                     if (s == null || s == "")
                     {
-                        displayMeetingsDGV.Rows.Add(meetingIDs[i], "No meeting name given");
+                        displayMeetingsDGV.Rows.Add(meetingIDs[i], "No meeting name given", meetingDates[i]);
                         i++;
                     }
                     if (s != null && s != "")
                     {
-                        displayMeetingsDGV.Rows.Add(meetingIDs[i], s);
+                        displayMeetingsDGV.Rows.Add(meetingIDs[i], s, meetingDates[i]);
                         i++;
                     }
                 }
+                displayMeetingsDGV.Sort(displayMeetingsDGV.Columns[2], ListSortDirection.Ascending);
             }
         }
 
@@ -306,6 +310,7 @@ namespace theSALAH
                     }
                 }
             }
+            
         }
 
         private void updateGroupListLocationsBtn_Click(object sender, EventArgs e)
