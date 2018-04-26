@@ -48,10 +48,10 @@ namespace theSALAH
                     {
                         string[] groupsScouts = groupQuery.scoutID.Split(',');
 
+                        groupQuery.scoutID = "";
+
                         foreach (string s in groupsScouts)
                         {
-                            groupQuery.scoutID = "";
-
                             if (s != "" && s != null)
                             {
                                 groupQuery.scoutID = groupQuery.scoutID + s + ",";

@@ -51,7 +51,6 @@ namespace theSALAH
             this.button2 = new System.Windows.Forms.Button();
             this.displayMeetingsDGV = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.attendanceStatsBtn = new System.Windows.Forms.Button();
             this.registerBtn = new System.Windows.Forms.Button();
             this.planMeetingBtn = new System.Windows.Forms.Button();
             this.meetingsChooseGroupCmbBx = new System.Windows.Forms.ComboBox();
@@ -64,6 +63,7 @@ namespace theSALAH
             this.addResourceBtn = new System.Windows.Forms.Button();
             this.locationCmbBx = new System.Windows.Forms.ComboBox();
             this.main_screen_tmr = new System.Windows.Forms.Timer(this.components);
+            this.statsBtn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -257,10 +257,10 @@ namespace theSALAH
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.statsBtn);
             this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.displayMeetingsDGV);
             this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.attendanceStatsBtn);
             this.tabPage3.Controls.Add(this.registerBtn);
             this.tabPage3.Controls.Add(this.planMeetingBtn);
             this.tabPage3.Controls.Add(this.meetingsChooseGroupCmbBx);
@@ -304,23 +304,15 @@ namespace theSALAH
             this.label1.TabIndex = 6;
             this.label1.Text = "Group\'s Meetings To View";
             // 
-            // attendanceStatsBtn
-            // 
-            this.attendanceStatsBtn.Location = new System.Drawing.Point(672, 209);
-            this.attendanceStatsBtn.Name = "attendanceStatsBtn";
-            this.attendanceStatsBtn.Size = new System.Drawing.Size(305, 50);
-            this.attendanceStatsBtn.TabIndex = 5;
-            this.attendanceStatsBtn.Text = "Attendance Statistics";
-            this.attendanceStatsBtn.UseVisualStyleBackColor = true;
-            // 
             // registerBtn
             // 
             this.registerBtn.Location = new System.Drawing.Point(671, 153);
             this.registerBtn.Name = "registerBtn";
             this.registerBtn.Size = new System.Drawing.Size(305, 50);
             this.registerBtn.TabIndex = 4;
-            this.registerBtn.Text = "Registers";
+            this.registerBtn.Text = "Registers for Group";
             this.registerBtn.UseVisualStyleBackColor = true;
+            this.registerBtn.Click += new System.EventHandler(this.registerBtn_Click);
             // 
             // planMeetingBtn
             // 
@@ -434,6 +426,16 @@ namespace theSALAH
             // 
             this.main_screen_tmr.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // statsBtn
+            // 
+            this.statsBtn.Location = new System.Drawing.Point(671, 209);
+            this.statsBtn.Name = "statsBtn";
+            this.statsBtn.Size = new System.Drawing.Size(305, 49);
+            this.statsBtn.TabIndex = 19;
+            this.statsBtn.Text = "Get group attendance statistics";
+            this.statsBtn.UseVisualStyleBackColor = true;
+            this.statsBtn.Click += new System.EventHandler(this.statsBtn_Click);
+            // 
             // main_screen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -482,7 +484,6 @@ namespace theSALAH
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.ComboBox groupComboBoxGroups;
         private System.Windows.Forms.Button newYoungPersonBtn;
-        private System.Windows.Forms.Button attendanceStatsBtn;
         private System.Windows.Forms.Button registerBtn;
         private System.Windows.Forms.Button planMeetingBtn;
         private System.Windows.Forms.ComboBox meetingsChooseGroupCmbBx;
@@ -500,6 +501,7 @@ namespace theSALAH
         private System.Windows.Forms.ComboBox locationCmbBx;
         private System.Windows.Forms.Button addLocationBtn;
         private System.Windows.Forms.Button editLocationBtn;
+        private System.Windows.Forms.Button statsBtn;
     }
 }
 

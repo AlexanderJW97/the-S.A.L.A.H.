@@ -223,24 +223,27 @@ namespace theSALAH
 
                 string[] meetingNames = meeting.getMeetingNames(meetingIDs);
 
-                DateTime[] meetingDates = meeting.GetMeetingDateTime(meetingIDs); 
+                DateTime[] meetingDates = meeting.GetMeetingDateTime(meetingIDs);
+
+                string[] meetingAttendances = meeting.getMeetingAttendanceNumbers(meetingIDs);
 
                 int i = 0;
 
                 displayMeetingsDGV.Columns.Add("Index", "Meeting ID Number");
                 displayMeetingsDGV.Columns.Add("Name", "Meeting Title");
                 displayMeetingsDGV.Columns.Add("Date", "Date of Meeting");
+                displayMeetingsDGV.Columns.Add("Attendance", "Attendance Number");
 
                 foreach (string s in meetingNames)
                 {
                     if (s == null || s == "")
                     {
-                        displayMeetingsDGV.Rows.Add(meetingIDs[i], "No meeting name given", meetingDates[i]);
+                        displayMeetingsDGV.Rows.Add(meetingIDs[i], "No meeting name given", meetingDates[i], meetingAttendances[i]);
                         i++;
                     }
                     if (s != null && s != "")
                     {
-                        displayMeetingsDGV.Rows.Add(meetingIDs[i], s, meetingDates[i]);
+                        displayMeetingsDGV.Rows.Add(meetingIDs[i], s, meetingDates[i], meetingAttendances[i]);
                         i++;
                     }
                 }
@@ -250,12 +253,15 @@ namespace theSALAH
 
         private void displayMeetingsDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (displayMeetingsDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                meeting Meeting = meeting.getMeeting(int.Parse(displayMeetingsDGV.Rows[e.RowIndex].Cells[0].Value.ToString()));
-                editMeeting open_screen = new editMeeting(loggedInUser, selectedGroup, Meeting);
-                this.Close();
-                open_screen.Show();
+                if (displayMeetingsDGV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    meeting Meeting = meeting.getMeeting(int.Parse(displayMeetingsDGV.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                    editMeeting open_screen = new editMeeting(loggedInUser, selectedGroup, Meeting);
+                    this.Close();
+                    open_screen.Show();
+                }
             }
         }
 
@@ -352,6 +358,30 @@ namespace theSALAH
                 editResource open_screen = new editResource(loggedInUser, selectedLocation, resource);//create this method
                 this.Close();
                 open_screen.Show();
+            }
+        }
+
+        private void registerBtn_Click(object sender, EventArgs e)
+        {
+            registerScreen open_screen = new registerScreen(loggedInUser, selectedGroup);
+            open_screen.Show();
+            this.Close();
+        }
+
+        private void statsBtn_Click(object sender, EventArgs e)
+        {
+            if (meetingsChooseGroupCmbBx.SelectedItem == null)
+            {
+                MessageBox.Show("Please choose a group to view first");
+            }
+            else
+            {
+                string groupname = meetingsChooseGroupCmbBx.SelectedItem.ToString();
+                group currentGroup = group.getGroup(groupname);
+
+                attendanceStatistics open_screen = new attendanceStatistics(loggedInUser, currentGroup);
+                open_screen.Show();
+                this.Close();
             }
         }
     }

@@ -91,8 +91,11 @@ namespace theSALAH
 
                     foreach (var result in query)
                     {
-                        scoutNames[i] = result.firstName + " " + result.secondName;
-                        i++;
+                        if (result != null)
+                        {
+                            scoutNames[i] = result.firstName + " " + result.secondName;
+                            i++;
+                        }
                     }
 
                 }
@@ -105,9 +108,6 @@ namespace theSALAH
         public static scout getScout(int idNumber)
         {
             scout Scout = new scout();
-
-
-
 
             using (var ctx = new SALAHContext())
             {

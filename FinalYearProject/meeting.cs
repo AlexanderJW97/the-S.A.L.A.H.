@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace theSALAH
 {
@@ -124,7 +125,51 @@ namespace theSALAH
             return meetingNames;
         }
 
-        internal static meeting getMeeting(int meetingID)
+        public static string[] getMeetingAttendanceNumbers(string[] meetingIDs)
+        {
+            string[] meetingAttendanceNumbers = new string[meetingIDs.Length];
+
+            int i = 0;
+
+            using (var ctx = new SALAHContext())
+            {
+                foreach (string s in meetingIDs)
+                {
+                    int idInt = 0;
+                    if (s != null && s != "")
+                        idInt = int.Parse(s);
+                    var query = from data in ctx.Meetings //create a query to find the groupIDs of the logged in user
+                                where data.meetingID == idInt
+                                select new { data.attendance };
+
+                    foreach (var result in query)
+                    {
+                        int attendanceNum = result.attendance;
+                        meetingAttendanceNumbers[i] = attendanceNum.ToString();
+                    }
+                    i++;
+
+                }
+            }
+
+            return meetingAttendanceNumbers;
+        }
+
+        public static int getMeetingAttendanceNumber(int meetingId)
+        {
+            int attendanceNum = 0;
+
+            using (var ctx = new SALAHContext())
+            {
+                meeting meetingQuery = new meeting();
+                meetingQuery = ctx.Meetings.FirstOrDefault(m => m.meetingID == meetingId);
+                attendanceNum = meetingQuery.attendance;
+            }
+            return attendanceNum;
+        }
+
+
+        public static meeting getMeeting(int meetingID)
         {
             meeting Meeting = new meeting();
 
@@ -138,6 +183,29 @@ namespace theSALAH
                 foreach (var result in query)
                 {
                     Meeting.meetingID = meetingID;
+                    Meeting.meetingDesc = result.meetingDesc;
+                    Meeting.meetingTitle = result.meetingTitle;
+                    Meeting.Location = result.Location;
+                    Meeting.DateTime = result.DateTime;
+                }
+            }
+            return Meeting;
+        }
+
+        public static meeting getMeetingWName(string meetingName)
+        {
+            meeting Meeting = new meeting();
+
+
+            using (var ctx = new SALAHContext())
+            {
+                var query = from data in ctx.Meetings //create a query to find the groupIDs of the logged in user
+                            where data.meetingTitle == meetingName
+                            select new { data.meetingID, data.meetingTitle, data.meetingDesc, data.Location, data.DateTime };
+
+                foreach (var result in query)
+                {
+                    Meeting.meetingID = result.meetingID;
                     Meeting.meetingDesc = result.meetingDesc;
                     Meeting.meetingTitle = result.meetingTitle;
                     Meeting.Location = result.Location;
@@ -214,13 +282,37 @@ namespace theSALAH
                 meeting meetingQuery = new meeting();
                 try
                 {
+                    bool scoutAlreadyAdded = false;
+
                     meetingQuery = ctx.Meetings.FirstOrDefault(m => m.meetingID == meetingID);
-                    meetingQuery.scoutsThatAttended += scoutID + ",";
-                    meetingQuery.attendance++;
-                    ctx.SaveChanges();
-                    ctx.Dispose();
-                    scoutAdded = true;
-                    return scoutAdded;
+                    if (meetingQuery.scoutsThatAttended != null)
+                    {
+                        string[] scoutsThatAttended = meetingQuery.scoutsThatAttended.Split(',');
+
+                        foreach (string s in scoutsThatAttended)
+                        {
+                            if (s == scoutID.ToString())
+                                scoutAlreadyAdded = true;
+                        }
+
+                        if (scoutAlreadyAdded == false)
+                        {
+                            meetingQuery.scoutsThatAttended += scoutID + ",";
+                            meetingQuery.attendance++;
+                            ctx.SaveChanges();
+                            ctx.Dispose();
+                            scoutAdded = true;
+                        }
+                        return scoutAdded;
+                    }
+                    else if (meetingQuery.scoutsThatAttended == null)
+                    {
+                        meetingQuery.scoutsThatAttended += scoutID + ",";
+                        meetingQuery.attendance++;
+                        ctx.SaveChanges();
+                        ctx.Dispose();
+                        scoutAdded = true;
+                    }
                 }
                 catch
                 {
@@ -228,6 +320,79 @@ namespace theSALAH
                     return scoutAdded;
                 }
             }
+            return scoutAdded;
+        }
+
+        public static bool removeScoutsFromMeeting(int meetingId, int scoutId)
+        {
+            bool scoutRemoved = true;
+
+            using (var ctx = new SALAHContext())
+            {
+                meeting meetingQuery = new meeting();
+
+                try
+                {
+                    meetingQuery = ctx.Meetings.FirstOrDefault(m => m.meetingID == meetingId);
+
+                    string[] scoutsThatAttended = meetingQuery.scoutsThatAttended.Split(',');
+
+                    meetingQuery.scoutsThatAttended = "";
+
+                    foreach (string s in scoutsThatAttended)
+                    {
+                        if (s != scoutId.ToString())
+                        {
+                            meetingQuery.scoutsThatAttended = s + ",";
+                        }
+                    }
+                }
+                catch
+                {
+                    scoutRemoved = false;
+                }
+            }
+            return scoutRemoved;
+        }
+
+
+        public static bool wasScoutAtMeeting(int meetingId, int scoutId)
+        {
+            bool scoutMarkedPresent = false;
+            using (var ctx = new SALAHContext())
+            {
+                meeting meetingQuery = new meeting();
+                meetingQuery = ctx.Meetings.FirstOrDefault(m => m.meetingID == meetingId);
+                if (meetingQuery.scoutsThatAttended != null)
+                {
+                    string[] scoutsThatAttended = meetingQuery.scoutsThatAttended.Split(',');
+                    foreach (string s in scoutsThatAttended)
+                    {
+                        if (s != null && s != "")
+                        {
+                            int sInt = int.Parse(s);
+                            if (scoutId == sInt)
+                            {
+                                scoutMarkedPresent = true;
+                            }
+                        }
+                    }
+                }
+                return scoutMarkedPresent;
+            }
+        }
+
+        public static void addMeetingsToComboBox(string[] meetingNames, ComboBox ComboBox)
+        {
+            int length = meetingNames.Length; //get length of the meetings array
+
+            for (int i = 0; i < length; i++)
+            {
+                string meetingName = meetingNames[i];
+                if (meetingName != null && meetingName != "")
+                    ComboBox.Items.Add(meetingNames[i]); //add the latest array entry into the combobox
+            }
+
         }
     }
 }
